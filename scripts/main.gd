@@ -4,12 +4,15 @@ extends Node3D
 ##
 ## Floors become a flat box: their mesh has thousands of triangles (the floor
 ## boards) and a collision copied from it pushes the character around.
-## Everything else gets a convex hull, which is lighter than copying every
-## triangle.
+## Walls with an opening get an exact (trimesh) collision, because a convex
+## hull would fill the opening. Everything else gets a convex hull, which is
+## lighter than copying every triangle.
 
 const LEVEL := ["School", "ClassroomBackWall", "ClassroomDecor", "Ceiling"]
 ## Floor meshes inside the school model: Floor, FloorHallway, FloorCafeteria.
 const FLOOR_PREFIX := "Floor"
+## Walls with a door opening.
+const EXACT_COLLISION := ["WallDoor", "ClassroomWallTrim"]
 
 
 func _ready() -> void:
@@ -21,6 +24,8 @@ func _ready() -> void:
 		for mesh_instance: MeshInstance3D in meshes:
 			if mesh_instance.name.begins_with(FLOOR_PREFIX):
 				_create_box(mesh_instance)
+			elif mesh_instance.name in EXACT_COLLISION:
+				mesh_instance.create_trimesh_collision()
 			else:
 				mesh_instance.create_convex_collision(true, false)
 

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 ## Third-person player.
-## WASD: walk | Shift: run | Mouse: orbit the camera
+## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors)
 ## Right mouse button (or Tab): capture/release the mouse | Esc: release
 
 ## Walking speed (m/s). 1.05 is the stride measured in the walk animation,
@@ -13,6 +13,8 @@ extends CharacterBody3D
 @export var turn_speed: float = 10.0
 ## Blend time between idle and walking (s).
 @export var blend_time: float = 0.2
+## How close (m) the player must be to use something in the "interactable" group.
+@export var interact_distance: float = 1.5
 
 ## Name of the walk animation inside the imported model.
 const WALK := "Walk"
@@ -23,8 +25,11 @@ const IDLE := "Idle"
 @onready var animation: AnimationPlayer = $Model/AnimationPlayer
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera_arm: SpringArm3D = $CameraPivot/CameraArm
+@onready var prompt: Label = $HUD/Prompt
 
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+## Nearest interactable in range, or null.
+var _interactable: Node = null
 
 
 func _ready() -> void:
@@ -82,6 +87,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event.physical_keycode == KEY_TAB:
 			_toggle_mouse()
+		elif event.physical_keycode == KEY_E and _interactable:
+			_interactable.interact(self)
+			_update_prompt()
 
 
 func _toggle_mouse() -> void:
@@ -128,3 +136,24 @@ func _physics_process(delta: float) -> void:
 			animation.play(IDLE, blend_time)
 
 	move_and_slide()
+	_find_interactable()
+
+
+func _find_interactable() -> void:
+	var nearest: Node = null
+	var nearest_distance := interact_distance
+	for node in get_tree().get_nodes_in_group("interactable"):
+		var offset: Vector3 = node.get_interaction_point() - global_position
+		offset.y = 0.0
+		if offset.length() < nearest_distance:
+			nearest = node
+			nearest_distance = offset.length()
+	if nearest != _interactable:
+		_interactable = nearest
+		_update_prompt()
+
+
+func _update_prompt() -> void:
+	prompt.visible = _interactable != null
+	if _interactable:
+		prompt.text = "[E] " + _interactable.get_prompt()
