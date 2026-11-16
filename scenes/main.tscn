@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://di760sbgrs60t"]
 
 [ext_resource type="PackedScene" uid="uid://cm3rwj3oearln" path="res://models/escola_completa.gltf" id="1_escola"]
+[ext_resource type="ArrayMesh" path="res://models/parede_fundo_sala.res" id="3_parede"]
 [ext_resource type="Script" uid="uid://bjd7ole7tto73" path="res://scripts/free_camera.gd" id="2_camera"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ceu"]
@@ -58,6 +59,10 @@ transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0
 shadow_enabled = true
 
 [node name="Escola" parent="." unique_id=1330938973 instance=ExtResource("1_escola")]
+
+[node name="ParedeFundoSala" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.8)
+mesh = ExtResource("3_parede")
 
 [node name="Teto" type="Node3D" parent="."]
 
