@@ -42,16 +42,19 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   `npc_student_boy.tscn` usa o estudante (`models/characters/boy_student_walking.glb`, editado a partir de
   `estudante_menino_andando.glb`: cabelo preto, gravata listrada, calça mais justa e com o cós mais baixo).
   `npc_student_blond_boy.tscn` é o mesmo estudante com cabelo loiro escuro (`blond_boy_student_walking.glb`).
-- `scenes/house.tscn` + `scripts/house.gd`: a casa da jogadora. Por enquanto, o andar de cima:
+- `scenes/house.tscn` + `scripts/house.gd`: o apartamento da jogadora (um andar só, no 5º andar de um prédio):
   - quarto (cama, criado-mudo com abajur, guarda-roupa, escrivaninha com notebook e cadeira sentável,
     estante, tapete, janela, ar-condicionado split com controle remoto, violão e decoração), com a
     porta abrindo com E;
-  - corredor com passadeira, aparador, quadros e janela; porta (ainda fechada) do quarto dos pais;
+  - corredor com passadeira, aparador e quadros, ligando os quartos, o banheiro e a área de serviço à sala;
+  - quarto dos pais (cama de casal, criados-mudos, guarda-roupa, cômoda com espelho), porta abrindo com E;
   - banheiro (porta abrindo com E): vaso, papel higiênico, lixeira, pia de coluna com espelho e
     prateleira, box de vidro com chuveiro, toalheiro com toalha, máquina de lavar com prateleira de
     sabão e amaciante, tapete e janela alta;
-  - escada para o térreo. Os degraus são só visuais: a personagem anda numa rampa invisível
-    (`Stairs/Ramp`) por baixo deles.
+  - cozinha americana (bancada com pia e cooktop, forno, armários, geladeira, balcão com banquetas)
+    integrada à sala (sofá, TV, mesa de centro, mesinha de jantar, estante) e porta de entrada fechada;
+  - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a cidade;
+  - área de serviço com tanque, varal e produtos de limpeza.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
 - Inventário (estilo Stardew Valley):
   - `scripts/inventory/item.gd` (`Item`): um item, com nome, ícone e descrição. As roupas ficam em

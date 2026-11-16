@@ -1,13 +1,14 @@
 extends Node3D
-## The player's house. Builds collision for the rooms and furniture on
-## startup (they are simple shapes, so a convex hull per mesh is exact
-## enough) and makes the desk chair sittable.
-## The steps have no collision: a hidden ramp (Stairs/Ramp) runs under them,
-## because the CharacterBody can't climb steps.
+## The player's apartment (one floor). Builds collision for the rooms and
+## furniture on startup (they are simple shapes, so a convex hull per mesh is
+## exact enough) and makes the desk chair sittable.
 
 const Seat := preload("res://scripts/seat.gd")
 
-const LEVEL := ["Bedroom", "UpstairsHallway", "Bathroom", "Stairs"]
+const LEVEL := [
+	"Bedroom", "Hallway", "Bathroom", "ParentsRoom", "Kitchen", "LivingRoom",
+	"Balcony", "ServiceArea", "Apartment",
+]
 ## Meshes flat on the floor or too small to bump into.
 const NO_COLLISION := [
 	"Rug", "Runner", "Laptop", "Mug", "Book", "Lamp", "CeilingLight", "StairLight", "Handle",
@@ -16,6 +17,11 @@ const NO_COLLISION := [
 	"Mirror", "Towel", "ToiletPaper", "WallNorthTiles", "Washer", "Detergent",
 	"AC", "AirConditioner", "GuitarSoundHole", "GuitarBridge", "GuitarFretboard", "GuitarNut",
 	"GuitarHead", "GuitarTuner", "GuitarStrings",
+	"Burner", "Cooktop", "SinkBasin", "KitchenFaucet", "CabinetDoorLine", "OvenHandle", "OvenDoor",
+	"FridgeDoorLine", "FridgeHandle", "FridgeMagnet", "Fruit", "Remote", "TvScreen", "SofaPillow",
+	"DoorMat", "Perfume", "Jewelry", "DresserDrawerLine", "DresserMirror", "LaundryTubBasin",
+	"LaundryTubFaucet", "Clothesline", "HangingTowel", "Broom", "CleaningBottle", "BalconyMug",
+	"Grass", "BuildingFacade", "BuildingRoof", "CityBuilding",
 ]
 
 @export var desk_chair_path: NodePath = ^"Bedroom/Furniture/DeskChair"
