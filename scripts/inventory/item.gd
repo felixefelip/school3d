@@ -12,7 +12,13 @@ enum Slot { NONE, HEAD, TOP, LEGS, FEET }
 @export var icon: Texture2D
 @export_multiline var description: String
 @export var slot := Slot.NONE
-## Color of tops and shoes when worn (see outfit.gd).
+## How it looks when worn (see outfit.gd). In order of priority:
+##  - keep_original: the character's own piece for that slot (the uniform).
+##  - model_scene: an extra model; skinned meshes for the body, or a scene
+##    attached to the head bone for HEAD items.
+##  - otherwise the character's own piece, painted in `color`.
+@export var keep_original := false
+@export var model_scene: PackedScene
 @export var color := Color.WHITE
 ## Dirty clothes can't be worn until washed in the washing machine.
 @export var dirty := false

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Item" format=3]
 
 [ext_resource type="Script" path="res://scripts/inventory/item.gd" id="1_item"]
+[ext_resource type="PackedScene" path="res://models/clothes/jeans.glb" id="3_model"]
 [ext_resource type="Texture2D" path="res://assets/icons/clothes/jeans.png" id="2_icon"]
 
 [resource]
@@ -10,3 +11,4 @@ display_name = "Jeans"
 icon = ExtResource("2_icon")
 description = "Blue jeans for the weekend."
 slot = 3
+model_scene = ExtResource("3_model")

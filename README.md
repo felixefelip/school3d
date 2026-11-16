@@ -61,6 +61,10 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     (continuam com ela ao trocar de cena).
   - `scripts/ui/`: barra de itens (`hotbar.gd`), slot com arrastar e soltar (`inventory_slot.gd`),
     janela de armazenamento (`storage_window.gd`), dica do item (`item_tooltip.gd`) e estilos (`ui_style.gd`).
+  - Uniforme: a jogadora começa vestindo **School shirt**, **School skirt** e **School shoes**, que também
+    são itens (dá para tirar e guardar pelo menu C). Com o slot vazio ela fica de **top e short brancos**
+    (`models/clothes/top.glb` e `shorts.glb`) e descalça (`bare_feet.glb`: o corpo do modelo termina
+    no tornozelo, então os pés descalços são um modelo à parte, feito a partir do formato do sapato).
   - Roupas: cada peça tem um slot (cabeça, tronco, pernas, pés) e fica **suja** depois de 3 minutos
     vestida (manchas no ícone). Roupa suja não pode ser vestida: lave na **máquina de lavar** do banheiro
     (E, arraste a roupa e aperte **Wash**).

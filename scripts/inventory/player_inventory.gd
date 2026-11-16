@@ -9,13 +9,20 @@ const SLOTS := 10
 const DIRTY_AFTER := 180.0
 
 var inventory := Inventory.create(SLOTS)
-## What she wears, one slot per Item.Slot: head, top, legs, feet.
+## What she wears, one slot per Item.Slot: head, top, legs, feet. She starts
+## in the school uniform.
 var equipment := Inventory.create(4)
 ## The hotbar slot picked with the number keys or the mouse wheel.
 var selected := 0:
 	set(value):
 		selected = wrapi(value, 0, SLOTS)
 		selected_changed.emit(selected)
+
+
+func _ready() -> void:
+	for path in ["school_shirt", "school_skirt", "school_shoes"]:
+		var item: Item = (load("res://items/clothes/%s.tres" % path) as Item).duplicate()
+		equipment.items[Outfit.slot_index(item.slot)] = item
 
 
 func get_selected_item() -> Item:
