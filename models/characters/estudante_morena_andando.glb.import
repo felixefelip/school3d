@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cthac50nw78ak"
-path="res://.godot/imported/estudante_morena_andando.glb-5fb4d8b3d4ca081d39df691787817eeb.scn"
+path="res://.godot/imported/estudante_morena_andando.glb-2c76667876af87acf2c6a9ef9cf23bf6.scn"
 
 [deps]
 
-source_file="res://models/personagens/estudante_morena_andando.glb"
-dest_files=["res://.godot/imported/estudante_morena_andando.glb-5fb4d8b3d4ca081d39df691787817eeb.scn"]
+source_file="res://models/characters/estudante_morena_andando.glb"
+dest_files=["res://.godot/imported/estudante_morena_andando.glb-2c76667876af87acf2c6a9ef9cf23bf6.scn"]
 
 [params]
 

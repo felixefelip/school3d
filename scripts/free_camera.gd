@@ -1,7 +1,7 @@
 extends Camera3D
-## Câmera livre para explorar a escola.
-## WASD: mover | Q/E: descer/subir | Shift: correr
-## Botão direito do mouse (ou Tab): capturar/soltar o mouse | Esc: soltar
+## Free camera to explore the school.
+## WASD: move | Q/E: down/up | Shift: run
+## Right mouse button (or Tab): capture/release the mouse | Esc: release
 
 @export var speed: float = 3.0
 @export var run_multiplier: float = 3.0

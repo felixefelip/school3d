@@ -1,35 +1,39 @@
 extends Node3D
-## Gera colisão para o cenário ao iniciar, para a jogadora não atravessar
-## paredes, móveis e o chão. O modelo glTF não traz colisão própria.
+## Builds collision for the level on startup so the player can't walk through
+## walls, furniture or the floor. The glTF model has no collision of its own.
 ##
-## Pisos viram uma caixa lisa: a malha deles tem milhares de triângulos (as
-## tábuas) e uma colisão copiada dela empurra a personagem de forma errada.
-## O resto usa um invólucro convexo, mais leve que copiar todos os triângulos.
+## Floors become a flat box: their mesh has thousands of triangles (the floor
+## boards) and a collision copied from it pushes the character around.
+## Everything else gets a convex hull, which is lighter than copying every
+## triangle.
 
-const CENARIO := ["Escola", "ParedeFundoSala", "DecoracaoSala", "Teto"]
+const LEVEL := ["School", "ClassroomBackWall", "ClassroomDecor", "Ceiling"]
+## Floor meshes inside the school model are named "Piso..." (Portuguese for
+## floor), e.g. Piso, PisoCorredor, PisoRefeitorio.
+const FLOOR_PREFIX := "Piso"
 
 
 func _ready() -> void:
-	for nome in CENARIO:
-		var no := get_node(nome)
-		var malhas := no.find_children("*", "MeshInstance3D", true, false)
-		if no is MeshInstance3D:
-			malhas.append(no)
-		for malha: MeshInstance3D in malhas:
-			if malha.name.begins_with("Piso"):
-				_criar_caixa(malha)
+	for node_name in LEVEL:
+		var node := get_node(node_name)
+		var meshes := node.find_children("*", "MeshInstance3D", true, false)
+		if node is MeshInstance3D:
+			meshes.append(node)
+		for mesh_instance: MeshInstance3D in meshes:
+			if mesh_instance.name.begins_with(FLOOR_PREFIX):
+				_create_box(mesh_instance)
 			else:
-				malha.create_convex_collision(true, false)
+				mesh_instance.create_convex_collision(true, false)
 
 
-func _criar_caixa(malha: MeshInstance3D) -> void:
-	var limites := malha.global_transform * malha.get_aabb()
-	var forma := BoxShape3D.new()
-	forma.size = limites.size
-	var colisao := CollisionShape3D.new()
-	colisao.shape = forma
-	var corpo := StaticBody3D.new()
-	corpo.name = malha.name + "_col"
-	corpo.add_child(colisao)
-	add_child(corpo)
-	corpo.global_position = limites.get_center()
+func _create_box(mesh_instance: MeshInstance3D) -> void:
+	var bounds := mesh_instance.global_transform * mesh_instance.get_aabb()
+	var shape := BoxShape3D.new()
+	shape.size = bounds.size
+	var collision := CollisionShape3D.new()
+	collision.shape = shape
+	var body := StaticBody3D.new()
+	body.name = mesh_instance.name + "_col"
+	body.add_child(collision)
+	add_child(body)
+	body.global_position = bounds.get_center()
