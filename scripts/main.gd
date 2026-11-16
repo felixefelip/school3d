@@ -8,9 +8,8 @@ extends Node3D
 ## triangle.
 
 const LEVEL := ["School", "ClassroomBackWall", "ClassroomDecor", "Ceiling"]
-## Floor meshes inside the school model are named "Piso..." (Portuguese for
-## floor), e.g. Piso, PisoCorredor, PisoRefeitorio.
-const FLOOR_PREFIX := "Piso"
+## Floor meshes inside the school model: Floor, FloorHallway, FloorCafeteria.
+const FLOOR_PREFIX := "Floor"
 
 
 func _ready() -> void:

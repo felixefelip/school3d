@@ -19,10 +19,10 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 
 ## Estrutura
 
-- `models/escola_completa.gltf` + `escola_completa_0.bin` / `escola_completa_1.bin`: o modelo
+- `models/school.gltf` + `school_0.bin` / `school_1.bin`: o modelo
   (mesmo conteúdo do `.glb` original, apenas separado em glTF + binários).
 - `scenes/main.tscn`: cena principal com a escola, teto, luminárias, decoração, luz do sol, céu e a jogadora.
-- `scenes/player.tscn` + `scripts/player.gd`: a jogadora (`models/characters/estudante_morena_andando.glb`)
-  em terceira pessoa, com a animação "Andar".
+- `scenes/player.tscn` + `scripts/player.gd`: a jogadora (`models/characters/brunette_student_walking.glb`)
+  em terceira pessoa, com a animação "Walk".
 - `scripts/main.gd`: gera a colisão do cenário ao iniciar.
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).

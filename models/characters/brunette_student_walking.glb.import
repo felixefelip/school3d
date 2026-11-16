@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cm3rwj3oearln"
-path="res://.godot/imported/escola_completa.gltf-501ea2dbc0b922becf604d11d8515a2a.scn"
+uid="uid://cthac50nw78ak"
+path="res://.godot/imported/brunette_student_walking.glb-80257b3d3382b68781471fa8471fd8c4.scn"
 
 [deps]
 
-source_file="res://models/escola_completa.gltf"
-dest_files=["res://.godot/imported/escola_completa.gltf-501ea2dbc0b922becf604d11d8515a2a.scn"]
+source_file="res://models/characters/brunette_student_walking.glb"
+dest_files=["res://.godot/imported/brunette_student_walking.glb-80257b3d3382b68781471fa8471fd8c4.scn"]
 
 [params]
 

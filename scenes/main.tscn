@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://di760sbgrs60t"]
 
-[ext_resource type="PackedScene" uid="uid://cm3rwj3oearln" path="res://models/escola_completa.gltf" id="1_school"]
+[ext_resource type="PackedScene" uid="uid://cm3rwj3oearln" path="res://models/school.gltf" id="1_school"]
 [ext_resource type="ArrayMesh" path="res://models/classroom_back_wall.res" id="3_wall"]
 [ext_resource type="PackedScene" path="res://models/props/bookshelf.scn" id="4_bookshelf"]
 [ext_resource type="PackedScene" path="res://models/props/bulletin_board.scn" id="5_bulletin_board"]

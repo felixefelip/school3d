@@ -3,8 +3,8 @@ extends CharacterBody3D
 ## WASD: walk | Shift: run | Mouse: orbit the camera
 ## Right mouse button (or Tab): capture/release the mouse | Esc: release
 
-## Walking speed (m/s). 1.05 is the stride measured in the "Andar" (walk)
-## animation, so the feet don't slide on the floor.
+## Walking speed (m/s). 1.05 is the stride measured in the walk animation,
+## so the feet don't slide on the floor.
 @export var speed: float = 1.05
 ## Running speeds up both movement and animation by the same factor.
 @export var run_multiplier: float = 1.8
@@ -15,7 +15,7 @@ extends CharacterBody3D
 @export var blend_time: float = 0.2
 
 ## Name of the walk animation inside the imported model.
-const WALK := "Andar"
+const WALK := "Walk"
 const IDLE := "Idle"
 
 @onready var model: Node3D = $Model
