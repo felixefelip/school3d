@@ -37,4 +37,6 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   `scenes/npc_student_brunette.tscn` é a mesma colega com o modelo da morena (o mesmo da jogadora).
   `npc_student_blonde.tscn` e `npc_student_bluehair.tscn` usam o modelo da ruiva com o cabelo recolorido
   (`models/characters/blonde_student_walking.glb` e `bluehair_student_walking.glb`).
+  `npc_student_boy.tscn` usa o estudante (`models/characters/boy_student_walking.glb`, editado a partir de
+  `estudante_menino_andando.glb`: cabelo preto, gravata listrada, calça mais justa e com o cós mais baixo).
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).
