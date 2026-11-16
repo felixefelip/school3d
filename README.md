@@ -40,7 +40,12 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   `npc_student_boy.tscn` usa o estudante (`models/characters/boy_student_walking.glb`, editado a partir de
   `estudante_menino_andando.glb`: cabelo preto, gravata listrada, calça mais justa e com o cós mais baixo).
   `npc_student_blond_boy.tscn` é o mesmo estudante com cabelo loiro escuro (`blond_boy_student_walking.glb`).
-- `scenes/bedroom.tscn` + `scripts/bedroom.gd`: o quarto da jogadora (cama, criado-mudo com abajur,
-  guarda-roupa, escrivaninha com notebook e cadeira sentável, estante, tapete, janela e decoração).
+- `scenes/house.tscn` + `scripts/house.gd`: a casa da jogadora. Por enquanto, o andar de cima:
+  - quarto (cama, criado-mudo com abajur, guarda-roupa, escrivaninha com notebook e cadeira sentável,
+    estante, tapete, janela e decoração), com a porta abrindo com E;
+  - corredor com passadeira, aparador, quadros e janela; portas (ainda fechadas) do banheiro e do
+    quarto dos pais;
+  - escada para o térreo. Os degraus são só visuais: a personagem anda numa rampa invisível
+    (`Stairs/Ramp`) por baixo deles.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).

@@ -1,15 +1,20 @@
 extends Node3D
-## The player's bedroom. Builds collision for the room and furniture on
+## The player's house. Builds collision for the rooms and furniture on
 ## startup (they are simple shapes, so a convex hull per mesh is exact
 ## enough) and makes the desk chair sittable.
+## The steps have no collision: a hidden ramp (Stairs/Ramp) runs under them,
+## because the CharacterBody can't climb steps.
 
 const Seat := preload("res://scripts/seat.gd")
 
-const LEVEL := ["Room", "Furniture"]
+const LEVEL := ["Bedroom", "UpstairsHallway", "Stairs"]
 ## Meshes flat on the floor or too small to bump into.
-const NO_COLLISION := ["Rug", "Laptop", "Mug", "Book", "Lamp", "CeilingLight", "Handle"]
+const NO_COLLISION := [
+	"Rug", "Runner", "Laptop", "Mug", "Book", "Lamp", "CeilingLight", "StairLight", "Handle",
+	"Step", "Threshold", "Picture", "Frame", "Baseboard", "Window",
+]
 
-@export var desk_chair_path: NodePath = ^"Furniture/DeskChair"
+@export var desk_chair_path: NodePath = ^"Bedroom/Furniture/DeskChair"
 
 
 func _ready() -> void:
