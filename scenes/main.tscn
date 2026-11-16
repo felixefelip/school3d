@@ -116,6 +116,9 @@ chair_path = NodePath("../../School/Chair09")
 [node name="StudentClassroom8" parent="Students" instance=ExtResource("20_npc_blond_boy")]
 chair_path = NodePath("../../School/Chair06")
 
+[node name="StudentClassroom9" parent="Students" instance=ExtResource("18_npc_bluehair")]
+chair_path = NodePath("../../School/Chair02")
+
 [node name="Seats" type="Node" parent="."]
 script = ExtResource("14_seats")
 
