@@ -1,7 +1,8 @@
 extends CharacterBody3D
 ## Third-person player.
 ## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs)
-## Right mouse button (or Tab): capture/release the mouse | Esc: release
+## Right mouse button (or Tab): capture/release the mouse
+## Esc: release the mouse; Esc again (mouse already released): quit the game
 
 ## Walking speed (m/s). 1.05 is the stride measured in the walk animation,
 ## so the feet don't slide on the floor.
@@ -59,7 +60,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		_toggle_mouse()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			else:
+				get_tree().quit()
 		elif event.physical_keycode == KEY_TAB:
 			_toggle_mouse()
 		elif event.physical_keycode == KEY_E:
@@ -104,8 +108,7 @@ func _physics_process(delta: float) -> void:
 		var scale := run_multiplier if running else 1.0
 		velocity.x = direction.x * speed * scale
 		velocity.z = direction.z * speed * scale
-		# The model faces +Z.
-		model.rotation.y = lerp_angle(model.rotation.y, atan2(direction.x, direction.z), turn_speed * delta)
+		model.rotation.y = lerp_angle(model.rotation.y, _model_yaw(direction), turn_speed * delta)
 		if animation.current_animation != WALK:
 			animation.play(WALK, blend_time)
 		animation.speed_scale = scale
@@ -137,7 +140,7 @@ func sit_on(seat: Node) -> void:
 	var forward := rest.basis.z.normalized()
 	var pulled := rest.origin - forward * chair_pull
 	var feet_offset := forward * -SEATED_HIPS.z
-	var facing := model.rotation.y + wrapf(atan2(forward.x, forward.z) - model.rotation.y, -PI, PI)
+	var facing := model.rotation.y + wrapf(_model_yaw(forward) - model.rotation.y, -PI, PI)
 
 	animation.play(WALK, blend_time)
 	var tween := create_tween()
@@ -170,7 +173,7 @@ func stand_up() -> void:
 	var pulled := rest.origin - forward * chair_pull
 	var feet_offset := forward * -SEATED_HIPS.z
 	var way_back := _stand_position - (pulled + feet_offset)
-	var facing := model.rotation.y + wrapf(atan2(way_back.x, way_back.z) - model.rotation.y, -PI, PI)
+	var facing := model.rotation.y + wrapf(_model_yaw(way_back) - model.rotation.y, -PI, PI)
 
 	var tween := create_tween()
 	tween.tween_property(self, "global_position", pulled + feet_offset, 0.4)
@@ -190,6 +193,12 @@ func _finish_standing() -> void:
 	_seat = null
 	_state = State.FREE
 	_update_prompt()
+
+
+## The model's local rotation that makes it face a world direction. The model
+## faces +Z, and the player node itself may be rotated in the scene.
+func _model_yaw(world_direction: Vector3) -> float:
+	return atan2(world_direction.x, world_direction.z) - global_rotation.y
 
 
 func _find_interactable() -> void:
