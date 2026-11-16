@@ -1,6 +1,7 @@
 extends CharacterBody3D
 ## Third-person player.
-## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs)
+## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs, wardrobe)
+## 1-0 or mouse wheel: pick a hotbar slot
 ## Right mouse button (or Tab): capture/release the mouse
 ## Esc: release the mouse; Esc again (mouse already released): quit the game
 
@@ -25,7 +26,8 @@ const SIT := StudentAnimations.SIT
 const SIT_LENGTH := StudentAnimations.SIT_LENGTH
 const SEATED_HIPS := StudentAnimations.SEATED_HIPS
 
-enum State { FREE, BUSY, SEATED }
+## MENU: a storage window is open; the mouse is free to drag items.
+enum State { FREE, BUSY, SEATED, MENU }
 
 @onready var model: Node3D = $Model
 @onready var skeleton: Skeleton3D = $Model/Skeleton3D
@@ -34,6 +36,7 @@ enum State { FREE, BUSY, SEATED }
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera_arm: SpringArm3D = $CameraPivot/CameraArm
 @onready var prompt: Label = $HUD/Prompt
+@onready var storage_window: Control = $HUD/StorageWindow
 
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 ## Nearest interactable in range, or null.
@@ -53,6 +56,24 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _state == State.MENU:
+		if event is InputEventKey and event.pressed and not event.echo \
+				and event.physical_keycode in [KEY_E, KEY_ESCAPE]:
+			close_menu()
+			get_viewport().set_input_as_handled()
+		return
+	if event is InputEventKey and event.pressed and not event.echo:
+		var slot := _hotbar_key_slot(event.physical_keycode)
+		if slot >= 0:
+			PlayerInventory.selected = slot
+			return
+	if event is InputEventMouseButton and event.pressed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			PlayerInventory.selected += 1
+			return
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			PlayerInventory.selected -= 1
+			return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		camera_pivot.rotation.y -= event.relative.x * mouse_sensitivity
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x - event.relative.y * mouse_sensitivity, -1.2, 0.4)
@@ -72,6 +93,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif _state == State.FREE and _interactable:
 				_interactable.interact(self)
 			_update_prompt()
+
+
+## Keys 1-9 pick slots 1-9 and 0 picks slot 10; other keys give -1.
+func _hotbar_key_slot(keycode: Key) -> int:
+	if keycode >= KEY_1 and keycode <= KEY_9:
+		return keycode - KEY_1
+	if keycode == KEY_0:
+		return 9
+	return -1
 
 
 func _toggle_mouse() -> void:
@@ -195,6 +225,29 @@ func _finish_standing() -> void:
 	_update_prompt()
 
 
+## Opens a storage's window (e.g. the wardrobe) and frees the mouse to drag
+## items. She stands still until it is closed with E or Esc.
+func open_storage(storage: Node) -> void:
+	if _state != State.FREE:
+		return
+	_state = State.MENU
+	velocity = Vector3.ZERO
+	animation.speed_scale = 1.0
+	animation.play(IDLE, blend_time)
+	storage_window.open(storage.title, storage.inventory)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	_update_prompt()
+
+
+func close_menu() -> void:
+	if _state != State.MENU:
+		return
+	storage_window.close()
+	_state = State.FREE
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_update_prompt()
+
+
 ## The model's local rotation that makes it face a world direction. The model
 ## faces +Z, and the player node itself may be rotated in the scene.
 func _model_yaw(world_direction: Vector3) -> float:
@@ -220,7 +273,7 @@ func _update_prompt() -> void:
 		State.SEATED:
 			prompt.visible = true
 			prompt.text = "[E] Stand up"
-		State.BUSY:
+		State.BUSY, State.MENU:
 			prompt.visible = false
 		State.FREE:
 			prompt.visible = _interactable != null

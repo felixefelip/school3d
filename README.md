@@ -17,7 +17,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - **E**: interagir com o que estiver mais perto: abrir/fechar portas (sala, banheiro e as duas folhas
   do refeitório) e sentar/levantar nas cadeiras da sala (carteiras e cadeira do professor)
 - **Botão direito ou Tab**: capturar/soltar o mouse
-- **Esc**: soltar o mouse; **Esc de novo** (com o mouse já solto): fechar o jogo
+- **1–0 / roda do mouse**: escolher o slot da barra de itens
+- **Esc**: soltar o mouse (ou fechar a janela do guarda-roupa); **Esc de novo** (com o mouse já solto): fechar o jogo
 
 ## Estrutura
 
@@ -51,4 +52,15 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   - escada para o térreo. Os degraus são só visuais: a personagem anda numa rampa invisível
     (`Stairs/Ramp`) por baixo deles.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
+- Inventário (estilo Stardew Valley):
+  - `scripts/inventory/item.gd` (`Item`): um item, com nome, ícone e descrição. As roupas ficam em
+    `items/clothes/*.tres` e os ícones em `assets/icons/clothes/`.
+  - `scripts/inventory/inventory.gd` (`Inventory`): um conjunto de slots.
+  - `scripts/inventory/player_inventory.gd`: autoload `PlayerInventory`, com os 10 slots da jogadora
+    (continuam com ela ao trocar de cena).
+  - `scripts/ui/`: barra de itens (`hotbar.gd`), slot com arrastar e soltar (`inventory_slot.gd`),
+    janela de armazenamento (`storage_window.gd`), dica do item (`item_tooltip.gd`) e estilos (`ui_style.gd`).
+  - `scripts/storage.gd`: móvel que guarda itens. Na casa, o guarda-roupa (`WardrobeStorage`) começa com
+    camiseta, calça jeans, moletom, pijama, tênis e boné; com **E** a janela abre e os itens são
+    arrastados com o mouse entre ela e a barra.
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).

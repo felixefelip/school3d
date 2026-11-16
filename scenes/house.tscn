@@ -2,15 +2,23 @@
 
 [ext_resource type="Script" path="res://scripts/house.gd" id="1_house"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="2_door"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="3_player"]
-[ext_resource type="PackedScene" path="res://models/props/chair.scn" id="4_chair"]
-[ext_resource type="PackedScene" path="res://models/props/bookshelf.scn" id="5_bookshelf"]
-[ext_resource type="PackedScene" path="res://models/props/poster_1.scn" id="6_poster_1"]
-[ext_resource type="PackedScene" path="res://models/props/poster_2.scn" id="7_poster_2"]
-[ext_resource type="PackedScene" path="res://models/props/potted_plant.scn" id="8_potted_plant"]
-[ext_resource type="PackedScene" path="res://models/props/toilet.scn" id="9_toilet"]
-[ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="10_toilet_paper"]
-[ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="11_steel_trash_can"]
+[ext_resource type="Script" path="res://scripts/storage.gd" id="3_storage"]
+[ext_resource type="Script" path="res://scripts/inventory/item.gd" id="4_item"]
+[ext_resource type="Resource" path="res://items/clothes/t_shirt.tres" id="5_t_shirt"]
+[ext_resource type="Resource" path="res://items/clothes/jeans.tres" id="6_jeans"]
+[ext_resource type="Resource" path="res://items/clothes/hoodie.tres" id="7_hoodie"]
+[ext_resource type="Resource" path="res://items/clothes/pajamas.tres" id="8_pajamas"]
+[ext_resource type="Resource" path="res://items/clothes/sneakers.tres" id="9_sneakers"]
+[ext_resource type="Resource" path="res://items/clothes/cap.tres" id="10_cap"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="11_player"]
+[ext_resource type="PackedScene" path="res://models/props/chair.scn" id="12_chair"]
+[ext_resource type="PackedScene" path="res://models/props/bookshelf.scn" id="13_bookshelf"]
+[ext_resource type="PackedScene" path="res://models/props/poster_1.scn" id="14_poster_1"]
+[ext_resource type="PackedScene" path="res://models/props/poster_2.scn" id="15_poster_2"]
+[ext_resource type="PackedScene" path="res://models/props/potted_plant.scn" id="16_potted_plant"]
+[ext_resource type="PackedScene" path="res://models/props/toilet.scn" id="17_toilet"]
+[ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="18_toilet_paper"]
+[ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="19_steel_trash_can"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_Wall"]
 albedo_color = Color(0.88, 0.89, 0.92, 1)
@@ -1585,7 +1593,7 @@ mesh = SubResource("Box_43")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59, 1, 1.66)
 mesh = SubResource("Box_44")
 
-[node name="Bookshelf" parent="Bedroom/Furniture" instance=ExtResource("5_bookshelf")]
+[node name="Bookshelf" parent="Bedroom/Furniture" instance=ExtResource("13_bookshelf")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.03, 0, 0.25)
 
 [node name="DeskTop" type="MeshInstance3D" parent="Bedroom/Furniture"]
@@ -1616,7 +1624,7 @@ mesh = SubResource("Box_50")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67, 0.66, 0.62)
 mesh = SubResource("Box_51")
 
-[node name="DeskChair" parent="Bedroom/Furniture" instance=ExtResource("4_chair")]
+[node name="DeskChair" parent="Bedroom/Furniture" instance=ExtResource("12_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.405, 0, 0.25)
 
 [node name="Laptop" type="Node3D" parent="Bedroom/Furniture"]
@@ -1666,13 +1674,13 @@ mesh = SubResource("Box_61")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.005, 0.2)
 mesh = SubResource("Cyl_62")
 
-[node name="Poster1" parent="Bedroom/Furniture" instance=ExtResource("6_poster_1")]
+[node name="Poster1" parent="Bedroom/Furniture" instance=ExtResource("14_poster_1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.6, -2.5)
 
-[node name="Poster2" parent="Bedroom/Furniture" instance=ExtResource("7_poster_2")]
+[node name="Poster2" parent="Bedroom/Furniture" instance=ExtResource("15_poster_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.6, -2.5)
 
-[node name="Plant" parent="Bedroom/Furniture" instance=ExtResource("8_potted_plant")]
+[node name="Plant" parent="Bedroom/Furniture" instance=ExtResource("16_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0, -2.15)
 
 [node name="AirConditioner" type="MeshInstance3D" parent="Bedroom/Furniture"]
@@ -1960,7 +1968,7 @@ mesh = SubResource("Box_130")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.39, 2.78)
 mesh = SubResource("Box_131")
 
-[node name="ConsolePlant" parent="UpstairsHallway" instance=ExtResource("8_potted_plant")]
+[node name="ConsolePlant" parent="UpstairsHallway" instance=ExtResource("16_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45, 0.82, 2.8)
 
 [node name="PictureSeaFrame" type="MeshInstance3D" parent="UpstairsHallway"]
@@ -2135,13 +2143,13 @@ mesh = SubResource("Box_168")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215, 1.2, 4.11)
 mesh = SubResource("Box_169")
 
-[node name="Toilet" parent="Bathroom" instance=ExtResource("9_toilet")]
+[node name="Toilet" parent="Bathroom" instance=ExtResource("17_toilet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 5.3)
 
-[node name="ToiletPaper" parent="Bathroom" instance=ExtResource("10_toilet_paper")]
+[node name="ToiletPaper" parent="Bathroom" instance=ExtResource("18_toilet_paper")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.2, 0.7, 5.8)
 
-[node name="TrashCan" parent="Bathroom" instance=ExtResource("11_steel_trash_can")]
+[node name="TrashCan" parent="Bathroom" instance=ExtResource("19_steel_trash_can")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5.95)
 
 [node name="SinkPedestal" type="MeshInstance3D" parent="Bathroom"]
@@ -2501,6 +2509,13 @@ transform = Transform3D(1, 0, 0, 0, 0.8192, -0.5735, 0, 0.5735, 0.8192, 3.1, -1.
 [node name="Shape" type="CollisionShape3D" parent="Stairs/Ramp"]
 shape = SubResource("RampShape")
 
+[node name="WardrobeStorage" type="Node" parent="."]
+script = ExtResource("3_storage")
+title = "Wardrobe"
+target_path = NodePath("../Bedroom/Furniture/Wardrobe")
+interaction_offset = Vector3(0.4, -1, 0)
+starting_items = Array[ExtResource("4_item")]([ExtResource("5_t_shirt"), ExtResource("6_jeans"), ExtResource("7_hoodie"), ExtResource("8_pajamas"), ExtResource("9_sneakers"), ExtResource("10_cap")])
+
 [node name="Doors" type="Node" parent="."]
 
 [node name="BedroomDoor" type="Node" parent="Doors"]
@@ -2515,5 +2530,5 @@ door_path = NodePath("../../UpstairsHallway/BathroomDoor")
 open_angle_degrees = -90
 center_offset = Vector3(-0.4, 1, 0)
 
-[node name="Player" parent="." instance=ExtResource("3_player")]
+[node name="Player" parent="." instance=ExtResource("11_player")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.6, 0.05, 1.5)
