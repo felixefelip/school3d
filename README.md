@@ -34,4 +34,5 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   compartilhado pela jogadora e pelas colegas.
 - `scenes/npc_student.tscn` + `scripts/npc_student.gd`: estudante ruiva (`models/characters/redhead_student_walking.glb`)
   parada ou sentada numa cadeira (`chair_path`). Ficam no nó `Students` da cena principal.
+  `scenes/npc_student_brunette.tscn` é a mesma colega com o modelo da morena (o mesmo da jogadora).
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).

@@ -2,12 +2,15 @@ class_name StudentAnimations
 extends RefCounted
 ## Shared setup for the student character models (the player and the NPCs).
 ## They all use the same skeleton, which only ships with the walk animation;
-## idle and sit are built here from the skeleton.
+## idle, sit and reach are built here from the skeleton.
 
 ## Name of the walk animation inside the imported model.
 const WALK := "Walk"
 const IDLE := "Idle"
 const SIT := "Sit"
+## Standing with the right hand on something in front of her at waist
+## height (a locker door) and the left hand in front of the body.
+const REACH := "Reach"
 const SIT_LENGTH := 1.0
 ## Hips position in the seated pose, relative to the feet (the character's
 ## origin). The seat ends up right under the hips.
@@ -45,6 +48,13 @@ const SIT_POSES := [
 	},
 ]
 
+## Same convention as SIT_POSES.
+const REACH_PITCH := {
+	"UpperArm.R": -35.0, "Forearm.R": -90.0, "Hand.R": -90.0,
+	"UpperArm.L": -15.0, "Forearm.L": -70.0, "Hand.L": -70.0,
+	"Neck": 8.0, "Head": 12.0,
+}
+
 
 ## The characters' colors are stored in the mesh vertices, but the importer
 ## doesn't enable that option on their materials (it does on the school's).
@@ -57,7 +67,7 @@ static func use_vertex_colors(skeleton: Skeleton3D) -> void:
 				material.vertex_color_use_as_albedo = true
 
 
-## Makes the walk loop and adds the idle and sit animations. Instances of the
+## Makes the walk loop and adds the idle, sit and reach animations. Instances of the
 ## same model share one animation library, so each one is only added once.
 static func setup(animation: AnimationPlayer, skeleton: Skeleton3D) -> void:
 	animation.get_animation(WALK).loop_mode = Animation.LOOP_LINEAR
@@ -66,6 +76,10 @@ static func setup(animation: AnimationPlayer, skeleton: Skeleton3D) -> void:
 		library.add_animation(IDLE, _create_idle(animation, skeleton))
 	if not library.has_animation(SIT):
 		library.add_animation(SIT, _create_sit(animation, skeleton))
+	if not library.has_animation(REACH):
+		library.add_animation(REACH, _create_pose(animation, skeleton, [
+			{"time": 0.0, "hips": Vector3(0.0, 0.74, 0.0), "pitch": REACH_PITCH},
+		]))
 
 
 ## Idle is the skeleton's rest pose, as an animation so we can blend into it.
@@ -91,27 +105,34 @@ static func _create_idle(animation: AnimationPlayer, skeleton: Skeleton3D) -> An
 	return idle
 
 
-## Builds the stand-to-sit animation from SIT_POSES. Every bone's rest
-## rotation is zero, so a bone's local rotation is just its pitch minus its
-## parent's pitch. Standing up plays it backwards.
+## Builds the stand-to-sit animation from SIT_POSES. Standing up plays it
+## backwards.
 static func _create_sit(animation: AnimationPlayer, skeleton: Skeleton3D) -> Animation:
-	var sit := Animation.new()
+	var sit := _create_pose(animation, skeleton, SIT_POSES)
 	sit.length = SIT_LENGTH
+	return sit
+
+
+## Builds an animation from keyframes in the SIT_POSES format. Every bone's
+## rest rotation is zero, so a bone's local rotation is just its pitch minus
+## its parent's pitch.
+static func _create_pose(animation: AnimationPlayer, skeleton: Skeleton3D, poses: Array) -> Animation:
+	var result := Animation.new()
 	var skeleton_path := String(animation.get_node(animation.root_node).get_path_to(skeleton))
-	var hips_track := sit.add_track(Animation.TYPE_POSITION_3D)
-	sit.track_set_path(hips_track, NodePath(skeleton_path + ":Hips"))
-	sit.track_set_interpolation_type(hips_track, Animation.INTERPOLATION_CUBIC)
-	for pose: Dictionary in SIT_POSES:
-		sit.position_track_insert_key(hips_track, pose.time, pose.hips)
+	var hips_track := result.add_track(Animation.TYPE_POSITION_3D)
+	result.track_set_path(hips_track, NodePath(skeleton_path + ":Hips"))
+	result.track_set_interpolation_type(hips_track, Animation.INTERPOLATION_CUBIC)
+	for pose: Dictionary in poses:
+		result.position_track_insert_key(hips_track, pose.time, pose.hips)
 	for bone in skeleton.get_bone_count():
 		var bone_name := skeleton.get_bone_name(bone)
 		var parent := skeleton.get_bone_parent(bone)
-		var track := sit.add_track(Animation.TYPE_ROTATION_3D)
-		sit.track_set_path(track, NodePath(skeleton_path + ":" + bone_name))
-		sit.track_set_interpolation_type(track, Animation.INTERPOLATION_CUBIC)
-		for pose: Dictionary in SIT_POSES:
+		var track := result.add_track(Animation.TYPE_ROTATION_3D)
+		result.track_set_path(track, NodePath(skeleton_path + ":" + bone_name))
+		result.track_set_interpolation_type(track, Animation.INTERPOLATION_CUBIC)
+		for pose: Dictionary in poses:
 			var pitch: float = pose.pitch.get(bone_name, 0.0)
 			if parent >= 0:
 				pitch -= pose.pitch.get(skeleton.get_bone_name(parent), 0.0)
-			sit.rotation_track_insert_key(track, pose.time, Quaternion(Vector3.RIGHT, deg_to_rad(pitch)))
-	return sit
+			result.rotation_track_insert_key(track, pose.time, Quaternion(Vector3.RIGHT, deg_to_rad(pitch)))
+	return result
