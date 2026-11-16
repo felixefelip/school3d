@@ -175,6 +175,19 @@ roughness = 1
 albedo_color = Color(0.4, 0.62, 0.66, 1)
 roughness = 1
 
+[sub_resource type="StandardMaterial3D" id="Mat_WasherWhite"]
+albedo_color = Color(0.95, 0.95, 0.96, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="Mat_WasherPanel"]
+albedo_color = Color(0.72, 0.74, 0.78, 1)
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_WasherGlass"]
+albedo_color = Color(0.12, 0.17, 0.22, 1)
+metallic = 0.3
+roughness = 0.05
+
 [sub_resource type="StandardMaterial3D" id="Mat_HallFloor"]
 albedo_color = Color(0.55, 0.4, 0.27, 1)
 roughness = 0.7
@@ -997,60 +1010,75 @@ material = SubResource("Mat_BathMat")
 size = Vector3(0.6, 0.01, 0.45)
 
 [sub_resource type="BoxMesh" id="Box_175"]
+material = SubResource("Mat_WasherWhite")
+size = Vector3(0.6, 0.85, 0.6)
+
+[sub_resource type="CylinderMesh" id="Cyl_176"]
+material = SubResource("Mat_WasherPanel")
+top_radius = 0.19
+bottom_radius = 0.19
+height = 0.03
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_177"]
+material = SubResource("Mat_WasherGlass")
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.035
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_178"]
+material = SubResource("Mat_WasherPanel")
+size = Vector3(0.025, 0.08, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_179"]
+material = SubResource("Mat_WasherPanel")
+size = Vector3(0.58, 0.1, 0.01)
+
+[sub_resource type="BoxMesh" id="Box_180"]
+material = SubResource("Mat_WasherWhite")
+size = Vector3(0.18, 0.06, 0.015)
+
+[sub_resource type="BoxMesh" id="Box_181"]
+material = SubResource("Mat_Screen")
+size = Vector3(0.09, 0.035, 0.005)
+
+[sub_resource type="CylinderMesh" id="Cyl_182"]
+material = SubResource("Mat_WasherWhite")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.03
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_183"]
+material = SubResource("Mat_Porcelain")
+size = Vector3(0.5, 0.02, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_184"]
+material = SubResource("Mat_BathTileBorder")
+size = Vector3(0.08, 0.2, 0.12)
+
+[sub_resource type="CylinderMesh" id="Cyl_185"]
+material = SubResource("Mat_Towel")
+top_radius = 0.045
+bottom_radius = 0.05
+height = 0.22
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_186"]
+material = SubResource("Mat_BathTileBorder")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.03
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_187"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.4, 0.03, 0.4)
 
-[sub_resource type="BoxMesh" id="Box_176"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 2.6251, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_177"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_178"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 2.4501, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_179"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_180"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 2.2751, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_181"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_182"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 2.1001, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_183"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_184"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.9251, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_185"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_186"]
-material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.7501, 0.25)
-
-[sub_resource type="BoxMesh" id="Box_187"]
-material = SubResource("Mat_Trim")
-size = Vector3(1, 0.02, 0.03)
-
 [sub_resource type="BoxMesh" id="Box_188"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.5751, 0.25)
+size = Vector3(1, 2.6251, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_189"]
 material = SubResource("Mat_Trim")
@@ -1058,7 +1086,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_190"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.4001, 0.25)
+size = Vector3(1, 2.4501, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_191"]
 material = SubResource("Mat_Trim")
@@ -1066,7 +1094,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_192"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.2251, 0.25)
+size = Vector3(1, 2.2751, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_193"]
 material = SubResource("Mat_Trim")
@@ -1074,7 +1102,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_194"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 1.0501, 0.25)
+size = Vector3(1, 2.1001, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_195"]
 material = SubResource("Mat_Trim")
@@ -1082,7 +1110,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_196"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.8751, 0.25)
+size = Vector3(1, 1.9251, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_197"]
 material = SubResource("Mat_Trim")
@@ -1090,7 +1118,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_198"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.7001, 0.25)
+size = Vector3(1, 1.7501, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_199"]
 material = SubResource("Mat_Trim")
@@ -1098,7 +1126,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_200"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.5251, 0.25)
+size = Vector3(1, 1.5751, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_201"]
 material = SubResource("Mat_Trim")
@@ -1106,7 +1134,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_202"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.3501, 0.25)
+size = Vector3(1, 1.4001, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_203"]
 material = SubResource("Mat_Trim")
@@ -1114,7 +1142,7 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_204"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.1751, 0.25)
+size = Vector3(1, 1.2251, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_205"]
 material = SubResource("Mat_Trim")
@@ -1122,51 +1150,99 @@ size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_206"]
 material = SubResource("Mat_StepWood")
-size = Vector3(1, 0.0001, 0.25)
+size = Vector3(1, 1.0501, 0.25)
 
 [sub_resource type="BoxMesh" id="Box_207"]
 material = SubResource("Mat_Trim")
 size = Vector3(1, 0.02, 0.03)
 
 [sub_resource type="BoxMesh" id="Box_208"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.8751, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_209"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_210"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.7001, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_211"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_212"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.5251, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_213"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_214"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.3501, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_215"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_216"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.1751, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_217"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_218"]
+material = SubResource("Mat_StepWood")
+size = Vector3(1, 0.0001, 0.25)
+
+[sub_resource type="BoxMesh" id="Box_219"]
+material = SubResource("Mat_Trim")
+size = Vector3(1, 0.02, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_220"]
 material = SubResource("Mat_HallFloor")
 size = Vector3(1.2, 0.1, 1.1)
 
-[sub_resource type="BoxMesh" id="Box_209"]
+[sub_resource type="BoxMesh" id="Box_221"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.1, 5.5, 5.1)
 
-[sub_resource type="BoxMesh" id="Box_210"]
+[sub_resource type="BoxMesh" id="Box_222"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.1, 5.5, 5.1)
 
-[sub_resource type="BoxMesh" id="Box_211"]
+[sub_resource type="BoxMesh" id="Box_223"]
 material = SubResource("Mat_HallWall")
 size = Vector3(1.2, 5.5, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_212"]
+[sub_resource type="BoxMesh" id="Box_224"]
 material = SubResource("Mat_Ceiling")
 size = Vector3(1.2, 0.1, 5.1)
 
-[sub_resource type="CylinderMesh" id="Cyl_213"]
+[sub_resource type="CylinderMesh" id="Cyl_225"]
 material = SubResource("Mat_LightWood")
 top_radius = 0.025
 bottom_radius = 0.025
 height = 4.8826
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_214"]
+[sub_resource type="BoxMesh" id="Box_226"]
 material = SubResource("Mat_Door")
 size = Vector3(0.05, 2.1, 0.8)
 
-[sub_resource type="CylinderMesh" id="Cyl_215"]
+[sub_resource type="CylinderMesh" id="Cyl_227"]
 material = SubResource("Mat_Metal")
 top_radius = 0.02
 bottom_radius = 0.02
 height = 0.1
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_216"]
+[sub_resource type="BoxMesh" id="Box_228"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.3, 0.03, 0.3)
 
@@ -1959,9 +2035,57 @@ mesh = SubResource("Box_173")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.005, 5.25)
 mesh = SubResource("Box_174")
 
+[node name="WashingMachine" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.425, 4.4)
+mesh = SubResource("Box_175")
+
+[node name="WasherDoorRing" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.3, 0.4, 4.715)
+mesh = SubResource("Cyl_176")
+
+[node name="WasherDoorGlass" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.3, 0.4, 4.716)
+mesh = SubResource("Cyl_177")
+
+[node name="WasherHandle" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.4, 4.735)
+mesh = SubResource("Box_178")
+
+[node name="WasherPanel" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.77, 4.705)
+mesh = SubResource("Box_179")
+
+[node name="WasherDrawer" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.77, 4.712)
+mesh = SubResource("Box_180")
+
+[node name="WasherDisplay" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 0.77, 4.712)
+mesh = SubResource("Box_181")
+
+[node name="WasherKnob" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.49, 0.77, 4.72)
+mesh = SubResource("Cyl_182")
+
+[node name="LaundryShelf" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.45, 4.225)
+mesh = SubResource("Box_183")
+
+[node name="DetergentBox" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, 1.56, 4.22)
+mesh = SubResource("Box_184")
+
+[node name="DetergentBottle" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.57, 4.22)
+mesh = SubResource("Cyl_185")
+
+[node name="DetergentCap" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.695, 4.22)
+mesh = SubResource("Cyl_186")
+
 [node name="CeilingLight" type="MeshInstance3D" parent="Bathroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.585, 5.35)
-mesh = SubResource("Box_175")
+mesh = SubResource("Box_187")
 
 [node name="BathLamp" type="OmniLight3D" parent="Bathroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.35, 5.35)
@@ -1977,163 +2101,163 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Step01" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.4875, 4.225)
-mesh = SubResource("Box_176")
+mesh = SubResource("Box_188")
 
 [node name="StepNose01" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.185, 4.105)
-mesh = SubResource("Box_177")
+mesh = SubResource("Box_189")
 
 [node name="Step02" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.575, 4.475)
-mesh = SubResource("Box_178")
+mesh = SubResource("Box_190")
 
 [node name="StepNose02" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.36, 4.355)
-mesh = SubResource("Box_179")
+mesh = SubResource("Box_191")
 
 [node name="Step03" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.6625, 4.725)
-mesh = SubResource("Box_180")
+mesh = SubResource("Box_192")
 
 [node name="StepNose03" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.535, 4.605)
-mesh = SubResource("Box_181")
+mesh = SubResource("Box_193")
 
 [node name="Step04" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.75, 4.975)
-mesh = SubResource("Box_182")
+mesh = SubResource("Box_194")
 
 [node name="StepNose04" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.71, 4.855)
-mesh = SubResource("Box_183")
+mesh = SubResource("Box_195")
 
 [node name="Step05" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.8375, 5.225)
-mesh = SubResource("Box_184")
+mesh = SubResource("Box_196")
 
 [node name="StepNose05" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.885, 5.105)
-mesh = SubResource("Box_185")
+mesh = SubResource("Box_197")
 
 [node name="Step06" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.925, 5.475)
-mesh = SubResource("Box_186")
+mesh = SubResource("Box_198")
 
 [node name="StepNose06" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.06, 5.355)
-mesh = SubResource("Box_187")
+mesh = SubResource("Box_199")
 
 [node name="Step07" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.0125, 5.725)
-mesh = SubResource("Box_188")
+mesh = SubResource("Box_200")
 
 [node name="StepNose07" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.235, 5.605)
-mesh = SubResource("Box_189")
+mesh = SubResource("Box_201")
 
 [node name="Step08" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.1, 5.975)
-mesh = SubResource("Box_190")
+mesh = SubResource("Box_202")
 
 [node name="StepNose08" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.41, 5.855)
-mesh = SubResource("Box_191")
+mesh = SubResource("Box_203")
 
 [node name="Step09" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.1875, 6.225)
-mesh = SubResource("Box_192")
+mesh = SubResource("Box_204")
 
 [node name="StepNose09" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.585, 6.105)
-mesh = SubResource("Box_193")
+mesh = SubResource("Box_205")
 
 [node name="Step10" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.275, 6.475)
-mesh = SubResource("Box_194")
+mesh = SubResource("Box_206")
 
 [node name="StepNose10" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.76, 6.355)
-mesh = SubResource("Box_195")
+mesh = SubResource("Box_207")
 
 [node name="Step11" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.3625, 6.725)
-mesh = SubResource("Box_196")
+mesh = SubResource("Box_208")
 
 [node name="StepNose11" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -1.935, 6.605)
-mesh = SubResource("Box_197")
+mesh = SubResource("Box_209")
 
 [node name="Step12" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.45, 6.975)
-mesh = SubResource("Box_198")
+mesh = SubResource("Box_210")
 
 [node name="StepNose12" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.11, 6.855)
-mesh = SubResource("Box_199")
+mesh = SubResource("Box_211")
 
 [node name="Step13" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.5375, 7.225)
-mesh = SubResource("Box_200")
+mesh = SubResource("Box_212")
 
 [node name="StepNose13" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.285, 7.105)
-mesh = SubResource("Box_201")
+mesh = SubResource("Box_213")
 
 [node name="Step14" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.625, 7.475)
-mesh = SubResource("Box_202")
+mesh = SubResource("Box_214")
 
 [node name="StepNose14" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.46, 7.355)
-mesh = SubResource("Box_203")
+mesh = SubResource("Box_215")
 
 [node name="Step15" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.7125, 7.725)
-mesh = SubResource("Box_204")
+mesh = SubResource("Box_216")
 
 [node name="StepNose15" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.635, 7.605)
-mesh = SubResource("Box_205")
+mesh = SubResource("Box_217")
 
 [node name="Step16" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.8, 7.975)
-mesh = SubResource("Box_206")
+mesh = SubResource("Box_218")
 
 [node name="StepNose16" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.81, 7.855)
-mesh = SubResource("Box_207")
+mesh = SubResource("Box_219")
 
 [node name="FloorLanding" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -2.85, 8.6)
-mesh = SubResource("Box_208")
+mesh = SubResource("Box_220")
 
 [node name="WallWest" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, -0.05, 6.6)
-mesh = SubResource("Box_209")
+mesh = SubResource("Box_221")
 
 [node name="WallEast" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65, -0.05, 6.6)
-mesh = SubResource("Box_210")
+mesh = SubResource("Box_222")
 
 [node name="WallEnd" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, -0.05, 9.15)
-mesh = SubResource("Box_211")
+mesh = SubResource("Box_223")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 2.65, 6.6)
-mesh = SubResource("Box_212")
+mesh = SubResource("Box_224")
 
 [node name="Handrail" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, -0.5735, -0.8192, 0, 0.8192, -0.5735, 2.66, -0.5, 6.1)
-mesh = SubResource("Cyl_213")
+mesh = SubResource("Cyl_225")
 
 [node name="DoorDownstairs" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, -1.75, 8.6)
-mesh = SubResource("Box_214")
+mesh = SubResource("Box_226")
 
 [node name="HandleDownstairs" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 3.54, -1.8, 8.3)
-mesh = SubResource("Cyl_215")
+mesh = SubResource("Cyl_227")
 
 [node name="StairLamp1" type="OmniLight3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 2.35, 5.2)
@@ -2151,7 +2275,7 @@ omni_range = 5
 
 [node name="StairLight" type="MeshInstance3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 2.585, 5.2)
-mesh = SubResource("Box_216")
+mesh = SubResource("Box_228")
 
 [node name="Ramp" type="StaticBody3D" parent="Stairs"]
 transform = Transform3D(1, 0, 0, 0, 0.8192, -0.5735, 0, 0.5735, 0.8192, 3.1, -1.441, 5.9463)

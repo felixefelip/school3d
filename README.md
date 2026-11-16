@@ -45,7 +45,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     estante, tapete, janela e decoração), com a porta abrindo com E;
   - corredor com passadeira, aparador, quadros e janela; porta (ainda fechada) do quarto dos pais;
   - banheiro (porta abrindo com E): vaso, papel higiênico, lixeira, pia de coluna com espelho e
-    prateleira, box de vidro com chuveiro, toalheiro com toalha, tapete e janela alta;
+    prateleira, box de vidro com chuveiro, toalheiro com toalha, máquina de lavar com prateleira de
+    sabão e amaciante, tapete e janela alta;
   - escada para o térreo. Os degraus são só visuais: a personagem anda numa rampa invisível
     (`Stairs/Ramp`) por baixo deles.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
