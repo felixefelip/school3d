@@ -2,7 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cm3rwj3oearln" path="res://models/escola_completa.gltf" id="1_escola"]
 [ext_resource type="ArrayMesh" path="res://models/parede_fundo_sala.res" id="3_parede"]
-[ext_resource type="Script" uid="uid://bjd7ole7tto73" path="res://scripts/free_camera.gd" id="2_camera"]
+[ext_resource type="PackedScene" path="res://models/props/estante.scn" id="4_estante"]
+[ext_resource type="PackedScene" path="res://models/props/mural.scn" id="5_mural"]
+[ext_resource type="PackedScene" path="res://models/props/lixeiras.scn" id="6_lixeiras"]
+[ext_resource type="PackedScene" path="res://models/props/cartaz_1.scn" id="7_cartaz1"]
+[ext_resource type="PackedScene" path="res://models/props/cartaz_2.scn" id="8_cartaz2"]
+[ext_resource type="PackedScene" path="res://models/props/vaso_planta.scn" id="9_vaso"]
+[ext_resource type="PackedScene" path="res://models/props/extintor.scn" id="10_extintor"]
+[ext_resource type="Script" uid="uid://drr2tthfi0w43" path="res://scripts/main.gd" id="11_main"]
+[ext_resource type="PackedScene" path="res://scenes/jogador.tscn" id="12_jogador"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ceu"]
 sky_horizon_color = Color(0.66, 0.72, 0.8, 1)
@@ -50,6 +58,7 @@ material = SubResource("StandardMaterial3D_luminaria")
 size = Vector3(1.2, 0.04, 0.3)
 
 [node name="Main" type="Node3D" unique_id=477967783]
+script = ExtResource("11_main")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1999397206]
 environment = SubResource("Environment_escola")
@@ -60,164 +69,202 @@ shadow_enabled = true
 
 [node name="Escola" parent="." unique_id=1330938973 instance=ExtResource("1_escola")]
 
-[node name="ParedeFundoSala" type="MeshInstance3D" parent="."]
+[node name="ParedeFundoSala" type="MeshInstance3D" parent="." unique_id=1553619913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.8)
 mesh = ExtResource("3_parede")
 
-[node name="Teto" type="Node3D" parent="."]
+[node name="DecoracaoSala" type="Node3D" parent="." unique_id=845239505]
 
-[node name="TetoSala" type="MeshInstance3D" parent="Teto"]
+[node name="VasoCantoFundo" parent="DecoracaoSala" unique_id=1145617104 instance=ExtResource("9_vaso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -3.4)
+
+[node name="EstanteFundo1" parent="DecoracaoSala" unique_id=2135033045 instance=ExtResource("4_estante")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, -3.63)
+
+[node name="EstanteFundo2" parent="DecoracaoSala" unique_id=813581076 instance=ExtResource("4_estante")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -3.63)
+
+[node name="MuralFundo" parent="DecoracaoSala" unique_id=145096846 instance=ExtResource("5_mural")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.55, -3.8)
+
+[node name="LixeirasFundo" parent="DecoracaoSala" unique_id=1437213477 instance=ExtResource("6_lixeiras")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3.8)
+
+[node name="CartazFundo1" parent="DecoracaoSala" unique_id=237516394 instance=ExtResource("7_cartaz1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.65, -3.8)
+
+[node name="CartazFundo2" parent="DecoracaoSala" unique_id=838793712 instance=ExtResource("8_cartaz2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.65, -3.8)
+
+[node name="CartazJanelas1" parent="DecoracaoSala" unique_id=19745870 instance=ExtResource("7_cartaz1")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -3.19, 1.65, -1.2)
+
+[node name="CartazJanelas2" parent="DecoracaoSala" unique_id=1228294185 instance=ExtResource("8_cartaz2")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -3.19, 1.65, 1.2)
+
+[node name="VasoJanelas" parent="DecoracaoSala" unique_id=1801822881 instance=ExtResource("9_vaso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1.2)
+
+[node name="EstanteLateral" parent="DecoracaoSala" unique_id=471644804 instance=ExtResource("4_estante")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.05, 0, -2.9)
+
+[node name="MuralLateral" parent="DecoracaoSala" unique_id=173906092 instance=ExtResource("5_mural")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.2, 1.55, -0.9)
+
+[node name="ExtintorLateral" parent="DecoracaoSala" unique_id=1672895525 instance=ExtResource("10_extintor")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.2, 0, 1.3)
+
+[node name="Teto" type="Node3D" parent="." unique_id=1993663324]
+
+[node name="TetoSala" type="MeshInstance3D" parent="Teto" unique_id=104619983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
 mesh = SubResource("BoxMesh_tetoSala")
 
-[node name="TetoCorredor" type="MeshInstance3D" parent="Teto"]
+[node name="TetoCorredor" type="MeshInstance3D" parent="Teto" unique_id=1384458922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 2.85, -5.025)
 mesh = SubResource("BoxMesh_tetoCorredor")
 
-[node name="TetoBanheiro" type="MeshInstance3D" parent="Teto"]
+[node name="TetoBanheiro" type="MeshInstance3D" parent="Teto" unique_id=1448232849]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 2.85, -8)
 mesh = SubResource("BoxMesh_tetoBanheiro")
 
-[node name="TetoRefeitorio" type="MeshInstance3D" parent="Teto"]
+[node name="TetoRefeitorio" type="MeshInstance3D" parent="Teto" unique_id=1575344306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.875, 2.85, -8.75)
 mesh = SubResource("BoxMesh_tetoRefeitorio")
 
-[node name="Luminarias" type="Node3D" parent="."]
+[node name="Luminarias" type="Node3D" parent="." unique_id=1218334543]
 
-[node name="LuminariaSala1" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaSala1" type="MeshInstance3D" parent="Luminarias" unique_id=2117338550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.78, -1.9)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala1"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala1" unique_id=1828449262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaSala2" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaSala2" type="MeshInstance3D" parent="Luminarias" unique_id=639577842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2.78, -1.9)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala2"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala2" unique_id=1387558019]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaSala3" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaSala3" type="MeshInstance3D" parent="Luminarias" unique_id=2042166257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.78, 1.9)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala3"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala3" unique_id=1916171730]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaSala4" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaSala4" type="MeshInstance3D" parent="Luminarias" unique_id=1263198648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2.78, 1.9)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala4"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaSala4" unique_id=1342639726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaCorredor1" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaCorredor1" type="MeshInstance3D" parent="Luminarias" unique_id=1002338822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 2.78, 1.5)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor1"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor1" unique_id=1502293319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaCorredor2" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaCorredor2" type="MeshInstance3D" parent="Luminarias" unique_id=367214083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 2.78, -5)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor2"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor2" unique_id=1848014456]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaCorredor3" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaCorredor3" type="MeshInstance3D" parent="Luminarias" unique_id=921355353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 2.78, -11.5)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor3"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaCorredor3" unique_id=1938709193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaBanheiro1" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaBanheiro1" type="MeshInstance3D" parent="Luminarias" unique_id=1964634424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 2.78, -8)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaBanheiro1"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaBanheiro1" unique_id=618854189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaRefeitorio1" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaRefeitorio1" type="MeshInstance3D" parent="Luminarias" unique_id=395302708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 2.78, -6.1)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio1"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio1" unique_id=632912396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaRefeitorio2" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaRefeitorio2" type="MeshInstance3D" parent="Luminarias" unique_id=1061032875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1, 2.78, -6.1)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio2"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio2" unique_id=1577720398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaRefeitorio3" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaRefeitorio3" type="MeshInstance3D" parent="Luminarias" unique_id=1404808360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 2.78, -11.4)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio3"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio3" unique_id=364745077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="LuminariaRefeitorio4" type="MeshInstance3D" parent="Luminarias"]
+[node name="LuminariaRefeitorio4" type="MeshInstance3D" parent="Luminarias" unique_id=1628909039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1, 2.78, -11.4)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_luminaria")
 
-[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio4"]
+[node name="Luz" type="OmniLight3D" parent="Luminarias/LuminariaRefeitorio4" unique_id=13616312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 1.2
 omni_range = 5.5
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1513065692]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 1.6, -3)
-current = true
-fov = 70.0
-script = ExtResource("2_camera")
+[node name="Jogador" parent="." unique_id=1875673096 instance=ExtResource("12_jogador")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -1)

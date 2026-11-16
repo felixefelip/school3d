@@ -11,10 +11,9 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 
 ## Controles
 
-- **WASD**: mover
-- **Q / E**: descer / subir
+- **WASD**: andar (relativo à câmera)
 - **Shift**: correr
-- **Mouse**: olhar
+- **Mouse**: girar a câmera em volta da personagem
 - **Botão direito ou Tab**: capturar/soltar o mouse
 - **Esc**: soltar o mouse
 
@@ -22,5 +21,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 
 - `models/escola_completa.gltf` + `escola_completa_0.bin` / `escola_completa_1.bin`: o modelo
   (mesmo conteúdo do `.glb` original, apenas separado em glTF + binários).
-- `scenes/main.tscn`: cena principal com a escola, luz do sol, céu e câmera.
-- `scripts/free_camera.gd`: câmera livre.
+- `scenes/main.tscn`: cena principal com a escola, teto, luminárias, decoração, luz do sol, céu e a jogadora.
+- `scenes/jogador.tscn` + `scripts/jogador.gd`: a jogadora (`models/personagens/estudante_morena_andando.glb`)
+  em terceira pessoa, com a animação "Andar".
+- `scripts/main.gd`: gera a colisão do cenário ao iniciar.
+- `scripts/free_camera.gd`: câmera livre (não usada na cena atual).
