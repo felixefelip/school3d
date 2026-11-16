@@ -7,11 +7,13 @@ extends Node3D
 
 const Seat := preload("res://scripts/seat.gd")
 
-const LEVEL := ["Bedroom", "UpstairsHallway", "Stairs"]
+const LEVEL := ["Bedroom", "UpstairsHallway", "Bathroom", "Stairs"]
 ## Meshes flat on the floor or too small to bump into.
 const NO_COLLISION := [
 	"Rug", "Runner", "Laptop", "Mug", "Book", "Lamp", "CeilingLight", "StairLight", "Handle",
-	"Step", "Threshold", "Picture", "Frame", "Baseboard", "Window",
+	"Step", "Threshold", "Picture", "Frame", "Baseboard", "Window", "Border",
+	"ShowerTray", "ShowerPipe", "ShowerArm", "ShowerHead", "ShowerValve", "Faucet", "Toothbrushes", "Soap",
+	"Mirror", "Towel", "ToiletPaper", "WallNorthTiles",
 ]
 
 @export var desk_chair_path: NodePath = ^"Bedroom/Furniture/DeskChair"
