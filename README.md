@@ -42,7 +42,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   `npc_student_blond_boy.tscn` é o mesmo estudante com cabelo loiro escuro (`blond_boy_student_walking.glb`).
 - `scenes/house.tscn` + `scripts/house.gd`: a casa da jogadora. Por enquanto, o andar de cima:
   - quarto (cama, criado-mudo com abajur, guarda-roupa, escrivaninha com notebook e cadeira sentável,
-    estante, tapete, janela e decoração), com a porta abrindo com E;
+    estante, tapete, janela, ar-condicionado split com controle remoto, violão e decoração), com a
+    porta abrindo com E;
   - corredor com passadeira, aparador, quadros e janela; porta (ainda fechada) do quarto dos pais;
   - banheiro (porta abrindo com E): vaso, papel higiênico, lixeira, pia de coluna com espelho e
     prateleira, box de vidro com chuveiro, toalheiro com toalha, máquina de lavar com prateleira de
