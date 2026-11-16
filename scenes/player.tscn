@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ui/hotbar.gd" id="3_hotbar"]
 [ext_resource type="Script" path="res://scripts/ui/storage_window.gd" id="4_storage_window"]
 [ext_resource type="Script" path="res://scripts/ui/item_tooltip.gd" id="5_item_tooltip"]
+[ext_resource type="Script" path="res://scripts/ui/outfit_window.gd" id="6_outfit_window"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 radius = 0.2
@@ -76,6 +77,19 @@ offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_storage_window")
+
+[node name="OutfitWindow" type="PanelContainer" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_outfit_window")
 
 [node name="ItemTooltip" type="PanelContainer" parent="HUD"]
 script = ExtResource("5_item_tooltip")

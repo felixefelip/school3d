@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Mat_cap"]
+albedo_color = Color(0.93, 0.74, 0.22, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_brim"]
+albedo_color = Color(0.78, 0.6, 0.16, 1)
+roughness = 0.8
+
+[sub_resource type="SphereMesh" id="Dome"]
+material = SubResource("Mat_cap")
+radius = 0.195
+height = 0.195
+is_hemisphere = true
+
+[sub_resource type="CylinderMesh" id="Brim"]
+material = SubResource("Mat_brim")
+top_radius = 0.13
+bottom_radius = 0.13
+height = 0.012
+
+[sub_resource type="CylinderMesh" id="Button"]
+material = SubResource("Mat_brim")
+top_radius = 0.018
+bottom_radius = 0.018
+height = 0.015
+
+[node name="Cap" type="Node3D"]
+
+[node name="Dome" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1.08, 0, 0.13, -0.025)
+mesh = SubResource("Dome")
+
+[node name="Brim" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.130236, 0, 0.173648, 0.738606, 0, 0.14, 0.19)
+mesh = SubResource("Brim")
+
+[node name="Button" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29, -0.025)
+mesh = SubResource("Button")

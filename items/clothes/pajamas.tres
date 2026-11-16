@@ -9,3 +9,5 @@ id = "pajamas"
 display_name = "Pajamas"
 icon = ExtResource("2_icon")
 description = "Soft lavender pajamas with polka dots."
+slot = 2
+color = Color(0.74, 0.66, 0.92, 1)

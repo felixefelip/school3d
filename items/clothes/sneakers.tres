@@ -9,3 +9,5 @@ id = "sneakers"
 display_name = "Sneakers"
 icon = ExtResource("2_icon")
 description = "White sneakers with blue stripes."
+slot = 4
+color = Color(0.95, 0.95, 0.97, 1)

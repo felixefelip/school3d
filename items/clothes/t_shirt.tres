@@ -9,3 +9,5 @@ id = "t_shirt"
 display_name = "T-shirt"
 icon = ExtResource("2_icon")
 description = "A comfy red cotton T-shirt."
+slot = 2
+color = Color(0.86, 0.3, 0.26, 1)

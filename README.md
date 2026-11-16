@@ -18,6 +18,7 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   do refeitório) e sentar/levantar nas cadeiras da sala (carteiras e cadeira do professor)
 - **Botão direito ou Tab**: capturar/soltar o mouse
 - **1–0 / roda do mouse**: escolher o slot da barra de itens
+- **C**: menu de roupa (vestir e tirar roupas)
 - **Esc**: soltar o mouse (ou fechar a janela do guarda-roupa); **Esc de novo** (com o mouse já solto): fechar o jogo
 
 ## Estrutura
@@ -60,6 +61,14 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     (continuam com ela ao trocar de cena).
   - `scripts/ui/`: barra de itens (`hotbar.gd`), slot com arrastar e soltar (`inventory_slot.gd`),
     janela de armazenamento (`storage_window.gd`), dica do item (`item_tooltip.gd`) e estilos (`ui_style.gd`).
+  - Roupas: cada peça tem um slot (cabeça, tronco, pernas, pés) e fica **suja** depois de 3 minutos
+    vestida (manchas no ícone). Roupa suja não pode ser vestida: lave na **máquina de lavar** do banheiro
+    (E, arraste a roupa e aperte **Wash**).
+  - `scripts/inventory/outfit.gd` (`Outfit`): mostra a roupa vestida na personagem (blusa e tênis
+    recoloridos, calça jeans no lugar da saia, boné na cabeça). A calça é `models/clothes/jeans.glb`,
+    tirada do modelo do estudante (mesmo esqueleto); o boné é `models/clothes/cap.tscn`.
+  - `scripts/ui/outfit_window.gd`: o menu de roupa (C), com prévia 3D girando e os quatro slots.
+  - `scripts/washing_machine.gd`: a máquina de lavar (armazenamento com o botão Wash).
   - `scripts/storage.gd`: móvel que guarda itens. Na casa, o guarda-roupa (`WardrobeStorage`) começa com
     camiseta, calça jeans, moletom, pijama, tênis e boné; com **E** a janela abre e os itens são
     arrastados com o mouse entre ela e a barra.

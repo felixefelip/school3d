@@ -9,3 +9,4 @@ id = "cap"
 display_name = "Cap"
 icon = ExtResource("2_icon")
 description = "A yellow baseball cap."
+slot = 1

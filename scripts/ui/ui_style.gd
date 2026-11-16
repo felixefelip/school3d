@@ -10,6 +10,8 @@ const SLOT_BORDER := Color("b07a3c")
 const SLOT_SELECTED := Color("e0402f")
 const TEXT := Color("fff3dc")
 const TEXT_OUTLINE := Color("3b2210")
+const CLEAN := Color("3f7d3a")
+const DIRTY := Color("8a5a2b")
 
 
 ## The wooden frame around the hotbar and the storage window.
@@ -24,6 +26,20 @@ static func tooltip() -> StyleBoxFlat:
 
 static func slot(is_selected: bool) -> StyleBoxFlat:
 	return _box(SLOT_BG, SLOT_SELECTED if is_selected else SLOT_BORDER, 4 if is_selected else 3, 6, 6)
+
+
+static func style_button(button: Button) -> void:
+	button.add_theme_font_size_override("font_size", 20)
+	button.add_theme_color_override("font_color", TEXT_OUTLINE)
+	button.add_theme_color_override("font_hover_color", TEXT_OUTLINE)
+	button.add_theme_color_override("font_pressed_color", TEXT_OUTLINE)
+	button.add_theme_color_override("font_disabled_color", Color(TEXT_OUTLINE, 0.5))
+	button.add_theme_stylebox_override("normal", _box(SLOT_BG, SLOT_BORDER, 3, 6, 8))
+	button.add_theme_stylebox_override("hover", _box(SLOT_BG.lightened(0.15), SLOT_SELECTED, 3, 6, 8))
+	button.add_theme_stylebox_override("pressed", _box(SLOT_BG.darkened(0.1), SLOT_SELECTED, 3, 6, 8))
+	button.add_theme_stylebox_override("disabled", _box(SLOT_BG.darkened(0.15), SLOT_BORDER, 3, 6, 8))
+	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	button.custom_minimum_size = Vector2(160, 0)
 
 
 static func style_label(label: Label, font_size: int) -> void:

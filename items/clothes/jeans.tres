@@ -9,3 +9,4 @@ id = "jeans"
 display_name = "Jeans"
 icon = ExtResource("2_icon")
 description = "Blue jeans for the weekend."
+slot = 3

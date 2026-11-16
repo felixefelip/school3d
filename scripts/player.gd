@@ -1,7 +1,7 @@
 extends CharacterBody3D
 ## Third-person player.
 ## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs, wardrobe)
-## 1-0 or mouse wheel: pick a hotbar slot
+## 1-0 or mouse wheel: pick a hotbar slot | C: outfit (dress up)
 ## Right mouse button (or Tab): capture/release the mouse
 ## Esc: release the mouse; Esc again (mouse already released): quit the game
 
@@ -26,7 +26,7 @@ const SIT := StudentAnimations.SIT
 const SIT_LENGTH := StudentAnimations.SIT_LENGTH
 const SEATED_HIPS := StudentAnimations.SEATED_HIPS
 
-## MENU: a storage window is open; the mouse is free to drag items.
+## MENU: a storage or the outfit window is open; the mouse is free to drag items.
 enum State { FREE, BUSY, SEATED, MENU }
 
 @onready var model: Node3D = $Model
@@ -37,6 +37,7 @@ enum State { FREE, BUSY, SEATED, MENU }
 @onready var camera_arm: SpringArm3D = $CameraPivot/CameraArm
 @onready var prompt: Label = $HUD/Prompt
 @onready var storage_window: Control = $HUD/StorageWindow
+@onready var outfit_window: Control = $HUD/OutfitWindow
 
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 ## Nearest interactable in range, or null.
@@ -51,6 +52,8 @@ func _ready() -> void:
 	StudentAnimations.use_vertex_colors(skeleton)
 	StudentAnimations.setup(animation, skeleton)
 	animation.play(IDLE)
+	PlayerInventory.equipment.changed.connect(_dress)
+	_dress()
 	camera_arm.add_excluded_object(get_rid())
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -58,7 +61,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if _state == State.MENU:
 		if event is InputEventKey and event.pressed and not event.echo \
-				and event.physical_keycode in [KEY_E, KEY_ESCAPE]:
+				and event.physical_keycode in [KEY_E, KEY_ESCAPE, KEY_C]:
 			close_menu()
 			get_viewport().set_input_as_handled()
 		return
@@ -66,6 +69,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		var slot := _hotbar_key_slot(event.physical_keycode)
 		if slot >= 0:
 			PlayerInventory.selected = slot
+			return
+		if event.physical_keycode == KEY_C and _state == State.FREE:
+			open_outfit()
 			return
 	if event is InputEventMouseButton and event.pressed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -230,19 +236,36 @@ func _finish_standing() -> void:
 func open_storage(storage: Node) -> void:
 	if _state != State.FREE:
 		return
+	storage_window.open(storage)
+	_enter_menu()
+
+
+## Opens the dressing menu (C).
+func open_outfit() -> void:
+	if _state != State.FREE:
+		return
+	outfit_window.open(model.scene_file_path)
+	_enter_menu()
+
+
+func _enter_menu() -> void:
 	_state = State.MENU
 	velocity = Vector3.ZERO
 	animation.speed_scale = 1.0
 	animation.play(IDLE, blend_time)
-	storage_window.open(storage.title, storage.inventory)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_update_prompt()
+
+
+func _dress() -> void:
+	Outfit.apply(model, PlayerInventory.equipment)
 
 
 func close_menu() -> void:
 	if _state != State.MENU:
 		return
 	storage_window.close()
+	outfit_window.close()
 	_state = State.FREE
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_update_prompt()

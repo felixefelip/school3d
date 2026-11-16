@@ -1,6 +1,6 @@
 extends PanelContainer
 ## Shows the name and description of the item under the mouse, next to the
-## cursor. It only appears while the mouse is free (a storage window is open)
+## cursor, and whether a piece of clothing is clean or dirty. It only appears while the mouse is free (a storage window is open)
 ## and hides by itself when the mouse is captured again.
 
 const OFFSET := Vector2(18, 18)
@@ -8,6 +8,7 @@ const TEXT_DARK := Color("4a2c14")
 
 var _name := Label.new()
 var _description := Label.new()
+var _status := Label.new()
 
 
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _ready() -> void:
 	var column := VBoxContainer.new()
 	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(column)
-	for label: Label in [_name, _description]:
+	for label: Label in [_name, _description, _status]:
 		label.add_theme_color_override("font_color", TEXT_DARK)
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		column.add_child(label)
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_description.add_theme_font_size_override("font_size", 15)
 	_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_description.custom_minimum_size.x = 220
+	_status.add_theme_font_size_override("font_size", 15)
 	hide()
 
 
@@ -36,6 +38,9 @@ func _process(_delta: float) -> void:
 		return
 	_name.text = item.display_name
 	_description.text = item.description
+	_status.visible = item.is_clothing()
+	_status.text = "Dirty: wash it in the washing machine" if item.dirty else "Clean"
+	_status.add_theme_color_override("font_color", UIStyle.DIRTY if item.dirty else UIStyle.CLEAN)
 	reset_size()
 	# Keep the box on screen near the right and bottom edges.
 	var screen := get_viewport().get_visible_rect().size

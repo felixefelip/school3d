@@ -9,3 +9,5 @@ id = "hoodie"
 display_name = "Hoodie"
 icon = ExtResource("2_icon")
 description = "A warm green hoodie with a front pocket."
+slot = 2
+color = Color(0.38, 0.62, 0.45, 1)
