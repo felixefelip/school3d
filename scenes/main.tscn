@@ -70,9 +70,28 @@ shadow_enabled = true
 
 [node name="School" parent="." unique_id=1330938973 instance=ExtResource("1_school")]
 
-[node name="ClassroomDoor" type="Node" parent="."]
+[node name="Doors" type="Node" parent="."]
+
+[node name="ClassroomDoor" type="Node" parent="Doors"]
 script = ExtResource("13_door")
-door_path = NodePath("../School/ClassroomDoor")
+door_path = NodePath("../../School/ClassroomDoor")
+
+[node name="RestroomDoor" type="Node" parent="Doors"]
+script = ExtResource("13_door")
+door_path = NodePath("../../School/RestroomDoor")
+center_offset = Vector3(0.39, 1, 0)
+
+[node name="CafeteriaDoorLeft" type="Node" parent="Doors"]
+script = ExtResource("13_door")
+door_path = NodePath("../../School/CafeteriaDoorLeft")
+center_offset = Vector3(0.35, 1, 0)
+
+[node name="CafeteriaDoorRight" type="Node" parent="Doors"]
+script = ExtResource("13_door")
+door_path = NodePath("../../School/CafeteriaDoorRight")
+open_angle_degrees = -90.0
+starts_open = true
+center_offset = Vector3(-0.35, 1, 0)
 
 [node name="ClassroomBackWall" type="MeshInstance3D" parent="." unique_id=1553619913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.8)

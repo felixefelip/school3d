@@ -3,10 +3,13 @@ extends Node
 ## The player finds it through the "interactable" group and calls interact().
 
 @export var door_path: NodePath
-@export var open_angle_degrees: float = 95.0
+## How far the door turns when it opens. The sign picks the side it swings
+## to, and it always swings to that same side.
+@export var open_angle_degrees: float = 90.0
+@export var starts_open: bool = false
 ## Time to open or close (s).
 @export var duration: float = 0.6
-## From the hinge to the middle of the door, in the door's local space.
+## From the hinge to the middle of the closed door, in the door's local space.
 ## Used to measure how close the player is.
 @export var center_offset: Vector3 = Vector3(-0.4, 1.0, 0.0)
 
@@ -22,6 +25,9 @@ func _ready() -> void:
 	_door = get_node(door_path)
 	_closed_rotation = _door.rotation.y
 	_closed_transform = _door.global_transform
+	if starts_open:
+		is_open = true
+		_door.rotation.y = _open_rotation()
 	add_to_group("interactable")
 
 
@@ -33,16 +39,14 @@ func get_prompt() -> String:
 	return "Close door" if is_open else "Open door"
 
 
-func interact(by: Node3D) -> void:
-	var target := _closed_rotation
-	if not is_open:
-		# Swing away from whoever opens it, like pushing the door.
-		# The door's local +Z points to the side its front faces.
-		var side := (_closed_transform.affine_inverse() * by.global_position).z
-		var angle := deg_to_rad(open_angle_degrees)
-		target += -angle if side > 0.0 else angle
+func interact(_by: Node3D) -> void:
 	is_open = not is_open
+	var target := _open_rotation() if is_open else _closed_rotation
 	if _tween:
 		_tween.kill()
 	_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	_tween.tween_property(_door, "rotation:y", target, duration)
+
+
+func _open_rotation() -> float:
+	return _closed_rotation + deg_to_rad(open_angle_degrees)

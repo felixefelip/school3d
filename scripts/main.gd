@@ -9,10 +9,15 @@ extends Node3D
 ## lighter than copying every triangle.
 
 const LEVEL := ["School", "ClassroomBackWall", "ClassroomDecor", "Ceiling"]
-## Floor meshes inside the school model: Floor, FloorHallway, FloorCafeteria.
+## Floor meshes inside the school model: Floor, FloorHallway, FloorCafeteria,
+## FloorRestroom.
 const FLOOR_PREFIX := "Floor"
-## Walls with a door opening.
-const EXACT_COLLISION := ["WallDoor", "ClassroomWallTrim"]
+## Walls and frames around door openings, plus the restroom's walls (a convex
+## hull would turn the whole room into a solid block).
+const EXACT_COLLISION := [
+	"WallDoor", "ClassroomWallTrim", "WallRestroom", "RestroomStructure",
+	"WallHallway", "FaceWestCafeteria", "DoorCafeteria",
+]
 
 
 func _ready() -> void:
