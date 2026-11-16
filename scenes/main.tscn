@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/seats.gd" id="14_seats"]
 [ext_resource type="PackedScene" path="res://scenes/npc_student.tscn" id="15_npc"]
 [ext_resource type="PackedScene" path="res://scenes/npc_student_brunette.tscn" id="16_npc_brunette"]
+[ext_resource type="PackedScene" path="res://scenes/npc_student_blonde.tscn" id="17_npc_blonde"]
+[ext_resource type="PackedScene" path="res://scenes/npc_student_bluehair.tscn" id="18_npc_bluehair"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
 sky_horizon_color = Color(0.66, 0.72, 0.8, 1)
@@ -93,6 +95,12 @@ chair_path = NodePath("../../School/Chair10")
 [node name="StudentHallway2" parent="Students" instance=ExtResource("16_npc_brunette")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 5.35, 0, -3.14)
 reaching = true
+
+[node name="StudentClassroom5" parent="Students" instance=ExtResource("17_npc_blonde")]
+chair_path = NodePath("../../School/Chair12")
+
+[node name="StudentHallway3" parent="Students" instance=ExtResource("18_npc_bluehair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, -8.2)
 
 [node name="Seats" type="Node" parent="."]
 script = ExtResource("14_seats")
