@@ -14,7 +14,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - **WASD**: andar (relativo à câmera)
 - **Shift**: correr
 - **Mouse**: girar a câmera em volta da personagem
-- **E**: abrir/fechar a porta mais próxima (sala, banheiro e as duas folhas do refeitório)
+- **E**: interagir com o que estiver mais perto: abrir/fechar portas (sala, banheiro e as duas folhas
+  do refeitório) e sentar/levantar nas cadeiras da sala (carteiras e cadeira do professor)
 - **Botão direito ou Tab**: capturar/soltar o mouse
 - **Esc**: soltar o mouse
 
@@ -28,4 +29,6 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - `scripts/main.gd`: gera a colisão do cenário ao iniciar.
 - `scripts/door.gd`: porta que abre e fecha com E, sempre para o mesmo lado (sinal de `open_angle_degrees`).
   As portas ficam no nó `Doors` da cena principal.
+- `scripts/seats.gd` + `scripts/seat.gd`: tornam as cadeiras da sala interativas; a animação de sentar
+  ("Sit") é gerada em `player.gd` a partir das poses em `SIT_POSES`.
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).
