@@ -3,7 +3,7 @@ extends CharacterBody3D
 ## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs, wardrobe)
 ## 1-0 or mouse wheel: pick a hotbar slot | C: outfit (dress up)
 ## Right mouse button (or Tab): capture/release the mouse
-## Esc: release the mouse; Esc again (mouse already released): quit the game
+## Esc: pause menu (outfit, relationships, quit)
 
 ## Stride speed (m/s): 1.05 is the stride measured in the walk animation, so
 ## at this speed with the animation at normal rate the feet don't slide.
@@ -40,6 +40,7 @@ enum State { FREE, BUSY, SEATED, MENU }
 @onready var prompt: Label = $HUD/Prompt
 @onready var storage_window: Control = $HUD/StorageWindow
 @onready var outfit_window: Control = $HUD/OutfitWindow
+@onready var pause_menu: Control = $HUD/PauseMenu
 
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 ## Nearest interactable in range, or null.
@@ -89,10 +90,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_toggle_mouse()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE:
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			else:
-				get_tree().quit()
+			open_pause_menu()
+			get_viewport().set_input_as_handled()
 		elif event.physical_keycode == KEY_TAB:
 			_toggle_mouse()
 		elif event.physical_keycode == KEY_E:
@@ -240,6 +239,15 @@ func open_storage(storage: Node) -> void:
 		return
 	storage_window.open(storage)
 	_enter_menu()
+
+
+## Pauses the game and shows the pause menu (Esc). Not while she is busy
+## sitting down or standing up.
+func open_pause_menu() -> void:
+	if _state != State.FREE and _state != State.SEATED:
+		return
+	prompt.visible = false
+	pause_menu.open(self, _state == State.FREE)
 
 
 ## Opens the dressing menu (C).

@@ -19,7 +19,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - **Botão direito ou Tab**: capturar/soltar o mouse
 - **1–0 / roda do mouse**: escolher o slot da barra de itens
 - **C**: menu de roupa (vestir e tirar roupas)
-- **Esc**: soltar o mouse (ou fechar a janela do guarda-roupa); **Esc de novo** (com o mouse já solto): fechar o jogo
+- **Esc**: menu de pausa (o jogo para): **Resume**, **Outfit** (menu de roupa), **Relationships** (lista de
+  amizades) e **Quit game**; **Esc** de novo volta ao jogo. Com uma janela aberta (guarda-roupa, roupa), **Esc** fecha a janela
 
 ## Estrutura
 
@@ -113,6 +114,10 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   - `scripts/npc_student.gd`: com `npc_name` preenchido, o NPC vira relacionável (`friendly_lines` e
     `rude_lines` são as falas).
   - `scripts/ui/dialogue_box.gd`: a caixa de diálogo.
+  - `scripts/ui/relationships_window.gd` + `heart_row.gd`: a lista de relacionamentos do menu de pausa, com
+    todos que dá para conhecer (`Relationships.PEOPLE`), o nível de amizade (Stranger, Acquaintance, Friend,
+    Good friend, Best friend), onde encontrar a pessoa, os corações (até 10) e os pontos.
+- `scripts/ui/pause_menu.gd`: o menu de pausa (**Esc**), que pausa a árvore de cenas enquanto está aberto.
 - `scripts/scene_door.gd`: porta que troca de cena (escurece a tela, carrega a outra cena e coloca a
   jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua,
   a porta do saguão de volta ao apartamento, o portão da escola à escola e a saída da escola à rua.

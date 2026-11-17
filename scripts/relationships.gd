@@ -10,6 +10,18 @@ extends Node
 
 signal changed(npc_id: String, points: int)
 
+## Everyone the player can get to know, so the relationships list (pause menu)
+## shows them before she has met them. NPCs not listed here are added when
+## they first appear (see register()).
+const PEOPLE := {
+	"bia": {"name": "Bia", "place": "Cafe Aroma"},
+	"lucas": {"name": "Lucas", "place": "Cafe Aroma"},
+}
+## Hearts shown in the list; points above this still count.
+const MAX_HEARTS := 10
+## Friendship levels: the name of the highest level reached by the points.
+const LEVELS := [[0, "Stranger"], [1, "Acquaintance"], [3, "Friend"], [6, "Good friend"], [10, "Best friend"]]
+
 ## Seconds before talking to the same NPC changes the points again.
 var talk_cooldown := 180.0
 ## Lowest number of points; friendship doesn't go below it.
@@ -17,6 +29,10 @@ const MIN_POINTS := 0
 
 ## Points per NPC id.
 var points := {}
+## Name and usual place per NPC id (PEOPLE plus the ones registered later).
+var people := PEOPLE.duplicate(true)
+## Ids of the NPCs the player has talked to.
+var met := {}
 ## When the points of each NPC last changed (seconds since the game started).
 var _last_change := {}
 var _dialogue_box: Control
@@ -32,6 +48,25 @@ func _ready() -> void:
 
 func get_points(npc_id: String) -> int:
 	return points.get(npc_id, 0)
+
+
+## Adds an NPC that isn't in PEOPLE yet, so it shows up in the list.
+func register(npc_id: String, npc_name: String, place := "") -> void:
+	if not people.has(npc_id):
+		people[npc_id] = {"name": npc_name, "place": place}
+
+
+## The ids of everyone in the list, in the order they were added.
+func list_people() -> Array:
+	return people.keys()
+
+
+static func level_name(value: int) -> String:
+	var result: String = LEVELS[0][1]
+	for level in LEVELS:
+		if value >= level[0]:
+			result = level[1]
+	return result
 
 
 ## True when nothing she wears is dirty (an empty slot counts as clean).
@@ -65,6 +100,8 @@ func talk(npc_id: String, npc_name: String, friendly_lines: PackedStringArray, r
 	var clean := is_outfit_clean()
 	var lines := friendly_lines if clean else rude_lines
 	var line := lines[randi() % lines.size()] if not lines.is_empty() else ""
+	register(npc_id, npc_name)
+	met[npc_id] = true
 	var recently := not can_change(npc_id)
 	var change := 0 if recently else change_points(npc_id, 1 if clean else -1)
 	_dialogue_box.show_line(npc_name, line, change, get_points(npc_id), recently)

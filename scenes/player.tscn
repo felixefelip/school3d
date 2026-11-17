@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/ui/storage_window.gd" id="4_storage_window"]
 [ext_resource type="Script" path="res://scripts/ui/item_tooltip.gd" id="5_item_tooltip"]
 [ext_resource type="Script" path="res://scripts/ui/outfit_window.gd" id="6_outfit_window"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="7_pause_menu"]
+[ext_resource type="Script" path="res://scripts/ui/relationships_window.gd" id="8_relationships_window"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 radius = 0.2
@@ -93,3 +95,23 @@ script = ExtResource("6_outfit_window")
 
 [node name="ItemTooltip" type="PanelContainer" parent="HUD"]
 script = ExtResource("5_item_tooltip")
+
+[node name="PauseMenu" type="Control" parent="HUD"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_pause_menu")
+
+[node name="RelationshipsWindow" type="Control" parent="HUD"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_relationships_window")

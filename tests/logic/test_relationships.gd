@@ -92,3 +92,26 @@ func test_changed_is_emitted() -> void:
 	rel.changed.connect(func(npc_id: String, points: int) -> void: got.append([npc_id, points]))
 	rel.talk("lucas", "Lucas", NICE, RUDE)
 	assert_array(got).contains_exactly([["lucas", 1]])
+
+
+func test_level_names() -> void:
+	assert_str(RelationshipsScript.level_name(0)).is_equal("Stranger")
+	assert_str(RelationshipsScript.level_name(2)).is_equal("Acquaintance")
+	assert_str(RelationshipsScript.level_name(3)).is_equal("Friend")
+	assert_str(RelationshipsScript.level_name(7)).is_equal("Good friend")
+	assert_str(RelationshipsScript.level_name(25)).is_equal("Best friend")
+
+
+func test_lists_everyone_and_registers_newcomers() -> void:
+	var rel := _new_relationships()
+	assert_array(rel.list_people()).contains(["bia", "lucas"])
+	rel.register("ana", "Ana", "School")
+	assert_array(rel.list_people()).contains(["ana"])
+	assert_str(rel.people["ana"].name).is_equal("Ana")
+
+
+func test_talking_marks_as_met() -> void:
+	var rel := _new_relationships()
+	assert_bool(rel.met.has("bia")).is_false()
+	rel.talk("bia", "Bia", NICE, RUDE)
+	assert_bool(rel.met.has("bia")).is_true()
