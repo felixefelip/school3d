@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="29_toilet_paper"]
 [ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="30_steel_trash_can"]
 [ext_resource type="Script" path="res://scripts/scene_door.gd" id="31_scene_door"]
+[ext_resource type="PackedScene" path="res://scenes/city.tscn" id="32_city"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_Wall"]
 albedo_color = Color(0.88, 0.89, 0.92, 1)
@@ -207,10 +208,6 @@ roughness = 1
 [sub_resource type="StandardMaterial3D" id="Mat_Concrete"]
 albedo_color = Color(0.78, 0.76, 0.72, 1)
 roughness = 0.95
-
-[sub_resource type="StandardMaterial3D" id="Mat_CityBuilding"]
-albedo_color = Color(0.7, 0.72, 0.76, 1)
-roughness = 0.9
 
 [sub_resource type="StandardMaterial3D" id="Mat_ACWhite"]
 albedo_color = Color(0.96, 0.96, 0.97, 1)
@@ -2354,45 +2351,9 @@ size = Vector3(0.3, 0.03, 0.3)
 material = SubResource("Mat_Ceiling")
 size = Vector3(13.95, 0.1, 9.8)
 
-[sub_resource type="BoxMesh" id="Box_429"]
-material = SubResource("Mat_Concrete")
-size = Vector3(14.2, 13.9, 9.9)
-
 [sub_resource type="BoxMesh" id="Box_430"]
 material = SubResource("Mat_Concrete")
 size = Vector3(14.2, 0.3, 9.9)
-
-[sub_resource type="BoxMesh" id="Box_431"]
-material = SubResource("Mat_Grass")
-size = Vector3(400, 0.1, 400)
-
-[sub_resource type="BoxMesh" id="Box_432"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(14, 40, 12)
-
-[sub_resource type="BoxMesh" id="Box_433"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(18, 30, 14)
-
-[sub_resource type="BoxMesh" id="Box_434"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(12, 50, 12)
-
-[sub_resource type="BoxMesh" id="Box_435"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(16, 26, 16)
-
-[sub_resource type="BoxMesh" id="Box_436"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(20, 34, 12)
-
-[sub_resource type="BoxMesh" id="Box_437"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(14, 22, 14)
-
-[sub_resource type="BoxMesh" id="Box_438"]
-material = SubResource("Mat_CityBuilding")
-size = Vector3(12, 36, 18)
 
 [node name="House" type="Node3D"]
 script = ExtResource("1_house")
@@ -4317,45 +4278,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, 2.65, 2.3)
 mesh = SubResource("Box_428")
 
-[node name="BuildingFacade" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, -7.05, 2.3)
-mesh = SubResource("Box_429")
-
 [node name="BuildingRoof" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, 2.85, 2.3)
 mesh = SubResource("Box_430")
 
-[node name="Grass" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
-mesh = SubResource("Box_431")
-
-[node name="CityBuilding1" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 6, -25)
-mesh = SubResource("Box_432")
-
-[node name="CityBuilding2" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -40)
-mesh = SubResource("Box_433")
-
-[node name="CityBuilding3" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 11, -15)
-mesh = SubResource("Box_434")
-
-[node name="CityBuilding4" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, 20)
-mesh = SubResource("Box_435")
-
-[node name="CityBuilding5" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 40)
-mesh = SubResource("Box_436")
-
-[node name="CityBuilding6" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -3, 35)
-mesh = SubResource("Box_437")
-
-[node name="CityBuilding7" type="MeshInstance3D" parent="Apartment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 4, 5)
-mesh = SubResource("Box_438")
+[node name="City" parent="." instance=ExtResource("32_city")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, -16, 7.2)
 
 [node name="WardrobeStorage" type="Node" parent="."]
 script = ExtResource("3_storage")

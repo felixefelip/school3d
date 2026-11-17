@@ -55,7 +55,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   - cozinha americana (bancada com pia, cooktop e cafeteira, forno, armários, geladeira, aparador com
     micro-ondas, air fryer e liquidificador, balcão com banquetas) integrada à sala (sofá, TV, ar-condicionado, mesa de centro, mesinha de jantar, estante) e
     porta de entrada, que com **E** leva para a rua (`scenes/street.tscn`);
-  - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a cidade;
+  - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a rua principal: a cidade
+    em volta é a mesma da rua (`scenes/city.tscn`), vista do 5º andar do Residencial Aurora;
   - área de serviço com tanque, varal e produtos de limpeza.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
 - Inventário (estilo Stardew Valley):
@@ -78,7 +79,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     tirada do modelo do estudante (mesmo esqueleto); o boné é `models/clothes/cap.tscn`.
   - `scripts/ui/outfit_window.gd`: o menu de roupa (C), com prévia 3D girando e os quatro slots.
   - `scripts/washing_machine.gd`: a máquina de lavar (armazenamento com o botão Wash).
-- `scenes/street.tscn` + `scripts/street.gd`: o bairro em volta do prédio, com três ruas:
+- `scenes/street.tscn` + `scripts/street.gd`: o bairro em volta do prédio (os prédios, ruas, carros e objetos
+  ficam em `scenes/city.tscn`, que o apartamento também usa para a vista das janelas), com três ruas:
   - **rua principal** (leste–oeste): de um lado o prédio da jogadora (Residencial Aurora, com a porta do
     saguão), uma farmácia e uma padaria; do outro, o restaurante Bella Cucina (mesas com guarda-sol), a
     Cafe Aroma (mesinhas e cavalete com o cardápio) e um mini mercado. Depois do cruzamento, uma livraria
