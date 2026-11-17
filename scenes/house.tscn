@@ -205,6 +205,21 @@ roughness = 0.9
 albedo_color = Color(0.96, 0.96, 0.97, 1)
 roughness = 0.3
 
+[sub_resource type="StandardMaterial3D" id="Mat_CoffeeBlack"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="Mat_CoffeeLiquid"]
+albedo_color = Color(0.18, 0.08, 0.03, 1)
+roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="Mat_CoffeeLight"]
+albedo_color = Color(0.9, 0.2, 0.15, 1)
+roughness = 0.4
+emission_enabled = true
+emission = Color(1, 0.25, 0.15, 1)
+emission_energy_multiplier = 2
+
 [sub_resource type="StandardMaterial3D" id="Mat_GuitarWood"]
 albedo_color = Color(0.86, 0.6, 0.32, 1)
 roughness = 0.3
@@ -1412,684 +1427,800 @@ material = SubResource("Mat_ParentsRug")
 size = Vector3(2.4, 0.01, 1.6)
 
 [sub_resource type="BoxMesh" id="Box_238"]
+material = SubResource("Mat_ACWhite")
+size = Vector3(0.18, 0.28, 0.85)
+
+[sub_resource type="BoxMesh" id="Box_239"]
+material = SubResource("Mat_Porcelain")
+size = Vector3(0.005, 0.18, 0.8)
+
+[sub_resource type="BoxMesh" id="Box_240"]
+material = SubResource("Mat_Laptop")
+size = Vector3(0.03, 0.035, 0.74)
+
+[sub_resource type="BoxMesh" id="Box_241"]
+material = SubResource("Mat_Screen")
+size = Vector3(0.005, 0.015, 0.05)
+
+[sub_resource type="CylinderMesh" id="Cyl_242"]
+material = SubResource("Mat_ACWhite")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.25
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_243"]
+material = SubResource("Mat_Laptop")
+size = Vector3(0.05, 0.015, 0.14)
+
+[sub_resource type="BoxMesh" id="Box_244"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.6, 0.03, 0.6)
 
-[sub_resource type="BoxMesh" id="Box_239"]
+[sub_resource type="BoxMesh" id="Box_245"]
 material = SubResource("Mat_PictureFrame")
 size = Vector3(0.86, 0.46, 0.03)
 
-[sub_resource type="BoxMesh" id="Box_240"]
+[sub_resource type="BoxMesh" id="Box_246"]
 material = SubResource("Mat_PictureSky")
 size = Vector3(0.8, 0.24, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_241"]
+[sub_resource type="BoxMesh" id="Box_247"]
 material = SubResource("Mat_PictureSea")
 size = Vector3(0.8, 0.16, 0.005)
 
-[sub_resource type="CylinderMesh" id="Cyl_242"]
+[sub_resource type="CylinderMesh" id="Cyl_248"]
 material = SubResource("Mat_PictureSun")
 top_radius = 0.048
 bottom_radius = 0.048
 height = 0.004
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_243"]
+[sub_resource type="BoxMesh" id="Box_249"]
 material = SubResource("Mat_KitchenTile")
 size = Vector3(4.4, 0.1, 3.7)
 
-[sub_resource type="BoxMesh" id="Box_244"]
+[sub_resource type="BoxMesh" id="Box_250"]
 material = SubResource("Mat_Floor")
 size = Vector3(4.4, 0.1, 5.8)
 
-[sub_resource type="BoxMesh" id="Box_245"]
+[sub_resource type="BoxMesh" id="Box_251"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(4.45, 1.1, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_246"]
+[sub_resource type="BoxMesh" id="Box_252"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(4.45, 0.5, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_247"]
+[sub_resource type="BoxMesh" id="Box_253"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.9, 1, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_248"]
+[sub_resource type="BoxMesh" id="Box_254"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(2.55, 1, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_249"]
+[sub_resource type="BoxMesh" id="Box_255"]
 material = SubResource("Mat_Glass")
 size = Vector3(1, 1, 0.01)
 
-[sub_resource type="BoxMesh" id="Box_250"]
+[sub_resource type="BoxMesh" id="Box_256"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 2.6, 3.8)
 
-[sub_resource type="BoxMesh" id="Box_251"]
+[sub_resource type="BoxMesh" id="Box_257"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 0.9, 5.9)
 
-[sub_resource type="BoxMesh" id="Box_252"]
+[sub_resource type="BoxMesh" id="Box_258"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 0.5, 5.9)
 
-[sub_resource type="BoxMesh" id="Box_253"]
+[sub_resource type="BoxMesh" id="Box_259"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 1.2, 4.5)
 
-[sub_resource type="BoxMesh" id="Box_254"]
+[sub_resource type="BoxMesh" id="Box_260"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 1.2, 0.4)
 
-[sub_resource type="BoxMesh" id="Box_255"]
+[sub_resource type="BoxMesh" id="Box_261"]
 material = SubResource("Mat_Glass")
 size = Vector3(0.01, 1.2, 1)
 
-[sub_resource type="BoxMesh" id="Box_256"]
+[sub_resource type="BoxMesh" id="Box_262"]
 material = SubResource("Mat_Trim")
 size = Vector3(0.16, 0.04, 1.08)
 
-[sub_resource type="BoxMesh" id="Box_257"]
+[sub_resource type="BoxMesh" id="Box_263"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(3.2, 2.6, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_258"]
+[sub_resource type="BoxMesh" id="Box_264"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.45, 2.6, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_259"]
+[sub_resource type="BoxMesh" id="Box_265"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.9, 0.5, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_260"]
+[sub_resource type="BoxMesh" id="Box_266"]
 material = SubResource("Mat_Door")
 size = Vector3(0.9, 2.1, 0.06)
 
-[sub_resource type="CylinderMesh" id="Cyl_261"]
+[sub_resource type="CylinderMesh" id="Cyl_267"]
 material = SubResource("Mat_Metal")
 top_radius = 0.025
 bottom_radius = 0.025
 height = 0.1
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_262"]
+[sub_resource type="BoxMesh" id="Box_268"]
 material = SubResource("Mat_Backpack")
 size = Vector3(0.8, 0.01, 0.5)
 
-[sub_resource type="BoxMesh" id="Box_263"]
+[sub_resource type="BoxMesh" id="Box_269"]
 material = SubResource("Mat_Trim")
 size = Vector3(0.06, 2.14, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_264"]
+[sub_resource type="BoxMesh" id="Box_270"]
 material = SubResource("Mat_Trim")
 size = Vector3(0.06, 2.14, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_265"]
+[sub_resource type="BoxMesh" id="Box_271"]
 material = SubResource("Mat_Trim")
 size = Vector3(1.02, 0.06, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_266"]
+[sub_resource type="BoxMesh" id="Box_272"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 2.6, 0.55)
 
-[sub_resource type="BoxMesh" id="Box_267"]
+[sub_resource type="BoxMesh" id="Box_273"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 2.6, 0.5)
 
-[sub_resource type="BoxMesh" id="Box_268"]
+[sub_resource type="BoxMesh" id="Box_274"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 0.5, 2)
 
-[sub_resource type="BoxMesh" id="Box_269"]
+[sub_resource type="BoxMesh" id="Box_275"]
 material = SubResource("Mat_LivingWall")
 size = Vector3(0.1, 0.5, 1.5)
 
-[sub_resource type="BoxMesh" id="Box_270"]
+[sub_resource type="BoxMesh" id="Box_276"]
 material = SubResource("Mat_Glass")
 size = Vector3(0.02, 2.1, 1)
 
-[sub_resource type="BoxMesh" id="Box_271"]
+[sub_resource type="BoxMesh" id="Box_277"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.06, 2.1, 0.05)
 
-[sub_resource type="BoxMesh" id="Box_272"]
+[sub_resource type="BoxMesh" id="Box_278"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.06, 2.1, 0.05)
 
-[sub_resource type="BoxMesh" id="Box_273"]
+[sub_resource type="BoxMesh" id="Box_279"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.06, 2.1, 0.05)
 
-[sub_resource type="BoxMesh" id="Box_274"]
+[sub_resource type="BoxMesh" id="Box_280"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.06, 0.05, 2)
 
-[sub_resource type="BoxMesh" id="Box_275"]
+[sub_resource type="BoxMesh" id="Box_281"]
 material = SubResource("Mat_Cabinet")
 size = Vector3(3.4, 0.86, 0.6)
 
-[sub_resource type="BoxMesh" id="Box_276"]
+[sub_resource type="BoxMesh" id="Box_282"]
 material = SubResource("Mat_Countertop")
 size = Vector3(3.44, 0.04, 0.64)
 
-[sub_resource type="BoxMesh" id="Box_277"]
+[sub_resource type="BoxMesh" id="Box_283"]
 material = SubResource("Mat_Gap")
 size = Vector3(0.005, 0.7, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_278"]
+[sub_resource type="BoxMesh" id="Box_284"]
 material = SubResource("Mat_Gap")
 size = Vector3(0.005, 0.7, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_279"]
+[sub_resource type="BoxMesh" id="Box_285"]
 material = SubResource("Mat_Gap")
 size = Vector3(0.005, 0.7, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_280"]
+[sub_resource type="BoxMesh" id="Box_286"]
 material = SubResource("Mat_Gap")
 size = Vector3(0.005, 0.7, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_281"]
+[sub_resource type="BoxMesh" id="Box_287"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.6, 0.005, 0.4)
 
-[sub_resource type="CylinderMesh" id="Cyl_282"]
+[sub_resource type="CylinderMesh" id="Cyl_288"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.015
 bottom_radius = 0.015
 height = 0.3
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_283"]
+[sub_resource type="CylinderMesh" id="Cyl_289"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.012
 bottom_radius = 0.012
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_284"]
+[sub_resource type="BoxMesh" id="Box_290"]
 material = SubResource("Mat_Laptop")
 size = Vector3(0.6, 0.01, 0.5)
 
-[sub_resource type="CylinderMesh" id="Cyl_285"]
+[sub_resource type="CylinderMesh" id="Cyl_291"]
 material = SubResource("Mat_Metal")
 top_radius = 0.07
 bottom_radius = 0.07
 height = 0.006
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_286"]
+[sub_resource type="CylinderMesh" id="Cyl_292"]
 material = SubResource("Mat_Metal")
 top_radius = 0.07
 bottom_radius = 0.07
 height = 0.006
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_287"]
+[sub_resource type="CylinderMesh" id="Cyl_293"]
 material = SubResource("Mat_Metal")
 top_radius = 0.07
 bottom_radius = 0.07
 height = 0.006
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_288"]
+[sub_resource type="CylinderMesh" id="Cyl_294"]
 material = SubResource("Mat_Metal")
 top_radius = 0.07
 bottom_radius = 0.07
 height = 0.006
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_289"]
+[sub_resource type="BoxMesh" id="Box_295"]
 material = SubResource("Mat_Laptop")
 size = Vector3(0.6, 0.5, 0.01)
 
-[sub_resource type="BoxMesh" id="Box_290"]
+[sub_resource type="BoxMesh" id="Box_296"]
 material = SubResource("Mat_Chrome")
 size = Vector3(0.5, 0.025, 0.03)
 
-[sub_resource type="BoxMesh" id="Box_291"]
+[sub_resource type="BoxMesh" id="Box_297"]
 material = SubResource("Mat_Cabinet")
 size = Vector3(0.7, 0.7, 0.35)
 
-[sub_resource type="BoxMesh" id="Box_292"]
+[sub_resource type="BoxMesh" id="Box_298"]
 material = SubResource("Mat_Cabinet")
 size = Vector3(1.5, 0.7, 0.35)
 
-[sub_resource type="BoxMesh" id="Box_293"]
+[sub_resource type="BoxMesh" id="Box_299"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.6, 0.15, 0.4)
 
-[sub_resource type="BoxMesh" id="Box_294"]
-material = SubResource("Mat_FridgeWhite")
-size = Vector3(0.85, 1.85, 0.7)
-
-[sub_resource type="BoxMesh" id="Box_295"]
-material = SubResource("Mat_Gap")
-size = Vector3(0.83, 0.008, 0.005)
-
-[sub_resource type="BoxMesh" id="Box_296"]
-material = SubResource("Mat_Chrome")
-size = Vector3(0.03, 0.4, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_297"]
-material = SubResource("Mat_Chrome")
-size = Vector3(0.03, 0.4, 0.03)
-
-[sub_resource type="BoxMesh" id="Box_298"]
-material = SubResource("Mat_Mug")
-size = Vector3(0.08, 0.06, 0.01)
-
-[sub_resource type="BoxMesh" id="Box_299"]
-material = SubResource("Mat_Cabinet")
-size = Vector3(2.8, 1, 0.5)
-
 [sub_resource type="BoxMesh" id="Box_300"]
-material = SubResource("Mat_Countertop")
-size = Vector3(2.9, 0.05, 0.62)
+material = SubResource("Mat_CoffeeBlack")
+size = Vector3(0.22, 0.04, 0.26)
 
 [sub_resource type="CylinderMesh" id="Cyl_301"]
 material = SubResource("Mat_Metal")
-top_radius = 0.025
-bottom_radius = 0.04
-height = 0.7
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.006
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_302"]
-material = SubResource("Mat_SofaFabric")
-top_radius = 0.18
-bottom_radius = 0.18
-height = 0.05
-radial_segments = 32
+[sub_resource type="BoxMesh" id="Box_302"]
+material = SubResource("Mat_CoffeeBlack")
+size = Vector3(0.22, 0.34, 0.09)
 
-[sub_resource type="CylinderMesh" id="Cyl_303"]
-material = SubResource("Mat_Metal")
-top_radius = 0.025
-bottom_radius = 0.04
-height = 0.7
-radial_segments = 32
+[sub_resource type="BoxMesh" id="Box_303"]
+material = SubResource("Mat_CoffeeBlack")
+size = Vector3(0.22, 0.09, 0.24)
 
 [sub_resource type="CylinderMesh" id="Cyl_304"]
-material = SubResource("Mat_SofaFabric")
-top_radius = 0.18
-bottom_radius = 0.18
+material = SubResource("Mat_CoffeeBlack")
+top_radius = 0.075
+bottom_radius = 0.06
 height = 0.05
 radial_segments = 32
 
 [sub_resource type="CylinderMesh" id="Cyl_305"]
+material = SubResource("Mat_Glass")
+top_radius = 0.065
+bottom_radius = 0.075
+height = 0.15
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_306"]
+material = SubResource("Mat_CoffeeLiquid")
+top_radius = 0.06
+bottom_radius = 0.07
+height = 0.07
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_307"]
+material = SubResource("Mat_CoffeeBlack")
+top_radius = 0.05
+bottom_radius = 0.065
+height = 0.02
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_308"]
+material = SubResource("Mat_CoffeeBlack")
+size = Vector3(0.025, 0.11, 0.025)
+
+[sub_resource type="BoxMesh" id="Box_309"]
+material = SubResource("Mat_CoffeeLight")
+size = Vector3(0.04, 0.02, 0.005)
+
+[sub_resource type="CylinderMesh" id="Cyl_310"]
+material = SubResource("Mat_Mug")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.09
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_311"]
+material = SubResource("Mat_FridgeWhite")
+size = Vector3(0.85, 1.85, 0.7)
+
+[sub_resource type="BoxMesh" id="Box_312"]
+material = SubResource("Mat_Gap")
+size = Vector3(0.83, 0.008, 0.005)
+
+[sub_resource type="BoxMesh" id="Box_313"]
+material = SubResource("Mat_Chrome")
+size = Vector3(0.03, 0.4, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_314"]
+material = SubResource("Mat_Chrome")
+size = Vector3(0.03, 0.4, 0.03)
+
+[sub_resource type="BoxMesh" id="Box_315"]
+material = SubResource("Mat_Mug")
+size = Vector3(0.08, 0.06, 0.01)
+
+[sub_resource type="BoxMesh" id="Box_316"]
+material = SubResource("Mat_Cabinet")
+size = Vector3(2.8, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="Box_317"]
+material = SubResource("Mat_Countertop")
+size = Vector3(2.9, 0.05, 0.62)
+
+[sub_resource type="CylinderMesh" id="Cyl_318"]
 material = SubResource("Mat_Metal")
 top_radius = 0.025
 bottom_radius = 0.04
 height = 0.7
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_306"]
+[sub_resource type="CylinderMesh" id="Cyl_319"]
 material = SubResource("Mat_SofaFabric")
 top_radius = 0.18
 bottom_radius = 0.18
 height = 0.05
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_307"]
+[sub_resource type="CylinderMesh" id="Cyl_320"]
+material = SubResource("Mat_Metal")
+top_radius = 0.025
+bottom_radius = 0.04
+height = 0.7
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_321"]
+material = SubResource("Mat_SofaFabric")
+top_radius = 0.18
+bottom_radius = 0.18
+height = 0.05
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_322"]
+material = SubResource("Mat_Metal")
+top_radius = 0.025
+bottom_radius = 0.04
+height = 0.7
+radial_segments = 32
+
+[sub_resource type="CylinderMesh" id="Cyl_323"]
+material = SubResource("Mat_SofaFabric")
+top_radius = 0.18
+bottom_radius = 0.18
+height = 0.05
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_324"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.3, 0.06, 0.2)
 
-[sub_resource type="CylinderMesh" id="Cyl_308"]
+[sub_resource type="CylinderMesh" id="Cyl_325"]
 material = SubResource("Mat_Mug")
 top_radius = 0.04
 bottom_radius = 0.04
 height = 0.07
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_309"]
+[sub_resource type="CylinderMesh" id="Cyl_326"]
 material = SubResource("Mat_BookYellow")
 top_radius = 0.04
 bottom_radius = 0.04
 height = 0.07
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_310"]
+[sub_resource type="CylinderMesh" id="Cyl_327"]
 material = SubResource("Mat_Grass")
 top_radius = 0.04
 bottom_radius = 0.04
 height = 0.07
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_311"]
+[sub_resource type="BoxMesh" id="Box_328"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.6, 0.03, 0.6)
 
-[sub_resource type="BoxMesh" id="Box_312"]
+[sub_resource type="BoxMesh" id="Box_329"]
 material = SubResource("Mat_LightWood")
 size = Vector3(1, 0.04, 0.7)
 
-[sub_resource type="BoxMesh" id="Box_313"]
+[sub_resource type="BoxMesh" id="Box_330"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.04, 0.72, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_314"]
+[sub_resource type="BoxMesh" id="Box_331"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.04, 0.72, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_315"]
+[sub_resource type="BoxMesh" id="Box_332"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.04, 0.72, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_316"]
+[sub_resource type="BoxMesh" id="Box_333"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.04, 0.72, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_317"]
+[sub_resource type="BoxMesh" id="Box_334"]
 material = SubResource("Mat_LivingRug")
 size = Vector3(2.2, 0.01, 2.4)
 
-[sub_resource type="BoxMesh" id="Box_318"]
+[sub_resource type="BoxMesh" id="Box_335"]
 material = SubResource("Mat_BedWood")
 size = Vector3(0.42, 0.5, 1.7)
 
-[sub_resource type="BoxMesh" id="Box_319"]
+[sub_resource type="BoxMesh" id="Box_336"]
 material = SubResource("Mat_Laptop")
 size = Vector3(0.05, 0.68, 1.2)
 
-[sub_resource type="BoxMesh" id="Box_320"]
+[sub_resource type="BoxMesh" id="Box_337"]
 material = SubResource("Mat_Screen")
 size = Vector3(0.005, 0.62, 1.12)
 
-[sub_resource type="BoxMesh" id="Box_321"]
+[sub_resource type="BoxMesh" id="Box_338"]
 material = SubResource("Mat_LightWood")
 size = Vector3(0.5, 0.4, 1)
 
-[sub_resource type="BoxMesh" id="Box_322"]
+[sub_resource type="BoxMesh" id="Box_339"]
 material = SubResource("Mat_BookRed")
 size = Vector3(0.2, 0.04, 0.28)
 
-[sub_resource type="BoxMesh" id="Box_323"]
+[sub_resource type="BoxMesh" id="Box_340"]
+material = SubResource("Mat_ACWhite")
+size = Vector3(0.18, 0.28, 0.85)
+
+[sub_resource type="BoxMesh" id="Box_341"]
+material = SubResource("Mat_Porcelain")
+size = Vector3(0.005, 0.18, 0.8)
+
+[sub_resource type="BoxMesh" id="Box_342"]
+material = SubResource("Mat_Laptop")
+size = Vector3(0.03, 0.035, 0.74)
+
+[sub_resource type="BoxMesh" id="Box_343"]
+material = SubResource("Mat_Screen")
+size = Vector3(0.005, 0.015, 0.05)
+
+[sub_resource type="CylinderMesh" id="Cyl_344"]
+material = SubResource("Mat_ACWhite")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.25
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="Box_345"]
 material = SubResource("Mat_Laptop")
 size = Vector3(0.05, 0.015, 0.14)
 
-[sub_resource type="BoxMesh" id="Box_324"]
+[sub_resource type="BoxMesh" id="Box_346"]
 material = SubResource("Mat_SofaFabric")
 size = Vector3(0.85, 0.42, 2)
 
-[sub_resource type="BoxMesh" id="Box_325"]
+[sub_resource type="BoxMesh" id="Box_347"]
 material = SubResource("Mat_SofaCushion")
 size = Vector3(0.62, 0.1, 1.8)
 
-[sub_resource type="BoxMesh" id="Box_326"]
+[sub_resource type="BoxMesh" id="Box_348"]
 material = SubResource("Mat_SofaFabric")
 size = Vector3(0.22, 0.48, 2)
 
-[sub_resource type="BoxMesh" id="Box_327"]
+[sub_resource type="BoxMesh" id="Box_349"]
 material = SubResource("Mat_SofaFabric")
 size = Vector3(0.85, 0.2, 0.15)
 
-[sub_resource type="BoxMesh" id="Box_328"]
+[sub_resource type="BoxMesh" id="Box_350"]
 material = SubResource("Mat_SofaFabric")
 size = Vector3(0.85, 0.2, 0.15)
 
-[sub_resource type="BoxMesh" id="Box_329"]
+[sub_resource type="BoxMesh" id="Box_351"]
+material = SubResource("Mat_Laptop")
+size = Vector3(0.05, 0.015, 0.14)
+
+[sub_resource type="BoxMesh" id="Box_352"]
 material = SubResource("Mat_Rug")
 size = Vector3(0.12, 0.32, 0.36)
 
-[sub_resource type="BoxMesh" id="Box_330"]
+[sub_resource type="BoxMesh" id="Box_353"]
 material = SubResource("Mat_Rug")
 size = Vector3(0.12, 0.32, 0.36)
 
-[sub_resource type="BoxMesh" id="Box_331"]
+[sub_resource type="BoxMesh" id="Box_354"]
 material = SubResource("Mat_PictureFrame")
 size = Vector3(0.76, 0.56, 0.03)
 
-[sub_resource type="BoxMesh" id="Box_332"]
+[sub_resource type="BoxMesh" id="Box_355"]
 material = SubResource("Mat_PictureSky")
 size = Vector3(0.7, 0.3, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_333"]
+[sub_resource type="BoxMesh" id="Box_356"]
 material = SubResource("Mat_BookGreen")
 size = Vector3(0.7, 0.2, 0.005)
 
-[sub_resource type="CylinderMesh" id="Cyl_334"]
+[sub_resource type="CylinderMesh" id="Cyl_357"]
 material = SubResource("Mat_PictureSun")
 top_radius = 0.06
 bottom_radius = 0.06
 height = 0.004
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_335"]
+[sub_resource type="BoxMesh" id="Box_358"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.6, 0.03, 0.6)
 
-[sub_resource type="BoxMesh" id="Box_336"]
+[sub_resource type="BoxMesh" id="Box_359"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.6, 0.03, 0.6)
 
-[sub_resource type="BoxMesh" id="Box_337"]
+[sub_resource type="BoxMesh" id="Box_360"]
 material = SubResource("Mat_BalconyTile")
 size = Vector3(4.7, 0.1, 3)
 
-[sub_resource type="BoxMesh" id="Box_338"]
+[sub_resource type="BoxMesh" id="Box_361"]
 material = SubResource("Mat_BalconyWall")
 size = Vector3(4.7, 2.6, 0.005)
 
-[sub_resource type="BoxMesh" id="Box_339"]
+[sub_resource type="BoxMesh" id="Box_362"]
 material = SubResource("Mat_Glass")
 size = Vector3(4.7, 1, 0.02)
 
-[sub_resource type="BoxMesh" id="Box_340"]
+[sub_resource type="BoxMesh" id="Box_363"]
 material = SubResource("Mat_Metal")
 size = Vector3(4.75, 0.05, 0.08)
 
-[sub_resource type="BoxMesh" id="Box_341"]
+[sub_resource type="BoxMesh" id="Box_364"]
 material = SubResource("Mat_Metal")
 size = Vector3(4.7, 0.08, 0.12)
 
-[sub_resource type="BoxMesh" id="Box_342"]
+[sub_resource type="BoxMesh" id="Box_365"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.04, 1.05, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_343"]
+[sub_resource type="BoxMesh" id="Box_366"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.04, 1.05, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_344"]
+[sub_resource type="BoxMesh" id="Box_367"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.04, 1.05, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_345"]
+[sub_resource type="BoxMesh" id="Box_368"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.04, 1.05, 0.04)
 
-[sub_resource type="BoxMesh" id="Box_346"]
+[sub_resource type="BoxMesh" id="Box_369"]
 material = SubResource("Mat_Metal")
 size = Vector3(0.04, 1.05, 0.04)
 
-[sub_resource type="CylinderMesh" id="Cyl_347"]
+[sub_resource type="CylinderMesh" id="Cyl_370"]
 material = SubResource("Mat_LightWood")
 top_radius = 0.32
 bottom_radius = 0.32
 height = 0.03
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_348"]
+[sub_resource type="CylinderMesh" id="Cyl_371"]
 material = SubResource("Mat_Metal")
 top_radius = 0.03
 bottom_radius = 0.12
 height = 0.7
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_349"]
+[sub_resource type="CylinderMesh" id="Cyl_372"]
 material = SubResource("Mat_Mug")
 top_radius = 0.04
 bottom_radius = 0.04
 height = 0.1
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_350"]
+[sub_resource type="BoxMesh" id="Box_373"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.3, 0.03, 0.3)
 
-[sub_resource type="BoxMesh" id="Box_351"]
+[sub_resource type="BoxMesh" id="Box_374"]
 material = SubResource("Mat_BathFloor")
 size = Vector3(1.2, 0.1, 2.6)
 
-[sub_resource type="BoxMesh" id="Box_352"]
+[sub_resource type="BoxMesh" id="Box_375"]
 material = SubResource("Mat_BathFloor")
 size = Vector3(0.7, 0.1, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_353"]
+[sub_resource type="BoxMesh" id="Box_376"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.1, 2.6, 2.7)
 
-[sub_resource type="BoxMesh" id="Box_354"]
+[sub_resource type="BoxMesh" id="Box_377"]
 material = SubResource("Mat_HallWall")
 size = Vector3(1.2, 1.3, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_355"]
+[sub_resource type="BoxMesh" id="Box_378"]
 material = SubResource("Mat_HallWall")
 size = Vector3(1.2, 0.6, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_356"]
+[sub_resource type="BoxMesh" id="Box_379"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.25, 0.7, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_357"]
+[sub_resource type="BoxMesh" id="Box_380"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.35, 0.7, 0.1)
 
-[sub_resource type="BoxMesh" id="Box_358"]
+[sub_resource type="BoxMesh" id="Box_381"]
 material = SubResource("Mat_Glass")
 size = Vector3(0.6, 0.7, 0.01)
 
-[sub_resource type="BoxMesh" id="Box_359"]
+[sub_resource type="BoxMesh" id="Box_382"]
 material = SubResource("Mat_HallWall")
 size = Vector3(0.005, 2.6, 2.5)
 
-[sub_resource type="BoxMesh" id="Box_360"]
+[sub_resource type="BoxMesh" id="Box_383"]
 material = SubResource("Mat_Porcelain")
 size = Vector3(0.55, 0.85, 0.45)
 
-[sub_resource type="BoxMesh" id="Box_361"]
+[sub_resource type="BoxMesh" id="Box_384"]
 material = SubResource("Mat_BasinInside")
 size = Vector3(0.45, 0.005, 0.33)
 
-[sub_resource type="CylinderMesh" id="Cyl_362"]
+[sub_resource type="CylinderMesh" id="Cyl_385"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.015
 bottom_radius = 0.015
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_363"]
+[sub_resource type="BoxMesh" id="Box_386"]
 material = SubResource("Mat_Porcelain")
 size = Vector3(0.25, 0.02, 0.9)
 
-[sub_resource type="CylinderMesh" id="Cyl_364"]
+[sub_resource type="CylinderMesh" id="Cyl_387"]
 material = SubResource("Mat_Towel")
 top_radius = 0.04
 bottom_radius = 0.045
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_365"]
+[sub_resource type="CylinderMesh" id="Cyl_388"]
 material = SubResource("Mat_BathTileBorder")
 top_radius = 0.04
 bottom_radius = 0.045
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_366"]
+[sub_resource type="CylinderMesh" id="Cyl_389"]
 material = SubResource("Mat_Mug")
 top_radius = 0.04
 bottom_radius = 0.045
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_367"]
+[sub_resource type="CylinderMesh" id="Cyl_390"]
 material = SubResource("Mat_BookGreen")
 top_radius = 0.04
 bottom_radius = 0.045
 height = 0.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_368"]
+[sub_resource type="CylinderMesh" id="Cyl_391"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 2.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_369"]
+[sub_resource type="CylinderMesh" id="Cyl_392"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 2.2
 radial_segments = 32
 
-[sub_resource type="CylinderMesh" id="Cyl_370"]
+[sub_resource type="CylinderMesh" id="Cyl_393"]
 material = SubResource("Mat_Chrome")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 2.2
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_371"]
+[sub_resource type="BoxMesh" id="Box_394"]
 material = SubResource("Mat_Towel")
 size = Vector3(0.01, 0.5, 0.4)
 
-[sub_resource type="CylinderMesh" id="Cyl_372"]
+[sub_resource type="CylinderMesh" id="Cyl_395"]
 material = SubResource("Mat_LightWood")
 top_radius = 0.012
 bottom_radius = 0.012
 height = 1.2
 radial_segments = 32
 
-[sub_resource type="BoxMesh" id="Box_373"]
+[sub_resource type="BoxMesh" id="Box_396"]
 material = SubResource("Mat_BookYellow")
 size = Vector3(0.3, 0.1, 0.06)
 
-[sub_resource type="BoxMesh" id="Box_374"]
+[sub_resource type="BoxMesh" id="Box_397"]
 material = SubResource("Mat_CeilingLight")
 size = Vector3(0.3, 0.03, 0.3)
 
-[sub_resource type="BoxMesh" id="Box_375"]
+[sub_resource type="BoxMesh" id="Box_398"]
 material = SubResource("Mat_Ceiling")
 size = Vector3(13.95, 0.1, 9.8)
 
-[sub_resource type="BoxMesh" id="Box_376"]
+[sub_resource type="BoxMesh" id="Box_399"]
 material = SubResource("Mat_Concrete")
 size = Vector3(14.2, 13.9, 9.9)
 
-[sub_resource type="BoxMesh" id="Box_377"]
+[sub_resource type="BoxMesh" id="Box_400"]
 material = SubResource("Mat_Concrete")
 size = Vector3(14.2, 0.3, 9.9)
 
-[sub_resource type="BoxMesh" id="Box_378"]
+[sub_resource type="BoxMesh" id="Box_401"]
 material = SubResource("Mat_Grass")
 size = Vector3(400, 0.1, 400)
 
-[sub_resource type="BoxMesh" id="Box_379"]
+[sub_resource type="BoxMesh" id="Box_402"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(14, 40, 12)
 
-[sub_resource type="BoxMesh" id="Box_380"]
+[sub_resource type="BoxMesh" id="Box_403"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(18, 30, 14)
 
-[sub_resource type="BoxMesh" id="Box_381"]
+[sub_resource type="BoxMesh" id="Box_404"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(12, 50, 12)
 
-[sub_resource type="BoxMesh" id="Box_382"]
+[sub_resource type="BoxMesh" id="Box_405"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(16, 26, 16)
 
-[sub_resource type="BoxMesh" id="Box_383"]
+[sub_resource type="BoxMesh" id="Box_406"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(20, 34, 12)
 
-[sub_resource type="BoxMesh" id="Box_384"]
+[sub_resource type="BoxMesh" id="Box_407"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(14, 22, 14)
 
-[sub_resource type="BoxMesh" id="Box_385"]
+[sub_resource type="BoxMesh" id="Box_408"]
 material = SubResource("Mat_CityBuilding")
 size = Vector3(12, 36, 18)
 
@@ -3133,44 +3264,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.385, 1.05, 0.7)
 mesh = SubResource("Box_228")
 
 [node name="Dresser" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, 0.4, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.525, 0.4, -0.2)
 mesh = SubResource("Box_229")
 
 [node name="DresserDrawerLine1" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.652, 0.3, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.752, 0.3, -0.2)
 mesh = SubResource("Box_230")
 
 [node name="DresserDrawerLine2" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.652, 0.55, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.752, 0.55, -0.2)
 mesh = SubResource("Box_231")
 
 [node name="DresserDrawerLine3" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.652, 0.78, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.752, 0.78, -0.2)
 mesh = SubResource("Box_232")
 
 [node name="DresserMirrorFrame" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21, 1.4, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31, 1.4, -0.2)
 mesh = SubResource("Box_233")
 
 [node name="DresserMirror" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.223, 1.4, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.323, 1.4, -0.2)
 mesh = SubResource("Box_234")
 
 [node name="PerfumeBottle" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 0.86, -0.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0.86, -0.55)
 mesh = SubResource("Box_235")
 
 [node name="JewelryBox" type="MeshInstance3D" parent="ParentsRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 0.83, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0.83, 0.1)
 mesh = SubResource("Cyl_236")
 
 [node name="Rug" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.005, 0.4)
 mesh = SubResource("Box_237")
 
+[node name="AirConditioner" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39, 2.25, 1.1)
+mesh = SubResource("Box_238")
+
+[node name="ACFrontPanel" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.483, 2.28, 1.1)
+mesh = SubResource("Box_239")
+
+[node name="ACLouver" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47, 2.135, 1.1)
+mesh = SubResource("Box_240")
+
+[node name="ACDisplay" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.487, 2.19, 0.8)
+mesh = SubResource("Box_241")
+
+[node name="ACPipe" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -2.32, 2.15, 1.58)
+mesh = SubResource("Cyl_242")
+
+[node name="ACRemote" type="MeshInstance3D" parent="ParentsRoom"]
+transform = Transform3D(0.9397, 0, -0.342, 0, 1, 0, 0.342, 0, 0.9397, -3.45, 0.508, -2.15)
+mesh = SubResource("Box_243")
+
 [node name="CeilingLight" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.585, 0)
-mesh = SubResource("Box_238")
+mesh = SubResource("Box_244")
 
 [node name="CeilingLamp" type="OmniLight3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.35, 0)
@@ -3181,19 +3336,19 @@ omni_range = 6
 
 [node name="PictureCoupleFrame" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 1.75, -2.44)
-mesh = SubResource("Box_239")
+mesh = SubResource("Box_245")
 
 [node name="PictureCoupleSky" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 1.83, -2.422)
-mesh = SubResource("Box_240")
+mesh = SubResource("Box_246")
 
 [node name="PictureCoupleGround" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 1.63, -2.422)
-mesh = SubResource("Box_241")
+mesh = SubResource("Box_247")
 
 [node name="PictureCoupleSun" type="MeshInstance3D" parent="ParentsRoom"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -4.424, 1.85, -2.418)
-mesh = SubResource("Cyl_242")
+mesh = SubResource("Cyl_248")
 
 [node name="Kitchen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -3203,279 +3358,323 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Floor" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, -0.05, -0.65)
-mesh = SubResource("Box_243")
+mesh = SubResource("Box_249")
 
 [node name="Floor" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, -0.05, 4.1)
-mesh = SubResource("Box_244")
+mesh = SubResource("Box_250")
 
 [node name="WallNorthBelow" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275, 0.55, -2.55)
-mesh = SubResource("Box_245")
+mesh = SubResource("Box_251")
 
 [node name="WallNorthAbove" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275, 2.35, -2.55)
-mesh = SubResource("Box_246")
+mesh = SubResource("Box_252")
 
 [node name="WallNorthWest" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.05, 1.6, -2.55)
-mesh = SubResource("Box_247")
+mesh = SubResource("Box_253")
 
 [node name="WallNorthEast" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.325, 1.6, -2.55)
-mesh = SubResource("Box_248")
+mesh = SubResource("Box_254")
 
 [node name="WindowGlass" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 1.6, -2.55)
-mesh = SubResource("Box_249")
+mesh = SubResource("Box_255")
 
 [node name="WallWest" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.3, -0.7)
-mesh = SubResource("Box_250")
+mesh = SubResource("Box_256")
 
 [node name="WallWestBelow" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 0.45, 4.15)
-mesh = SubResource("Box_251")
+mesh = SubResource("Box_257")
 
 [node name="WallWestAbove" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 2.35, 4.15)
-mesh = SubResource("Box_252")
+mesh = SubResource("Box_258")
 
 [node name="WallWestNorth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.5, 3.45)
-mesh = SubResource("Box_253")
+mesh = SubResource("Box_259")
 
 [node name="WallWestSouth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.5, 6.9)
-mesh = SubResource("Box_254")
+mesh = SubResource("Box_260")
 
 [node name="WindowGlass" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.45, 1.5, 6.2)
-mesh = SubResource("Box_255")
+mesh = SubResource("Box_261")
 
 [node name="WindowSill" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.37, 0.89, 6.2)
-mesh = SubResource("Box_256")
+mesh = SubResource("Box_262")
 
 [node name="WallSouthWest" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 1.3, 7.05)
-mesh = SubResource("Box_257")
+mesh = SubResource("Box_263")
 
 [node name="WallSouthEast" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.175, 1.3, 7.05)
-mesh = SubResource("Box_258")
+mesh = SubResource("Box_264")
 
 [node name="WallSouthAboveDoor" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 2.35, 7.05)
-mesh = SubResource("Box_259")
+mesh = SubResource("Box_265")
 
 [node name="EntranceDoor" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 1.05, 7.05)
-mesh = SubResource("Box_260")
+mesh = SubResource("Box_266")
 
 [node name="HandleEntrance" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -7.55, 1, 6.98)
-mesh = SubResource("Cyl_261")
+mesh = SubResource("Cyl_267")
 
 [node name="DoorMat" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 0.005, 6.65)
-mesh = SubResource("Box_262")
+mesh = SubResource("Box_268")
 
 [node name="FrameEntranceLeft" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33, 1.07, 6.99)
-mesh = SubResource("Box_263")
+mesh = SubResource("Box_269")
 
 [node name="FrameEntranceRight" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.37, 1.07, 6.99)
-mesh = SubResource("Box_264")
+mesh = SubResource("Box_270")
 
 [node name="FrameEntranceTop" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 2.13, 6.99)
-mesh = SubResource("Box_265")
+mesh = SubResource("Box_271")
 
 [node name="WallEastBalconyNorth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.3, 4.325)
-mesh = SubResource("Box_266")
+mesh = SubResource("Box_272")
 
 [node name="WallEastBalconySouth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.3, 6.85)
-mesh = SubResource("Box_267")
+mesh = SubResource("Box_273")
 
 [node name="WallEastAboveBalcony" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 2.35, 5.6)
-mesh = SubResource("Box_268")
+mesh = SubResource("Box_274")
 
 [node name="WallEastAboveHallway" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 2.35, 3.3)
-mesh = SubResource("Box_269")
+mesh = SubResource("Box_275")
 
 [node name="BalconyGlassFixed" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.05, 5.1)
-mesh = SubResource("Box_270")
+mesh = SubResource("Box_276")
 
 [node name="BalconyFrameNorth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.05, 4.62)
-mesh = SubResource("Box_271")
+mesh = SubResource("Box_277")
 
 [node name="BalconyFrameMiddle" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.05, 5.6)
-mesh = SubResource("Box_272")
+mesh = SubResource("Box_278")
 
 [node name="BalconyFrameSouth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 1.05, 6.58)
-mesh = SubResource("Box_273")
+mesh = SubResource("Box_279")
 
 [node name="BalconyFrameTop" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05, 2.1, 5.6)
-mesh = SubResource("Box_274")
+mesh = SubResource("Box_280")
 
 [node name="KitchenCabinets" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 0.43, -2.2)
-mesh = SubResource("Box_275")
+mesh = SubResource("Box_281")
 
 [node name="Countertop" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 0.88, -2.19)
-mesh = SubResource("Box_276")
+mesh = SubResource("Box_282")
 
 [node name="CabinetDoorLine1" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.43, -1.897)
-mesh = SubResource("Box_277")
+mesh = SubResource("Box_283")
 
 [node name="CabinetDoorLine2" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0.43, -1.897)
-mesh = SubResource("Box_278")
+mesh = SubResource("Box_284")
 
 [node name="CabinetDoorLine3" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 0.43, -1.897)
-mesh = SubResource("Box_279")
+mesh = SubResource("Box_285")
 
 [node name="CabinetDoorLine4" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 0.43, -1.897)
-mesh = SubResource("Box_280")
+mesh = SubResource("Box_286")
 
 [node name="SinkBasin" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 0.902, -2.2)
-mesh = SubResource("Box_281")
+mesh = SubResource("Box_287")
 
 [node name="KitchenFaucet" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 1.05, -2.42)
-mesh = SubResource("Cyl_282")
+mesh = SubResource("Cyl_288")
 
 [node name="KitchenFaucetSpout" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -10.1, 1.19, -2.33)
-mesh = SubResource("Cyl_283")
+mesh = SubResource("Cyl_289")
 
 [node name="Cooktop" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 0.905, -2.2)
-mesh = SubResource("Box_284")
+mesh = SubResource("Box_290")
 
 [node name="Burner1" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05, 0.912, -2.32)
-mesh = SubResource("Cyl_285")
+mesh = SubResource("Cyl_291")
 
 [node name="Burner2" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, 0.912, -2.32)
-mesh = SubResource("Cyl_286")
+mesh = SubResource("Cyl_292")
 
 [node name="Burner3" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05, 0.912, -2.08)
-mesh = SubResource("Cyl_287")
+mesh = SubResource("Cyl_293")
 
 [node name="Burner4" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, 0.912, -2.08)
-mesh = SubResource("Cyl_288")
+mesh = SubResource("Cyl_294")
 
 [node name="OvenDoor" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 0.45, -1.895)
-mesh = SubResource("Box_289")
+mesh = SubResource("Box_295")
 
 [node name="OvenHandle" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 0.73, -1.875)
-mesh = SubResource("Box_290")
+mesh = SubResource("Box_296")
 
 [node name="UpperCabinetWest" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.05, 1.85, -2.325)
-mesh = SubResource("Box_291")
+mesh = SubResource("Box_297")
 
 [node name="UpperCabinetEast" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.75, 1.85, -2.325)
-mesh = SubResource("Box_292")
+mesh = SubResource("Box_298")
 
 [node name="RangeHood" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 1.55, -2.3)
-mesh = SubResource("Box_293")
+mesh = SubResource("Box_299")
+
+[node name="CoffeeMakerBase" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 0.92, -2.2)
+mesh = SubResource("Box_300")
+
+[node name="CoffeeMakerHotPlate" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 0.943, -2.17)
+mesh = SubResource("Cyl_301")
+
+[node name="CoffeeMakerColumn" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 1.07, -2.285)
+mesh = SubResource("Box_302")
+
+[node name="CoffeeMakerHead" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 1.2, -2.2)
+mesh = SubResource("Box_303")
+
+[node name="CoffeeMakerFilter" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 1.135, -2.17)
+mesh = SubResource("Cyl_304")
+
+[node name="CoffeeMakerCarafe" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 1.02, -2.17)
+mesh = SubResource("Cyl_305")
+
+[node name="CoffeeMakerCoffee" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 0.98, -2.17)
+mesh = SubResource("Cyl_306")
+
+[node name="CoffeeMakerCarafeLid" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.95, 1.105, -2.17)
+mesh = SubResource("Cyl_307")
+
+[node name="CoffeeMakerHandle" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.865, 1.03, -2.17)
+mesh = SubResource("Box_308")
+
+[node name="CoffeeMakerButton" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0.93, -2.069)
+mesh = SubResource("Box_309")
+
+[node name="CoffeeMakerMug" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.71, 0.945, -2.1)
+mesh = SubResource("Cyl_310")
 
 [node name="Fridge" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.475, 0.925, -2.15)
-mesh = SubResource("Box_294")
+mesh = SubResource("Box_311")
 
 [node name="FridgeDoorLine" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.475, 1.25, -1.797)
-mesh = SubResource("Box_295")
+mesh = SubResource("Box_312")
 
 [node name="FridgeHandleTop" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82, 1.55, -1.78)
-mesh = SubResource("Box_296")
+mesh = SubResource("Box_313")
 
 [node name="FridgeHandleBottom" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82, 0.85, -1.78)
-mesh = SubResource("Box_297")
+mesh = SubResource("Box_314")
 
 [node name="FridgeMagnet" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1.5, -1.795)
-mesh = SubResource("Box_298")
+mesh = SubResource("Box_315")
 
 [node name="Counter" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0.75)
-mesh = SubResource("Box_299")
+mesh = SubResource("Box_316")
 
 [node name="CounterTop" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.025, 0.8)
-mesh = SubResource("Box_300")
+mesh = SubResource("Box_317")
 
 [node name="StoolLeg1" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0.35, 1.35)
-mesh = SubResource("Cyl_301")
+mesh = SubResource("Cyl_318")
 
 [node name="StoolSeat1" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0.72, 1.35)
-mesh = SubResource("Cyl_302")
+mesh = SubResource("Cyl_319")
 
 [node name="StoolLeg2" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.35, 1.35)
-mesh = SubResource("Cyl_303")
+mesh = SubResource("Cyl_320")
 
 [node name="StoolSeat2" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.72, 1.35)
-mesh = SubResource("Cyl_304")
+mesh = SubResource("Cyl_321")
 
 [node name="StoolLeg3" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0.35, 1.35)
-mesh = SubResource("Cyl_305")
+mesh = SubResource("Cyl_322")
 
 [node name="StoolSeat3" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0.72, 1.35)
-mesh = SubResource("Cyl_306")
+mesh = SubResource("Cyl_323")
 
 [node name="FruitBowl" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.08, 0.75)
-mesh = SubResource("Box_307")
+mesh = SubResource("Box_324")
 
 [node name="Fruit1" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57, 1.13, 0.75)
-mesh = SubResource("Cyl_308")
+mesh = SubResource("Cyl_325")
 
 [node name="Fruit2" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.13, 0.75)
-mesh = SubResource("Cyl_309")
+mesh = SubResource("Cyl_326")
 
 [node name="Fruit3" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.43, 1.13, 0.75)
-mesh = SubResource("Cyl_310")
+mesh = SubResource("Cyl_327")
 
 [node name="CeilingLight" type="MeshInstance3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 2.585, -0.9)
-mesh = SubResource("Box_311")
+mesh = SubResource("Box_328")
 
 [node name="CeilingLamp" type="OmniLight3D" parent="Kitchen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 2.35, -0.9)
@@ -3486,23 +3685,23 @@ omni_range = 6
 
 [node name="DiningTable" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3, 0.74, 2.5)
-mesh = SubResource("Box_312")
+mesh = SubResource("Box_329")
 
 [node name="DiningTableLeg1" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0.36, 2.2)
-mesh = SubResource("Box_313")
+mesh = SubResource("Box_330")
 
 [node name="DiningTableLeg2" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85, 0.36, 2.2)
-mesh = SubResource("Box_314")
+mesh = SubResource("Box_331")
 
 [node name="DiningTableLeg3" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0.36, 2.8)
-mesh = SubResource("Box_315")
+mesh = SubResource("Box_332")
 
 [node name="DiningTableLeg4" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85, 0.36, 2.8)
-mesh = SubResource("Box_316")
+mesh = SubResource("Box_333")
 
 [node name="DiningChairWest" parent="LivingRoom" instance=ExtResource("13_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -11, 0, 2.5)
@@ -3512,59 +3711,83 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -9.6, 0, 2.5)
 
 [node name="Rug" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 0.005, 4.4)
-mesh = SubResource("Box_317")
+mesh = SubResource("Box_334")
 
 [node name="TvRack" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.19, 0.25, 4.4)
-mesh = SubResource("Box_318")
+mesh = SubResource("Box_335")
 
 [node name="Tv" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.35, 1.3, 4.4)
-mesh = SubResource("Box_319")
+mesh = SubResource("Box_336")
 
 [node name="TvScreen" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.322, 1.3, 4.4)
-mesh = SubResource("Box_320")
+mesh = SubResource("Box_337")
 
 [node name="CoffeeTable" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0.2, 4.4)
-mesh = SubResource("Box_321")
+mesh = SubResource("Box_338")
 
 [node name="Book4" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0.42, 4.6)
-mesh = SubResource("Box_322")
+mesh = SubResource("Box_339")
+
+[node name="AirConditioner" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.31, 2.3, 4.4)
+mesh = SubResource("Box_340")
+
+[node name="ACFrontPanel" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.217, 2.33, 4.4)
+mesh = SubResource("Box_341")
+
+[node name="ACLouver" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.23, 2.185, 4.4)
+mesh = SubResource("Box_342")
+
+[node name="ACDisplay" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.213, 2.24, 4.7)
+mesh = SubResource("Box_343")
+
+[node name="ACPipe" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -11.38, 2.2, 3.92)
+mesh = SubResource("Cyl_344")
 
 [node name="Remote" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0.9659, 0, 0.2588, 0, 1, 0, -0.2588, 0, 0.9659, -10.25, 0.408, 4.2)
-mesh = SubResource("Box_323")
+mesh = SubResource("Box_345")
 
 [node name="SofaBase" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85, 0.21, 4.4)
-mesh = SubResource("Box_324")
+mesh = SubResource("Box_346")
 
 [node name="SofaSeat" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.95, 0.47, 4.4)
-mesh = SubResource("Box_325")
+mesh = SubResource("Box_347")
 
 [node name="SofaBack" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53, 0.66, 4.4)
-mesh = SubResource("Box_326")
+mesh = SubResource("Box_348")
 
 [node name="SofaArmNorth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85, 0.52, 3.47)
-mesh = SubResource("Box_327")
+mesh = SubResource("Box_349")
 
 [node name="SofaArmSouth" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.85, 0.52, 5.33)
-mesh = SubResource("Box_328")
+mesh = SubResource("Box_350")
+
+[node name="ACRemote" type="MeshInstance3D" parent="LivingRoom"]
+transform = Transform3D(0.9848, 0, 0.1736, 0, 1, 0, -0.1736, 0, 0.9848, -8.95, 0.628, 5.33)
+mesh = SubResource("Box_351")
 
 [node name="SofaPillow1" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0.9781, 0.2079, 0, -0.2079, 0.9781, 0, 0, 0, 1, -8.69, 0.7, 3.9)
-mesh = SubResource("Box_329")
+mesh = SubResource("Box_352")
 
 [node name="SofaPillow2" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0.9781, 0.2079, 0, -0.2079, 0.9781, 0, 0, 0, 1, -8.69, 0.7, 4.9)
-mesh = SubResource("Box_330")
+mesh = SubResource("Box_353")
 
 [node name="LivingPlant" parent="LivingRoom" instance=ExtResource("17_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.05, 0, 6.75)
@@ -3574,23 +3797,23 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -9.5, 0, 6.83)
 
 [node name="PictureMountainsFrame" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.08, 1.6, 0.4)
-mesh = SubResource("Box_331")
+mesh = SubResource("Box_354")
 
 [node name="PictureMountainsSky" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.098, 1.7, 0.4)
-mesh = SubResource("Box_332")
+mesh = SubResource("Box_355")
 
 [node name="PictureMountainsGround" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.098, 1.45, 0.4)
-mesh = SubResource("Box_333")
+mesh = SubResource("Box_356")
 
 [node name="PictureMountainsSun" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -7.102, 1.725, 0.554)
-mesh = SubResource("Cyl_334")
+mesh = SubResource("Cyl_357")
 
 [node name="CeilingLight1" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 2.585, 2.6)
-mesh = SubResource("Box_335")
+mesh = SubResource("Box_358")
 
 [node name="CeilingLamp1" type="OmniLight3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 2.35, 2.6)
@@ -3601,7 +3824,7 @@ omni_range = 6
 
 [node name="CeilingLight2" type="MeshInstance3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 2.585, 5.2)
-mesh = SubResource("Box_336")
+mesh = SubResource("Box_359")
 
 [node name="CeilingLamp2" type="OmniLight3D" parent="LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 2.35, 5.2)
@@ -3615,51 +3838,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Floor" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, -0.05, 5.6)
-mesh = SubResource("Box_337")
+mesh = SubResource("Box_360")
 
 [node name="WallNorthBalconySide" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 1.3, 4.097)
-mesh = SubResource("Box_338")
+mesh = SubResource("Box_361")
 
 [node name="RailingGlass" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 0.55, 7.05)
-mesh = SubResource("Box_339")
+mesh = SubResource("Box_362")
 
 [node name="RailingTop" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 1.07, 7.05)
-mesh = SubResource("Box_340")
+mesh = SubResource("Box_363")
 
 [node name="RailingCurb" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 0.04, 7.05)
-mesh = SubResource("Box_341")
+mesh = SubResource("Box_364")
 
 [node name="RailingPost1" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95, 0.525, 7.05)
-mesh = SubResource("Box_342")
+mesh = SubResource("Box_365")
 
 [node name="RailingPost2" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.525, 7.05)
-mesh = SubResource("Box_343")
+mesh = SubResource("Box_366")
 
 [node name="RailingPost3" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65, 0.525, 7.05)
-mesh = SubResource("Box_344")
+mesh = SubResource("Box_367")
 
 [node name="RailingPost4" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.525, 7.05)
-mesh = SubResource("Box_345")
+mesh = SubResource("Box_368")
 
 [node name="RailingPost5" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 0.525, 7.05)
-mesh = SubResource("Box_346")
+mesh = SubResource("Box_369")
 
 [node name="BalconyTable" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.7, 5.6)
-mesh = SubResource("Cyl_347")
+mesh = SubResource("Cyl_370")
 
 [node name="BalconyTableLeg" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.35, 5.6)
-mesh = SubResource("Cyl_348")
+mesh = SubResource("Cyl_371")
 
 [node name="BalconyChairWest" parent="Balcony" instance=ExtResource("13_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.2, 0, 5.6)
@@ -3669,7 +3892,7 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4, 0, 5.6)
 
 [node name="BalconyMug" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.765, 5.5)
-mesh = SubResource("Cyl_349")
+mesh = SubResource("Cyl_372")
 
 [node name="BalconyPlant1" parent="Balcony" instance=ExtResource("17_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, 6.6)
@@ -3682,7 +3905,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, 4.5)
 
 [node name="CeilingLight" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.585, 5.6)
-mesh = SubResource("Box_350")
+mesh = SubResource("Box_373")
 
 [node name="BalconyLamp" type="OmniLight3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.3, 5.6)
@@ -3696,99 +3919,99 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Floor" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, -0.05, 5.4)
-mesh = SubResource("Box_351")
+mesh = SubResource("Box_374")
 
 [node name="ThresholdService" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, -0.05, 4.05)
-mesh = SubResource("Box_352")
+mesh = SubResource("Box_375")
 
 [node name="WallEast" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 1.3, 5.4)
-mesh = SubResource("Box_353")
+mesh = SubResource("Box_376")
 
 [node name="WallSouthBelow" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.65, 6.65)
-mesh = SubResource("Box_354")
+mesh = SubResource("Box_377")
 
 [node name="WallSouthAbove" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 2.3, 6.65)
-mesh = SubResource("Box_355")
+mesh = SubResource("Box_378")
 
 [node name="WallSouthWest" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 1.65, 6.65)
-mesh = SubResource("Box_356")
+mesh = SubResource("Box_379")
 
 [node name="WallSouthEast" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.125, 1.65, 6.65)
-mesh = SubResource("Box_357")
+mesh = SubResource("Box_380")
 
 [node name="WindowGlass" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 1.65, 6.65)
-mesh = SubResource("Box_358")
+mesh = SubResource("Box_381")
 
 [node name="WallWestServiceSide" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.103, 1.3, 5.35)
-mesh = SubResource("Box_359")
+mesh = SubResource("Box_382")
 
 [node name="LaundryTub" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 0.425, 6.375)
-mesh = SubResource("Box_360")
+mesh = SubResource("Box_383")
 
 [node name="LaundryTubBasin" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 0.852, 6.36)
-mesh = SubResource("Box_361")
+mesh = SubResource("Box_384")
 
 [node name="LaundryTubFaucet" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 1, 6.56)
-mesh = SubResource("Cyl_362")
+mesh = SubResource("Cyl_385")
 
 [node name="CleaningShelf" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.075, 1.35, 5)
-mesh = SubResource("Box_363")
+mesh = SubResource("Box_386")
 
 [node name="CleaningBottle1" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08, 1.46, 4.7)
-mesh = SubResource("Cyl_364")
+mesh = SubResource("Cyl_387")
 
 [node name="CleaningBottle2" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08, 1.46, 4.9)
-mesh = SubResource("Cyl_365")
+mesh = SubResource("Cyl_388")
 
 [node name="CleaningBottle3" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08, 1.46, 5.15)
-mesh = SubResource("Cyl_366")
+mesh = SubResource("Cyl_389")
 
 [node name="CleaningBottle4" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08, 1.46, 5.32)
-mesh = SubResource("Cyl_367")
+mesh = SubResource("Cyl_390")
 
 [node name="ClotheslineRod1" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.4, 2.35, 5.3)
-mesh = SubResource("Cyl_368")
+mesh = SubResource("Cyl_391")
 
 [node name="ClotheslineRod2" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.65, 2.35, 5.3)
-mesh = SubResource("Cyl_369")
+mesh = SubResource("Cyl_392")
 
 [node name="ClotheslineRod3" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.9, 2.35, 5.3)
-mesh = SubResource("Cyl_370")
+mesh = SubResource("Cyl_393")
 
 [node name="HangingTowel" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 2.1, 5)
-mesh = SubResource("Box_371")
+mesh = SubResource("Box_394")
 
 [node name="BroomHandle" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 0.9903, 0.1392, 0, -0.1392, 0.9903, 1.22, 0.7, 4.35)
-mesh = SubResource("Cyl_372")
+mesh = SubResource("Cyl_395")
 
 [node name="BroomHead" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22, 0.06, 4.27)
-mesh = SubResource("Box_373")
+mesh = SubResource("Box_396")
 
 [node name="CeilingLight" type="MeshInstance3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 2.585, 5)
-mesh = SubResource("Box_374")
+mesh = SubResource("Box_397")
 
 [node name="ServiceLamp" type="OmniLight3D" parent="ServiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 2.3, 5)
@@ -3802,47 +4025,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Ceiling" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, 2.65, 2.3)
-mesh = SubResource("Box_375")
+mesh = SubResource("Box_398")
 
 [node name="BuildingFacade" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, -7.05, 2.3)
-mesh = SubResource("Box_376")
+mesh = SubResource("Box_399")
 
 [node name="BuildingRoof" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.575, 2.85, 2.3)
-mesh = SubResource("Box_377")
+mesh = SubResource("Box_400")
 
 [node name="Grass" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
-mesh = SubResource("Box_378")
+mesh = SubResource("Box_401")
 
 [node name="CityBuilding1" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 6, -25)
-mesh = SubResource("Box_379")
+mesh = SubResource("Box_402")
 
 [node name="CityBuilding2" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -40)
-mesh = SubResource("Box_380")
+mesh = SubResource("Box_403")
 
 [node name="CityBuilding3" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 11, -15)
-mesh = SubResource("Box_381")
+mesh = SubResource("Box_404")
 
 [node name="CityBuilding4" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, 20)
-mesh = SubResource("Box_382")
+mesh = SubResource("Box_405")
 
 [node name="CityBuilding5" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 40)
-mesh = SubResource("Box_383")
+mesh = SubResource("Box_406")
 
 [node name="CityBuilding6" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -3, 35)
-mesh = SubResource("Box_384")
+mesh = SubResource("Box_407")
 
 [node name="CityBuilding7" type="MeshInstance3D" parent="Apartment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 4, 5)
-mesh = SubResource("Box_385")
+mesh = SubResource("Box_408")
 
 [node name="WardrobeStorage" type="Node" parent="."]
 script = ExtResource("3_storage")

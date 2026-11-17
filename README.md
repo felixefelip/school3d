@@ -47,12 +47,14 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     estante, tapete, janela, ar-condicionado split com controle remoto, violão e decoração), com a
     porta abrindo com E;
   - corredor com passadeira, aparador e quadros, ligando os quartos, o banheiro e a área de serviço à sala;
-  - quarto dos pais (cama de casal, criados-mudos, guarda-roupa, cômoda com espelho), porta abrindo com E;
+  - quarto dos pais (cama de casal, criados-mudos, guarda-roupa, cômoda com espelho, ar-condicionado),
+    porta abrindo com E;
   - banheiro (porta abrindo com E): vaso, papel higiênico, lixeira, pia de coluna com espelho e
     prateleira, box de vidro com chuveiro, toalheiro com toalha, máquina de lavar com prateleira de
     sabão e amaciante, tapete e janela alta;
-  - cozinha americana (bancada com pia e cooktop, forno, armários, geladeira, balcão com banquetas)
-    integrada à sala (sofá, TV, mesa de centro, mesinha de jantar, estante) e porta de entrada fechada;
+  - cozinha americana (bancada com pia, cooktop e cafeteira, forno, armários, geladeira, balcão com
+    banquetas) integrada à sala (sofá, TV, ar-condicionado, mesa de centro, mesinha de jantar, estante) e
+    porta de entrada fechada;
   - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a cidade;
   - área de serviço com tanque, varal e produtos de limpeza.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).

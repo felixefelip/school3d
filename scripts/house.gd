@@ -22,6 +22,7 @@ const NO_COLLISION := [
 	"DoorMat", "Perfume", "Jewelry", "DresserDrawerLine", "DresserMirror", "LaundryTubBasin",
 	"LaundryTubFaucet", "Clothesline", "HangingTowel", "Broom", "CleaningBottle", "BalconyMug",
 	"Grass", "BuildingFacade", "BuildingRoof", "CityBuilding",
+	"CoffeeMaker",
 ]
 
 @export var desk_chair_path: NodePath = ^"Bedroom/Furniture/DeskChair"
