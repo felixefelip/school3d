@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" path="res://models/props/toilet.scn" id="28_toilet"]
 [ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="29_toilet_paper"]
 [ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="30_steel_trash_can"]
+[ext_resource type="Script" path="res://scripts/scene_door.gd" id="31_scene_door"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_Wall"]
 albedo_color = Color(0.88, 0.89, 0.92, 1)
@@ -4405,6 +4406,19 @@ script = ExtResource("2_door")
 door_path = NodePath("../../ParentsRoom/ParentsDoor")
 open_angle_degrees = -90
 center_offset = Vector3(-0.45, 1, 0)
+
+[node name="EntranceDoor" type="Node" parent="Doors"]
+script = ExtResource("31_scene_door")
+door_path = NodePath("../../LivingRoom/EntranceDoor")
+target_scene = "res://scenes/street.tscn"
+target_spawn = "FromApartment"
+prompt = "Go out to the street"
+center_offset = Vector3(0, 0, -0.5)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="FromStreet" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -7.85, 0.05, 6.4)
 
 [node name="Player" parent="." instance=ExtResource("22_player")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.6, 0.05, 1.5)

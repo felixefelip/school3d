@@ -54,7 +54,7 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     sabão e amaciante, tapete e janela alta;
   - cozinha americana (bancada com pia, cooktop e cafeteira, forno, armários, geladeira, aparador com
     micro-ondas, air fryer e liquidificador, balcão com banquetas) integrada à sala (sofá, TV, ar-condicionado, mesa de centro, mesinha de jantar, estante) e
-    porta de entrada fechada;
+    porta de entrada, que com **E** leva para a rua (`scenes/street.tscn`);
   - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a cidade;
   - área de serviço com tanque, varal e produtos de limpeza.
   Para abrir, selecione a cena no editor e pressione **F6** (a cena principal continua sendo a escola).
@@ -78,6 +78,16 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     tirada do modelo do estudante (mesmo esqueleto); o boné é `models/clothes/cap.tscn`.
   - `scripts/ui/outfit_window.gd`: o menu de roupa (C), com prévia 3D girando e os quatro slots.
   - `scripts/washing_machine.gd`: a máquina de lavar (armazenamento com o botão Wash).
+- `scenes/street.tscn` + `scripts/street.gd`: a rua em frente ao prédio. De um lado, o prédio da jogadora
+  (Residencial Aurora, com a porta do saguão), uma farmácia e uma padaria; do outro, o restaurante
+  Bella Cucina (mesas com guarda-sol na calçada), a Cafe Aroma (mesinhas e cavalete com o cardápio) e um
+  mini mercado. Tem carros estacionados, postes, árvores, bancos, lixeiras, hidrantes, ponto de ônibus,
+  faixa de pedestres com semáforos, caixa de correio e bicicletário. Os estabelecimentos ainda não têm
+  interior. `street.gd` gera a colisão e rampas invisíveis no meio-fio (para subir e descer da calçada);
+  paredes invisíveis limitam a rua nas pontas.
+- `scripts/scene_door.gd`: porta que troca de cena (escurece a tela, carrega a outra cena e coloca a
+  jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua
+  e a porta do saguão do prédio de volta ao apartamento.
 - `scripts/coffee_maker.gd`: a cafeteira da cozinha. Com **E** ela começa a passar o café: uma barra de
   progresso horizontal aparece sobre ela, a luz acende em vermelho e a jarra enche. Pronto, a luz fica
   verde e **E** de novo pega uma
