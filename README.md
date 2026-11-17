@@ -89,6 +89,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     mastro e quadra, prédio de três andares e o portão virado para a rua nova. Com **E** no portão, a
     jogadora entra na escola (`scenes/main.tscn`); a porta **EXIT** no fim do corredor da escola leva de
     volta para a frente do portão.
+  É uma cidade grande: os prédios têm de 9 a 42 andares (alguns com fachada de vidro), letreiros verticais
+  em neon, caixas-d'água, antenas e painéis nos terraços, e cada rua termina num prédio, fechando o mapa.
   Os cruzamentos têm faixas de pedestres nos quatro lados e semáforos. Há carros estacionados, postes,
   árvores, bancos, lixeiras, hidrantes, caixa de correio e bicicletários. Os estabelecimentos ainda não
   têm interior. `street.gd` gera a colisão; as rampas invisíveis do meio-fio (para subir e descer da

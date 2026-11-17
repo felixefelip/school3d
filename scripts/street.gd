@@ -8,14 +8,14 @@ extends Node3D
 
 const LEVEL := ["Ground", "Buildings", "Cars", "Props"]
 ## Meshes flat on the ground, high above the player, too small to bump into or
-## out of reach (the distant city and the school yard behind the fence).
+## out of reach (rooftops, the distant city and the school yard behind the fence).
 const NO_COLLISION := [
 	"Window", "Sign", "Marking", "Crosswalk", "Manhole", "Headlight", "Taillight", "Plate",
 	"Hubcap", "Mirror", "TreeCrown", "TreePit", "Flower", "Awning", "Canopy", "CityBuilding",
 	"LampArm", "LampHead", "LampGlow", "Cornice", "Sill", "DoorFrame", "Handle", "Number",
 	"TrafficLamp", "TrafficHousing", "UmbrellaTop", "Windshield", "Grate", "Plinth", "Menu",
 	"BusSign", "Mailbox", "Stripe", "SchoolYard", "SchoolPath", "Court", "Flag", "Hoop",
-	"FenceRail", "GateFrame", "SchoolRoofEdge", "Roof",
+	"FenceRail", "GateFrame", "SchoolRoofEdge", "Roof", "Antenna", "Neon",
 ]
 
 
