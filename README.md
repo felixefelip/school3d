@@ -108,7 +108,7 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - Relacionamentos: dois clientes da cafeteria, **Bia** (na mesinha da janela) e **Lucas** (na mesa comprida),
   têm nome sobre a cabeça e dá para conversar com eles (**E**). Com a roupa toda limpa, eles são simpáticos e a
   amizade sobe 1 ponto; com qualquer peça suja, eles reclamam e a amizade cai 1 ponto (não fica abaixo de 0).
-  A mesma pessoa só muda os pontos de novo depois de 3 minutos (antes disso só responde). A fala e os
+  A mesma pessoa só muda os pontos uma vez por dia (depois disso só responde). A fala e os
   pontos aparecem numa caixa acima da barra de itens.
   - `scripts/relationships.gd`: autoload `Relationships`, com os pontos de cada NPC (continuam ao trocar de cena).
   - `scripts/npc_student.gd`: com `npc_name` preenchido, o NPC vira relacionável (`friendly_lines` e
@@ -117,6 +117,16 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   - `scripts/ui/relationships_window.gd` + `heart_row.gd`: a lista de relacionamentos do menu de pausa, com
     todos que dá para conhecer (`Relationships.PEOPLE`), o nível de amizade (Stranger, Acquaintance, Friend,
     Good friend, Best friend), onde encontrar a pessoa, os corações (até 10) e os pontos.
+- Horário e calendário (como no Stardew Valley), autoload `GameClock` (`scripts/game_clock.gd`):
+  - o dia começa às 6:00 am e o relógio anda de 10 em 10 minutos, a cada 7 segundos (um dia dura uns 15
+    minutos); para enquanto o jogo está pausado. O relógio no canto superior direito
+    (`scripts/ui/clock_panel.gd`) mostra o dia da semana, a data, a estação e o ano, e a hora;
+  - o calendário tem 4 estações (Spring, Summer, Fall, Winter) de 28 dias e semanas de 7 dias;
+  - na cama do quarto, **E** (**Go to sleep**) dorme a qualquer hora e acaba o dia; se ainda estiver acordada
+    às 3:00 am, ela desmaia onde estiver. Nos dois casos ela acorda ao lado da cama no dia seguinte, às
+    6:00 am (`scripts/bed.gd`, ponto `Bedside` no apartamento);
+  - a luz do sol, do céu e o ambiente de cada cena acompanham a hora: amanhece das 6:00 às 7:30 e
+    escurece das 5:00 às 8:00 pm.
 - `scripts/ui/pause_menu.gd`: o menu de pausa (**Esc**), que pausa a árvore de cenas enquanto está aberto.
 - `scripts/scene_door.gd`: porta que troca de cena (escurece a tela, carrega a outra cena e coloca a
   jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua,

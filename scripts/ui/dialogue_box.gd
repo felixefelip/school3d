@@ -59,7 +59,7 @@ func show_line(npc_name: String, line: String, change: int, total: int, recently
 		text = "%d friendship  -  %s" % [change, text]
 		color = LOSS
 	elif recently:
-		text += "  (you talked recently)"
+		text += "  (you already talked today)"
 	_friendship.text = text
 	_friendship.add_theme_color_override("font_color", color)
 	show()

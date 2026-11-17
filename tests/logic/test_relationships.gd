@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 ## Friendship points: clean clothes +1, dirty clothes -1, never below zero,
-## and at most one change per NPC every talk_cooldown seconds. Each test uses
+## and at most one change per NPC per day. Each test uses
 ## a fresh Relationships; the player's clothes (the real PlayerInventory) are
 ## put back as they were.
 
@@ -63,7 +63,7 @@ func test_points_do_not_go_below_zero() -> void:
 	assert_int(rel.get_points("bia")).is_equal(0)
 
 
-func test_talking_again_soon_does_not_change_points() -> void:
+func test_talking_again_the_same_day_does_not_change_points() -> void:
 	var rel := _new_relationships()
 	_set_outfit_dirty(false)
 	rel.talk("bia", "Bia", NICE, RUDE)
@@ -71,9 +71,10 @@ func test_talking_again_soon_does_not_change_points() -> void:
 	assert_int(rel.get_points("bia")).is_equal(1)
 	# Each NPC has its own cooldown.
 	assert_int(rel.talk("lucas", "Lucas", NICE, RUDE)).is_equal(1)
-	# Once the cooldown is over, it counts again.
-	rel.talk_cooldown = 0.0
+	# The next day it counts again.
+	GameClock.day += 1
 	assert_int(rel.talk("bia", "Bia", NICE, RUDE)).is_equal(1)
+	GameClock.day -= 1
 	assert_int(rel.get_points("bia")).is_equal(2)
 
 

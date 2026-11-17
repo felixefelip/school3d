@@ -41,6 +41,7 @@ func test_arrives_at_the_spawn_point(scene_path: String, spawn: String, test_par
 	["res://scenes/main.tscn", "FromStreet"],
 	["res://scenes/street.tscn", "FromCafe"],
 	["res://scenes/cafe.tscn", "FromStreet"],
+	["res://scenes/house.tscn", "Bedside"],
 ]) -> void:
 	SceneDoor._arrival_spawn = spawn
 	var runner := scene_runner(scene_path)
@@ -132,10 +133,29 @@ func test_bia_and_lucas_can_be_talked_to_in_the_cafe() -> void:
 	# The other customers are just background students.
 	assert_bool(runner.scene().get_node("Customers/CustomerLongTable2").is_in_group("interactable")).is_false()
 	var points_before: int = Relationships.get_points("bia")
-	var cooldown_before: float = Relationships.talk_cooldown
-	Relationships.talk_cooldown = 0.0
+	var talked_before: Dictionary = Relationships._last_change.duplicate()
+	Relationships._last_change.erase("bia")
 	bia.interact(runner.scene().get_node("Player"))
 	var expected := 1 if Relationships.is_outfit_clean() else maxi(points_before - 1, 0) - points_before
 	assert_int(Relationships.get_points("bia") - points_before).is_equal(expected)
 	Relationships.points["bia"] = points_before
-	Relationships.talk_cooldown = cooldown_before
+	Relationships._last_change = talked_before
+
+
+func test_bed_is_next_to_the_wake_up_spot() -> void:
+	var runner := scene_runner("res://scenes/house.tscn")
+	await _physics_frames(10)
+	var bed: Node = runner.scene().get_node("Bed")
+	assert_str(bed.get_prompt()).is_equal("Go to sleep")
+	var spawn: Node3D = runner.scene().find_child(GameClock.BED_SPAWN, true, false)
+	var offset: Vector3 = bed.get_interaction_point() - spawn.global_position
+	offset.y = 0.0
+	assert_float(offset.length()).is_less(1.0)
+
+
+func test_hud_clock_shows_the_date_and_time() -> void:
+	var runner := scene_runner("res://scenes/street.tscn")
+	await _physics_frames(5)
+	var clock: Control = runner.scene().get_node("Player/HUD/Clock")
+	assert_str((clock.find_child("Date", true, false) as Label).text).is_equal(GameClock.date_text())
+	assert_str((clock.find_child("Time", true, false) as Label).text).is_equal(GameClock.time_text())

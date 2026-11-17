@@ -3,6 +3,9 @@ extends Node
 ## the street and the building's lobby door goes back up. With E the screen
 ## fades to black, the other scene loads and the player appears at the
 ## Marker3D named `target_spawn` there (searched under the scene's root).
+##
+## travel() does the same from anywhere (GameClock uses it to put the player
+## back in bed after sleeping).
 
 ## Where the player arrives in the scene being loaded. The first SceneDoor of
 ## that scene to get ready moves the player there and clears it.
@@ -40,12 +43,19 @@ func interact(_by: Node3D) -> void:
 	if _leaving:
 		return
 	_leaving = true
-	var fade := _make_fade(0.0)
-	var tween := create_tween()
+	await travel(self, target_scene, target_spawn, fade_time)
+
+
+## Fades the screen to black over `fade_time`, then loads `scene_path` with
+## the player at the spawn point `spawn`. `host` keeps the fade on screen
+## while it runs (it must stay in the tree until then).
+static func travel(host: Node, scene_path: String, spawn: String, fade_time := 0.35) -> void:
+	var fade := make_fade(host, 0.0)
+	var tween := fade.create_tween()
 	tween.tween_property(fade, "color:a", 1.0, fade_time)
 	await tween.finished
-	_arrival_spawn = target_spawn
-	get_tree().change_scene_to_file(target_scene)
+	_arrival_spawn = spawn
+	host.get_tree().change_scene_to_file(scene_path)
 
 
 func _arrive(spawn_name: String) -> void:
@@ -54,14 +64,14 @@ func _arrive(spawn_name: String) -> void:
 	var player := root.get_node_or_null("Player") as Node3D
 	if spawn and player:
 		player.global_transform = spawn.global_transform
-	var fade := _make_fade(1.0)
+	var fade := make_fade(self, 1.0)
 	var tween := fade.create_tween()
 	tween.tween_property(fade, "color:a", 0.0, fade_time)
 	tween.tween_callback(fade.get_parent().queue_free)
 
 
-## A black rectangle over the whole screen, above the HUD.
-func _make_fade(alpha: float) -> ColorRect:
+## A black rectangle over the whole screen, above the HUD, added to `host`.
+static func make_fade(host: Node, alpha: float) -> ColorRect:
 	var layer := CanvasLayer.new()
 	layer.layer = 100
 	var rect := ColorRect.new()
@@ -69,5 +79,5 @@ func _make_fade(alpha: float) -> ColorRect:
 	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(rect)
-	add_child(layer)
+	host.add_child(layer)
 	return rect

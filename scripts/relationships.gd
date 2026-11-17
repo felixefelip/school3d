@@ -5,8 +5,8 @@ extends Node
 ##
 ## Talking to one of them changes the points by how the player looks: in clean
 ## clothes they're nice to her (+1), with any dirty piece on they aren't (-1).
-## The points change at most once per NPC every `talk_cooldown` seconds, so
-## pressing E over and over doesn't farm them; they still answer meanwhile.
+## The points change at most once per NPC per day (GameClock), so pressing E
+## over and over doesn't farm them; they still answer meanwhile.
 
 signal changed(npc_id: String, points: int)
 
@@ -22,8 +22,6 @@ const MAX_HEARTS := 10
 ## Friendship levels: the name of the highest level reached by the points.
 const LEVELS := [[0, "Stranger"], [1, "Acquaintance"], [3, "Friend"], [6, "Good friend"], [10, "Best friend"]]
 
-## Seconds before talking to the same NPC changes the points again.
-var talk_cooldown := 180.0
 ## Lowest number of points; friendship doesn't go below it.
 const MIN_POINTS := 0
 
@@ -33,7 +31,7 @@ var points := {}
 var people := PEOPLE.duplicate(true)
 ## Ids of the NPCs the player has talked to.
 var met := {}
-## When the points of each NPC last changed (seconds since the game started).
+## The day (GameClock.day_index()) the points of each NPC last changed.
 var _last_change := {}
 var _dialogue_box: Control
 
@@ -77,8 +75,9 @@ func is_outfit_clean() -> bool:
 	return true
 
 
+## False after the points of this NPC already changed today.
 func can_change(npc_id: String) -> bool:
-	return not _last_change.has(npc_id) or _now() - _last_change[npc_id] >= talk_cooldown
+	return _last_change.get(npc_id, -1) != _today()
 
 
 ## Adds `amount` (may be negative) and returns the actual change, which is
@@ -87,7 +86,7 @@ func change_points(npc_id: String, amount: int) -> int:
 	var before := get_points(npc_id)
 	var after := maxi(before + amount, MIN_POINTS)
 	points[npc_id] = after
-	_last_change[npc_id] = _now()
+	_last_change[npc_id] = _today()
 	if after != before:
 		changed.emit(npc_id, after)
 	return after - before
@@ -108,5 +107,5 @@ func talk(npc_id: String, npc_name: String, friendly_lines: PackedStringArray, r
 	return change
 
 
-func _now() -> float:
-	return Time.get_ticks_msec() / 1000.0
+func _today() -> int:
+	return GameClock.day_index()

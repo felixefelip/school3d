@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/ui/outfit_window.gd" id="6_outfit_window"]
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="7_pause_menu"]
 [ext_resource type="Script" path="res://scripts/ui/relationships_window.gd" id="8_relationships_window"]
+[ext_resource type="Script" path="res://scripts/ui/clock_panel.gd" id="9_clock_panel"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
 radius = 0.2
@@ -95,6 +96,9 @@ script = ExtResource("6_outfit_window")
 
 [node name="ItemTooltip" type="PanelContainer" parent="HUD"]
 script = ExtResource("5_item_tooltip")
+
+[node name="Clock" type="PanelContainer" parent="HUD"]
+script = ExtResource("9_clock_panel")
 
 [node name="PauseMenu" type="Control" parent="HUD"]
 process_mode = 3
