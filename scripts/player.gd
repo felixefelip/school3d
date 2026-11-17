@@ -2,6 +2,7 @@ extends CharacterBody3D
 ## Third-person player.
 ## WASD: walk | Shift: run | Mouse: orbit the camera | E: interact (doors, chairs, wardrobe)
 ## 1-0 or mouse wheel: pick a hotbar slot | C: outfit (dress up)
+## G: give the selected hotbar item to the NPC in front of her
 ## Right mouse button (or Tab): capture/release the mouse
 ## Esc: pause menu (outfit, relationships, quit)
 
@@ -99,6 +100,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				stand_up()
 			elif _state == State.FREE and _interactable:
 				_interactable.interact(self)
+			_update_prompt()
+		elif event.physical_keycode == KEY_G:
+			if _state == State.FREE and _interactable and _interactable.has_method("give"):
+				_interactable.give(self)
 			_update_prompt()
 
 
@@ -311,5 +316,8 @@ func _update_prompt() -> void:
 			prompt.visible = false
 		State.FREE:
 			var text: String = _interactable.get_prompt() if _interactable else ""
-			prompt.visible = text != ""
-			prompt.text = "[E] " + text
+			var give: String = _interactable.get_give_prompt() \
+					if _interactable and _interactable.has_method("get_give_prompt") else ""
+			prompt.visible = text != "" or give != ""
+			prompt.text = "   ".join(PackedStringArray(
+					(["[E] " + text] if text != "" else []) + (["[G] " + give] if give != "" else [])))

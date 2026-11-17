@@ -45,6 +45,8 @@ func test_relationships_lists_people_with_points() -> void:
 	var window: Control = parts[3]
 	var saved_points: Dictionary = Relationships.points.duplicate()
 	var saved_met: Dictionary = Relationships.met.duplicate()
+	var saved_known: Dictionary = Relationships.known_gifts.duplicate(true)
+	Relationships.known_gifts = {"bia": {"coffee": ["loved", "Coffee"], "cheese": ["hated", "Cheese"]}}
 	Relationships.points["bia"] = 4
 	Relationships.met["bia"] = true
 	Relationships.points.erase("lucas")
@@ -58,11 +60,13 @@ func test_relationships_lists_people_with_points() -> void:
 	assert_str((bia.find_child("Details", true, false) as Label).text).starts_with("Friend")
 	assert_str((bia.find_child("Points", true, false) as Label).text).is_equal("4 points")
 	assert_int(bia.find_child("Hearts", true, false).filled).is_equal(4)
+	assert_str((bia.find_child("Gifts", true, false) as Label).text).is_equal("Loves: Coffee  ·  Hates: Cheese")
 	assert_object(bia.find_child("Portrait", true, false)).is_not_null()
 	assert_object(bia.find_child("Portrait", true, false).find_child("*", true, false)).is_not_null()
 	var lucas: Control = window.find_child("lucas", true, false)
 	assert_str((lucas.find_child("Details", true, false) as Label).text).starts_with("Not met yet")
 	assert_int(lucas.find_child("Hearts", true, false).filled).is_equal(0)
+	assert_bool((lucas.find_child("Gifts", true, false) as Label).visible).is_false()
 
 	# Back returns to the pause menu, which is still paused.
 	window.find_child("Back", true, false).pressed.emit()
@@ -72,3 +76,4 @@ func test_relationships_lists_people_with_points() -> void:
 	menu.resume()
 	Relationships.points = saved_points
 	Relationships.met = saved_met
+	Relationships.known_gifts = saved_known

@@ -7,7 +7,8 @@ extends StaticBody3D
 ##
 ## With a name she (or he) is someone the player can get to know: E talks to
 ## her, a name tag floats over her head, and the friendship points go up or
-## down by how the player looks (see relationships.gd).
+## down by how the player looks (see relationships.gd). G gives her the item
+## selected in the hotbar as a gift.
 
 @export var chair_path: NodePath
 ## Standing only: hands on whatever is in front of her (e.g. her locker).
@@ -61,6 +62,22 @@ func get_prompt() -> String:
 
 func interact(_by: Node3D) -> void:
 	Relationships.talk(npc_id, npc_name, friendly_lines, rude_lines)
+
+
+## "Give Apple" while the player holds something; empty otherwise.
+func get_give_prompt() -> String:
+	var item := PlayerInventory.get_selected_item()
+	return "Give " + item.display_name if item else ""
+
+
+## Hands her the selected hotbar item; it leaves the hotbar if she takes it.
+func give(_by: Node3D) -> void:
+	var item := PlayerInventory.get_selected_item()
+	if item == null:
+		return
+	if Relationships.give(npc_id, npc_name, item).given:
+		PlayerInventory.inventory.items[PlayerInventory.selected] = null
+		PlayerInventory.inventory.emit_changed()
 
 
 func _add_name_tag(seated: bool) -> void:

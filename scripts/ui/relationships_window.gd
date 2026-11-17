@@ -1,11 +1,13 @@
 extends Control
 ## The relationships list, opened from the pause menu: everyone the player can
-## get to know, with their face, friendship level, hearts and points.
+## get to know, with their face, friendship level, hearts and points, plus the
+## gift tastes the player has found out (by giving them things).
 
 signal closed
 
 const TEXT_DARK := Color("4a2c14")
 const MUTED := Color("8a6a4a")
+const TASTE_LABELS := {"loved": "Loves", "liked": "Likes", "neutral": "Neutral", "disliked": "Dislikes", "hated": "Hates"}
 
 var _list := VBoxContainer.new()
 
@@ -103,6 +105,15 @@ func _row(npc_id: String) -> Control:
 	details.add_theme_font_size_override("font_size", 15)
 	details.add_theme_color_override("font_color", MUTED)
 	info.add_child(details)
+	var gifts := Label.new()
+	gifts.name = "Gifts"
+	gifts.text = _gifts_text(npc_id)
+	gifts.visible = gifts.text != ""
+	gifts.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	gifts.custom_minimum_size.x = 300
+	gifts.add_theme_font_size_override("font_size", 14)
+	gifts.add_theme_color_override("font_color", TEXT_DARK)
+	info.add_child(gifts)
 
 	var right := VBoxContainer.new()
 	right.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -119,4 +130,22 @@ func _row(npc_id: String) -> Control:
 	points_label.add_theme_font_size_override("font_size", 15)
 	points_label.add_theme_color_override("font_color", TEXT_DARK)
 	right.add_child(points_label)
+	if met and not Relationships.can_gift(npc_id):
+		var gifted := Label.new()
+		gifted.name = "Gifted"
+		gifted.text = "Gift given today"
+		gifted.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		gifted.add_theme_font_size_override("font_size", 13)
+		gifted.add_theme_color_override("font_color", MUTED)
+		right.add_child(gifted)
 	return card
+
+
+## "Loves: Coffee  ·  Hates: Cheese", from the gifts given so far.
+func _gifts_text(npc_id: String) -> String:
+	var parts := PackedStringArray()
+	for taste: String in Relationships.TASTES:
+		var names := Relationships.known_with_taste(npc_id, taste)
+		if not names.is_empty():
+			parts.append("%s: %s" % [TASTE_LABELS[taste], ", ".join(names)])
+	return "  ·  ".join(parts)

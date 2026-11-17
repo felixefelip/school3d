@@ -148,3 +148,76 @@ func test_a_new_day_brings_a_new_line_and_point() -> void:
 	assert_int(rel.talk("bia", "Bia", NICE, RUDE)).is_equal(-1)
 	assert_str(rel.todays_line("bia")).is_equal("Ew.")
 	GameClock.day -= 1
+
+
+func _item(path: String) -> Item:
+	return (load(path) as Item).duplicate()
+
+
+func test_gift_tastes() -> void:
+	var rel := _new_relationships()
+	assert_str(rel.gift_taste("bia", _item("res://items/food/coffee.tres"))).is_equal("loved")
+	assert_str(rel.gift_taste("bia", _item("res://items/food/apple.tres"))).is_equal("liked")
+	assert_str(rel.gift_taste("bia", _item("res://items/food/orange.tres"))).is_equal("neutral")
+	assert_str(rel.gift_taste("bia", _item("res://items/food/milk.tres"))).is_equal("disliked")
+	assert_str(rel.gift_taste("bia", _item("res://items/food/cheese.tres"))).is_equal("hated")
+	assert_str(rel.gift_taste("lucas", _item("res://items/food/cheese.tres"))).is_equal("liked")
+	# Someone without tastes takes anything as neutral; dirty clothes are hated by all.
+	assert_str(rel.gift_taste("nobody", _item("res://items/food/coffee.tres"))).is_equal("neutral")
+	var dirty_cap := _item("res://items/clothes/cap.tres")
+	dirty_cap.dirty = true
+	assert_str(rel.gift_taste("bia", dirty_cap)).is_equal("hated")
+
+
+func test_every_gift_taste_is_a_real_item() -> void:
+	var ids := []
+	for folder in ["res://items/food/", "res://items/clothes/"]:
+		for file in DirAccess.get_files_at(folder):
+			if file.ends_with(".tres"):
+				ids.append((load(folder + file) as Item).id)
+	for npc_id: String in RelationshipsScript.PEOPLE:
+		for taste in ["loved", "liked", "disliked", "hated"]:
+			for item_id: String in RelationshipsScript.PEOPLE[npc_id][taste]:
+				assert_array(ids).override_failure_message("%s: unknown item %s" % [npc_id, item_id]).contains([item_id])
+
+
+func test_gifts_change_points_by_taste_once_a_day() -> void:
+	var rel := _new_relationships()
+	var result: Dictionary = rel.give("bia", "Bia", _item("res://items/food/coffee.tres"))
+	assert_bool(result.given).is_true()
+	assert_int(result.change).is_equal(3)
+	assert_int(rel.get_points("bia")).is_equal(3)
+	assert_bool(rel.met.has("bia")).is_true()
+	# A second gift the same day isn't taken.
+	assert_bool(rel.can_gift("bia")).is_false()
+	result = rel.give("bia", "Bia", _item("res://items/food/coffee.tres"))
+	assert_bool(result.given).is_false()
+	assert_int(rel.get_points("bia")).is_equal(3)
+	# Lucas has his own limit, and a hated gift costs points.
+	assert_int(rel.give("lucas", "Lucas", _item("res://items/food/orange_juice.tres")).change).is_equal(0)
+	rel.points["lucas"] = 5
+	GameClock.day += 1
+	assert_int(rel.give("lucas", "Lucas", _item("res://items/food/orange_juice.tres")).change).is_equal(-2)
+	assert_int(rel.give("bia", "Bia", _item("res://items/food/orange.tres")).change).is_equal(1)
+	GameClock.day -= 1
+	assert_int(rel.get_points("lucas")).is_equal(3)
+
+
+func test_gift_and_talk_have_separate_limits() -> void:
+	var rel := _new_relationships()
+	_set_outfit_dirty(false)
+	rel.give("bia", "Bia", _item("res://items/food/apple.tres"))
+	assert_int(rel.talk("bia", "Bia", NICE, RUDE)).is_equal(1)
+	assert_int(rel.get_points("bia")).is_equal(3)
+
+
+func test_gifts_reveal_tastes() -> void:
+	var rel := _new_relationships()
+	assert_array(rel.known_with_taste("bia", "loved")).is_empty()
+	rel.give("bia", "Bia", _item("res://items/food/coffee.tres"))
+	GameClock.day += 1
+	rel.give("bia", "Bia", _item("res://items/food/cheese.tres"))
+	GameClock.day -= 1
+	assert_array(rel.known_with_taste("bia", "loved")).contains_exactly(["Coffee"])
+	assert_array(rel.known_with_taste("bia", "hated")).contains_exactly(["Cheese"])
+	assert_array(rel.known_with_taste("bia", "liked")).is_empty()

@@ -19,6 +19,7 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - **Botão direito ou Tab**: capturar/soltar o mouse
 - **1–0 / roda do mouse**: escolher o slot da barra de itens
 - **C**: menu de roupa (vestir e tirar roupas)
+- **G**: dar de presente o item selecionado na barra de itens para o NPC na frente (Bia, Lucas)
 - **Esc**: menu de pausa (o jogo para): **Resume**, **Outfit** (menu de roupa), **Relationships** (lista de
   amizades) e **Quit game**; **Esc** de novo volta ao jogo. Com uma janela aberta (guarda-roupa, roupa), **Esc** fecha a janela
 
@@ -111,6 +112,15 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   Cada pessoa fala uma coisa só por dia (a primeira conversa do dia escolhe a fala, e conversar de novo
   repete a mesma) e só muda os pontos nessa primeira conversa. A fala aparece
   numa caixa acima da barra de itens, com "+1 friendship" ou "-1 friendship" na primeira conversa do dia.
+- Presentes (como no Stardew Valley): com um item selecionado na barra, perto da Bia ou do Lucas aparece
+  "[G] Give ..."; **G** entrega o item. Cada um tem itens que ama (+3), gosta (+2), não gosta (-1) e
+  odeia (-2); o resto é neutro (+1), e roupa suja todo mundo odeia. Um presente por pessoa por dia
+  (separado da conversa); se já ganhou presente hoje, a pessoa avisa e o item fica com você.
+  - Bia ama café e suco de laranja; gosta de maçã, iogurte, banana e boné; não gosta de leite e ovos; odeia queijo.
+  - Lucas ama banana e leite; gosta de queijo, maçã, laranja e moletom; não gosta de iogurte e café; odeia suco de laranja.
+  - Os gostos ficam em `Relationships.PEOPLE` (`loved`, `liked`, `disliked`, `hated`, com ids dos itens).
+    Depois de dar um item, o gosto da pessoa por ele aparece na lista de relacionamentos ("Loves: Coffee"),
+    junto com "Gift given today" se ela já ganhou presente no dia.
   - `scripts/relationships.gd`: autoload `Relationships`, com os pontos de cada NPC (continuam ao trocar de cena).
   - `scripts/npc_student.gd`: com `npc_name` preenchido, o NPC vira relacionável (`friendly_lines` e
     `rude_lines` são as falas).
