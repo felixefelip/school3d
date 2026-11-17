@@ -78,6 +78,10 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     tirada do modelo do estudante (mesmo esqueleto); o boné é `models/clothes/cap.tscn`.
   - `scripts/ui/outfit_window.gd`: o menu de roupa (C), com prévia 3D girando e os quatro slots.
   - `scripts/washing_machine.gd`: a máquina de lavar (armazenamento com o botão Wash).
+- `scripts/coffee_maker.gd`: a cafeteira da cozinha. Com **E** ela começa a passar o café: uma barra de
+  progresso horizontal aparece sobre ela, a luz acende em vermelho e a jarra enche. Pronto, a luz fica
+  verde e **E** de novo pega uma
+  xícara de café (`items/food/coffee.tres`) para a barra de itens.
   - `scripts/storage.gd`: móvel que guarda itens. Na casa, o guarda-roupa (`WardrobeStorage`) começa com
     camiseta, calça jeans, moletom, pijama, tênis e boné; com **E** a janela abre e os itens são
     arrastados com o mouse entre ela e a barra.

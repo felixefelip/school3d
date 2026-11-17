@@ -24,6 +24,15 @@ static func tooltip() -> StyleBoxFlat:
 	return _box(SLOT_BG, FRAME_BORDER, 3, 6, 8)
 
 
+## Empty part of a progress bar (e.g. the coffee maker's).
+static func bar_background() -> StyleBoxFlat:
+	return _box(SLOT_BG, FRAME_BORDER, 2, 4, 0)
+
+
+static func bar_fill(color: Color) -> StyleBoxFlat:
+	return _box(color, FRAME_BORDER, 2, 4, 0)
+
+
 static func slot(is_selected: bool) -> StyleBoxFlat:
 	return _box(SLOT_BG, SLOT_SELECTED if is_selected else SLOT_BORDER, 4 if is_selected else 3, 6, 6)
 

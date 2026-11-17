@@ -286,9 +286,10 @@ func _find_interactable() -> void:
 		if offset.length() < nearest_distance:
 			nearest = node
 			nearest_distance = offset.length()
-	if nearest != _interactable:
-		_interactable = nearest
-		_update_prompt()
+	_interactable = nearest
+	# Every frame, since an interactable's prompt can change on its own (the
+	# coffee maker goes from "Make coffee" to nothing to "Take coffee").
+	_update_prompt()
 
 
 func _update_prompt() -> void:
@@ -299,6 +300,6 @@ func _update_prompt() -> void:
 		State.BUSY, State.MENU:
 			prompt.visible = false
 		State.FREE:
-			prompt.visible = _interactable != null
-			if _interactable:
-				prompt.text = "[E] " + _interactable.get_prompt()
+			var text: String = _interactable.get_prompt() if _interactable else ""
+			prompt.visible = text != ""
+			prompt.text = "[E] " + text
