@@ -5,11 +5,13 @@ extends CharacterBody3D
 ## Right mouse button (or Tab): capture/release the mouse
 ## Esc: release the mouse; Esc again (mouse already released): quit the game
 
-## Walking speed (m/s). 1.05 is the stride measured in the walk animation,
-## so the feet don't slide on the floor.
+## Stride speed (m/s): 1.05 is the stride measured in the walk animation, so
+## at this speed with the animation at normal rate the feet don't slide.
 @export var speed: float = 1.05
-## Running speeds up both movement and animation by the same factor.
-@export var run_multiplier: float = 1.8
+## Walking and running speed up both movement and animation by the same
+## factor, so the feet still match the floor.
+@export var walk_multiplier: float = 1.8
+@export var run_multiplier: float = 3.2
 @export var mouse_sensitivity: float = 0.003
 ## How fast the character turns toward the movement direction.
 @export var turn_speed: float = 10.0
@@ -141,7 +143,7 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector3.ZERO:
 		var running := Input.is_physical_key_pressed(KEY_SHIFT)
-		var scale := run_multiplier if running else 1.0
+		var scale := run_multiplier if running else walk_multiplier
 		velocity.x = direction.x * speed * scale
 		velocity.z = direction.z * speed * scale
 		model.rotation.y = lerp_angle(model.rotation.y, _model_yaw(direction), turn_speed * delta)

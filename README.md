@@ -12,7 +12,7 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 ## Controles
 
 - **WASD**: andar (relativo à câmera)
-- **Shift**: correr
+- **Shift**: correr (andando ~1,9 m/s; correndo ~3,4 m/s)
 - **Mouse**: girar a câmera em volta da personagem
 - **E**: interagir com o que estiver mais perto: abrir/fechar portas (sala, banheiro e as duas folhas
   do refeitório) e sentar/levantar nas cadeiras da sala (carteiras e cadeira do professor)
@@ -78,16 +78,24 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     tirada do modelo do estudante (mesmo esqueleto); o boné é `models/clothes/cap.tscn`.
   - `scripts/ui/outfit_window.gd`: o menu de roupa (C), com prévia 3D girando e os quatro slots.
   - `scripts/washing_machine.gd`: a máquina de lavar (armazenamento com o botão Wash).
-- `scenes/street.tscn` + `scripts/street.gd`: a rua em frente ao prédio. De um lado, o prédio da jogadora
-  (Residencial Aurora, com a porta do saguão), uma farmácia e uma padaria; do outro, o restaurante
-  Bella Cucina (mesas com guarda-sol na calçada), a Cafe Aroma (mesinhas e cavalete com o cardápio) e um
-  mini mercado. Tem carros estacionados, postes, árvores, bancos, lixeiras, hidrantes, ponto de ônibus,
-  faixa de pedestres com semáforos, caixa de correio e bicicletário. Os estabelecimentos ainda não têm
-  interior. `street.gd` gera a colisão e rampas invisíveis no meio-fio (para subir e descer da calçada);
-  paredes invisíveis limitam a rua nas pontas.
+- `scenes/street.tscn` + `scripts/street.gd`: o bairro em volta do prédio, com três ruas:
+  - **rua principal** (leste–oeste): de um lado o prédio da jogadora (Residencial Aurora, com a porta do
+    saguão), uma farmácia e uma padaria; do outro, o restaurante Bella Cucina (mesas com guarda-sol), a
+    Cafe Aroma (mesinhas e cavalete com o cardápio) e um mini mercado. Depois do cruzamento, uma livraria
+    e uma sorveteria;
+  - **rua nova** (norte–sul), cruzando a principal na ponta leste, com ponto de ônibus;
+  - **rua 3** (leste–oeste), um quarteirão ao sul: papelaria e prédios de um lado, casas com quintal do outro;
+  - **escola**, na esquina da rua nova com a rua 3 (lado leste): muro com grade, pátio com árvores, bancos,
+    mastro e quadra, prédio de três andares e o portão virado para a rua nova. Com **E** no portão, a
+    jogadora entra na escola (`scenes/main.tscn`); a porta **EXIT** no fim do corredor da escola leva de
+    volta para a frente do portão.
+  Os cruzamentos têm faixas de pedestres nos quatro lados e semáforos. Há carros estacionados, postes,
+  árvores, bancos, lixeiras, hidrantes, caixa de correio e bicicletários. Os estabelecimentos ainda não
+  têm interior. `street.gd` gera a colisão; as rampas invisíveis do meio-fio (para subir e descer da
+  calçada) ficam no nó `CurbRamps`, e paredes invisíveis (`Boundaries`) fecham as pontas das ruas.
 - `scripts/scene_door.gd`: porta que troca de cena (escurece a tela, carrega a outra cena e coloca a
-  jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua
-  e a porta do saguão do prédio de volta ao apartamento.
+  jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua,
+  a porta do saguão de volta ao apartamento, o portão da escola à escola e a saída da escola à rua.
 - `scripts/coffee_maker.gd`: a cafeteira da cozinha. Com **E** ela começa a passar o café: uma barra de
   progresso horizontal aparece sobre ela, a luz acende em vermelho e a jarra enche. Pronto, a luz fica
   verde e **E** de novo pega uma
