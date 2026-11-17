@@ -34,7 +34,7 @@ func _ready() -> void:
 		if npc_id == "":
 			npc_id = npc_name.to_lower()
 		add_to_group("interactable")
-		Relationships.register(npc_id, npc_name)
+		Relationships.register(npc_id, npc_name, "", model.scene_file_path)
 		_add_name_tag(not chair_path.is_empty())
 	if chair_path.is_empty():
 		animation.play(StudentAnimations.REACH if reaching else StudentAnimations.IDLE)

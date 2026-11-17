@@ -1,6 +1,7 @@
 extends PanelContainer
 ## What an NPC says when the player talks to her or him: the name, the line
-## and how the friendship changed. Sits above the hotbar and hides by itself.
+## and, on the first talk of the day, whether the friendship went up or down.
+## Sits above the hotbar and hides by itself.
 
 ## Seconds on screen.
 const DURATION := 4.5
@@ -47,21 +48,13 @@ func _ready() -> void:
 	hide()
 
 
-func show_line(npc_name: String, line: String, change: int, total: int, recently: bool) -> void:
+## `change`: how the friendship changed (+1, -1); 0 shows no friendship line.
+func show_line(npc_name: String, line: String, change: int) -> void:
 	_name.text = npc_name
 	_line.text = "\"%s\"" % line
-	var text := "Friendship with %s: %d" % [npc_name, total]
-	var color := TEXT_DARK
-	if change > 0:
-		text = "+%d friendship  -  %s" % [change, text]
-		color = GAIN
-	elif change < 0:
-		text = "%d friendship  -  %s" % [change, text]
-		color = LOSS
-	elif recently:
-		text += "  (you already talked today)"
-	_friendship.text = text
-	_friendship.add_theme_color_override("font_color", color)
+	_friendship.visible = change != 0
+	_friendship.text = "%+d friendship" % change
+	_friendship.add_theme_color_override("font_color", GAIN if change > 0 else LOSS)
 	show()
 	# The wrapped line only knows its height once laid out.
 	reset_size.call_deferred()

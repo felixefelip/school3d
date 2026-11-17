@@ -106,6 +106,8 @@ func test_level_names() -> void:
 func test_lists_everyone_and_registers_newcomers() -> void:
 	var rel := _new_relationships()
 	assert_array(rel.list_people()).contains(["bia", "lucas"])
+	for npc_id in ["bia", "lucas"]:
+		assert_bool(ResourceLoader.exists(rel.people[npc_id].model)).override_failure_message(npc_id + " has no model").is_true()
 	rel.register("ana", "Ana", "School")
 	assert_array(rel.list_people()).contains(["ana"])
 	assert_str(rel.people["ana"].name).is_equal("Ana")
@@ -116,3 +118,33 @@ func test_talking_marks_as_met() -> void:
 	assert_bool(rel.met.has("bia")).is_false()
 	rel.talk("bia", "Bia", NICE, RUDE)
 	assert_bool(rel.met.has("bia")).is_true()
+
+
+func test_says_one_thing_per_day() -> void:
+	var rel := _new_relationships()
+	_set_outfit_dirty(false)
+	var many := ["One", "Two", "Three", "Four", "Five", "Six"]
+	rel.talk("bia", "Bia", many, RUDE)
+	var first: String = rel.todays_line("bia")
+	assert_array(many).contains([first])
+	for i in 10:
+		rel.talk("bia", "Bia", many, RUDE)
+		assert_str(rel.todays_line("bia")).is_equal(first)
+	# Even if her clothes get dirty later that day, the line (and the points) stay.
+	_set_outfit_dirty(true)
+	assert_int(rel.talk("bia", "Bia", many, RUDE)).is_equal(0)
+	assert_str(rel.todays_line("bia")).is_equal(first)
+	assert_int(rel.get_points("bia")).is_equal(1)
+
+
+func test_a_new_day_brings_a_new_line_and_point() -> void:
+	var rel := _new_relationships()
+	_set_outfit_dirty(false)
+	rel.talk("bia", "Bia", NICE, RUDE)
+	GameClock.day += 1
+	assert_str(rel.todays_line("bia")).is_empty()
+	_set_outfit_dirty(true)
+	rel.points["bia"] = 2
+	assert_int(rel.talk("bia", "Bia", NICE, RUDE)).is_equal(-1)
+	assert_str(rel.todays_line("bia")).is_equal("Ew.")
+	GameClock.day -= 1

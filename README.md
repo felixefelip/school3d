@@ -108,14 +108,16 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
 - Relacionamentos: dois clientes da cafeteria, **Bia** (na mesinha da janela) e **Lucas** (na mesa comprida),
   têm nome sobre a cabeça e dá para conversar com eles (**E**). Com a roupa toda limpa, eles são simpáticos e a
   amizade sobe 1 ponto; com qualquer peça suja, eles reclamam e a amizade cai 1 ponto (não fica abaixo de 0).
-  A mesma pessoa só muda os pontos uma vez por dia (depois disso só responde). A fala e os
-  pontos aparecem numa caixa acima da barra de itens.
+  Cada pessoa fala uma coisa só por dia (a primeira conversa do dia escolhe a fala, e conversar de novo
+  repete a mesma) e só muda os pontos nessa primeira conversa. A fala aparece
+  numa caixa acima da barra de itens, com "+1 friendship" ou "-1 friendship" na primeira conversa do dia.
   - `scripts/relationships.gd`: autoload `Relationships`, com os pontos de cada NPC (continuam ao trocar de cena).
   - `scripts/npc_student.gd`: com `npc_name` preenchido, o NPC vira relacionável (`friendly_lines` e
     `rude_lines` são as falas).
   - `scripts/ui/dialogue_box.gd`: a caixa de diálogo.
   - `scripts/ui/relationships_window.gd` + `heart_row.gd`: a lista de relacionamentos do menu de pausa, com
-    todos que dá para conhecer (`Relationships.PEOPLE`), o nível de amizade (Stranger, Acquaintance, Friend,
+    todos que dá para conhecer (`Relationships.PEOPLE`), o rosto (renderizado do modelo do personagem em
+    `scripts/ui/portrait.gd`; quem ainda não foi conhecido aparece como silhueta), o nível de amizade (Stranger, Acquaintance, Friend,
     Good friend, Best friend), onde encontrar a pessoa, os corações (até 10) e os pontos.
 - Horário e calendário (como no Stardew Valley), autoload `GameClock` (`scripts/game_clock.gd`):
   - o dia começa às 6:00 am e o relógio anda de 10 em 10 minutos, a cada 7 segundos (um dia dura uns 15

@@ -1,6 +1,6 @@
 extends Control
 ## The relationships list, opened from the pause menu: everyone the player can
-## get to know, with their friendship level, hearts and points.
+## get to know, with their face, friendship level, hearts and points.
 
 signal closed
 
@@ -66,8 +66,8 @@ func _refresh() -> void:
 		_list.add_child(_row(npc_id))
 
 
-## One person: name and where to find them on the left, hearts and points on
-## the right.
+## One person: face, name and where to find them on the left, hearts and
+## points on the right.
 func _row(npc_id: String) -> Control:
 	var person: Dictionary = Relationships.people[npc_id]
 	var value := Relationships.get_points(npc_id)
@@ -81,8 +81,14 @@ func _row(npc_id: String) -> Control:
 	row.add_theme_constant_override("separation", 16)
 	card.add_child(row)
 
+	var portrait := Portrait.new()
+	portrait.name = "Portrait"
+	portrait.setup(person.get("model", ""), met)
+	row.add_child(portrait)
+
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_child(info)
 	var name_label := Label.new()
 	name_label.name = "Name"

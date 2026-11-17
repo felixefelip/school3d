@@ -5,17 +5,20 @@ extends Node
 ##
 ## Talking to one of them changes the points by how the player looks: in clean
 ## clothes they're nice to her (+1), with any dirty piece on they aren't (-1).
-## The points change at most once per NPC per day (GameClock), so pressing E
-## over and over doesn't farm them; they still answer meanwhile.
+## Each NPC says one thing per day (GameClock): the first talk of the day
+## picks the line, by how the player looks then, and talking again that day
+## repeats it. The points also change only on that first talk, so pressing E
+## over and over doesn't farm them.
 
 signal changed(npc_id: String, points: int)
 
 ## Everyone the player can get to know, so the relationships list (pause menu)
 ## shows them before she has met them. NPCs not listed here are added when
 ## they first appear (see register()).
+## "model" is the character model, used for the face in the list.
 const PEOPLE := {
-	"bia": {"name": "Bia", "place": "Cafe Aroma"},
-	"lucas": {"name": "Lucas", "place": "Cafe Aroma"},
+	"bia": {"name": "Bia", "place": "Cafe Aroma", "model": "res://models/characters/blonde_student_walking.glb"},
+	"lucas": {"name": "Lucas", "place": "Cafe Aroma", "model": "res://models/characters/boy_student_walking.glb"},
 }
 ## Hearts shown in the list; points above this still count.
 const MAX_HEARTS := 10
@@ -33,6 +36,8 @@ var people := PEOPLE.duplicate(true)
 var met := {}
 ## The day (GameClock.day_index()) the points of each NPC last changed.
 var _last_change := {}
+## What each NPC says today: [day, line].
+var _todays_line := {}
 var _dialogue_box: Control
 
 
@@ -49,9 +54,9 @@ func get_points(npc_id: String) -> int:
 
 
 ## Adds an NPC that isn't in PEOPLE yet, so it shows up in the list.
-func register(npc_id: String, npc_name: String, place := "") -> void:
+func register(npc_id: String, npc_name: String, place := "", model := "") -> void:
 	if not people.has(npc_id):
-		people[npc_id] = {"name": npc_name, "place": place}
+		people[npc_id] = {"name": npc_name, "place": place, "model": model}
 
 
 ## The ids of everyone in the list, in the order they were added.
@@ -96,15 +101,24 @@ func change_points(npc_id: String, amount: int) -> int:
 ## changes the points (unless they changed recently) and shows the dialogue.
 ## Returns the change in points.
 func talk(npc_id: String, npc_name: String, friendly_lines: PackedStringArray, rude_lines: PackedStringArray) -> int:
-	var clean := is_outfit_clean()
-	var lines := friendly_lines if clean else rude_lines
-	var line := lines[randi() % lines.size()] if not lines.is_empty() else ""
 	register(npc_id, npc_name)
 	met[npc_id] = true
 	var recently := not can_change(npc_id)
-	var change := 0 if recently else change_points(npc_id, 1 if clean else -1)
-	_dialogue_box.show_line(npc_name, line, change, get_points(npc_id), recently)
+	var change := 0
+	if not recently:
+		var clean := is_outfit_clean()
+		var lines := friendly_lines if clean else rude_lines
+		_todays_line[npc_id] = [_today(), lines[randi() % lines.size()] if not lines.is_empty() else ""]
+		change = change_points(npc_id, 1 if clean else -1)
+	var line := todays_line(npc_id)
+	_dialogue_box.show_line(npc_name, line, change)
 	return change
+
+
+## What the NPC says today; empty if the player hasn't talked to her today.
+func todays_line(npc_id: String) -> String:
+	var entry: Array = _todays_line.get(npc_id, [])
+	return entry[1] if not entry.is_empty() and entry[0] == _today() else ""
 
 
 func _today() -> int:
