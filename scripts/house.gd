@@ -22,7 +22,9 @@ const NO_COLLISION := [
 	"DoorMat", "Perfume", "Jewelry", "DresserDrawerLine", "DresserMirror", "LaundryTubBasin",
 	"LaundryTubFaucet", "Clothesline", "HangingTowel", "Broom", "CleaningBottle", "BalconyMug",
 	"Grass", "BuildingFacade", "BuildingRoof", "CityBuilding",
-	"CoffeeMaker",
+	"CoffeeMaker", "SideboardDoorLine", "SideboardTop", "MicrowaveDoor", "MicrowaveWindow", "MicrowaveHandle",
+	"MicrowavePanel", "MicrowaveDisplay", "MicrowaveButton", "AirFryerTop", "AirFryerDisplay", "AirFryerBasket",
+	"AirFryerHandle", "AirFryerLine", "BlenderKnob", "BlenderCollar", "BlenderJar", "BlenderLid",
 ]
 
 @export var desk_chair_path: NodePath = ^"Bedroom/Furniture/DeskChair"

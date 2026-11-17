@@ -52,8 +52,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   - banheiro (porta abrindo com E): vaso, papel higiênico, lixeira, pia de coluna com espelho e
     prateleira, box de vidro com chuveiro, toalheiro com toalha, máquina de lavar com prateleira de
     sabão e amaciante, tapete e janela alta;
-  - cozinha americana (bancada com pia, cooktop e cafeteira, forno, armários, geladeira, balcão com
-    banquetas) integrada à sala (sofá, TV, ar-condicionado, mesa de centro, mesinha de jantar, estante) e
+  - cozinha americana (bancada com pia, cooktop e cafeteira, forno, armários, geladeira, aparador com
+    micro-ondas, air fryer e liquidificador, balcão com banquetas) integrada à sala (sofá, TV, ar-condicionado, mesa de centro, mesinha de jantar, estante) e
     porta de entrada fechada;
   - varanda com guarda-corpo de vidro, mesinha, cadeiras e plantas, com vista para a cidade;
   - área de serviço com tanque, varal e produtos de limpeza.
