@@ -7,6 +7,7 @@ const SCENES := [
 	"res://scenes/main.tscn",
 	"res://scenes/house.tscn",
 	"res://scenes/street.tscn",
+	"res://scenes/cafe.tscn",
 ]
 const SCENE_DOOR := "res://scripts/scene_door.gd"
 
@@ -43,13 +44,13 @@ func _scene_doors(root: Node) -> Array[Node]:
 		return script != null and script.resource_path == SCENE_DOOR)
 
 
-func test_scenes_load_with_a_player(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]]]) -> void:
+func test_scenes_load_with_a_player(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]], [SCENES[3]]]) -> void:
 	var root := _instantiate(scene_path)
 	assert_object(root.get_node_or_null("Player")).is_not_null()
 	_free_instances()
 
 
-func test_node_paths_point_at_existing_nodes(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]]]) -> void:
+func test_node_paths_point_at_existing_nodes(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]], [SCENES[3]]]) -> void:
 	var root := _instantiate(scene_path)
 	for node in _all_nodes(root):
 		if node.get_script() == null:
@@ -66,7 +67,7 @@ func test_node_paths_point_at_existing_nodes(scene_path: String, test_parameters
 	_free_instances()
 
 
-func test_scene_doors_lead_to_a_spawn_and_back(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]]]) -> void:
+func test_scene_doors_lead_to_a_spawn_and_back(scene_path: String, test_parameters := [[SCENES[0]], [SCENES[1]], [SCENES[2]], [SCENES[3]]]) -> void:
 	var root := _instantiate(scene_path)
 	for door in _scene_doors(root):
 		var where := "%s: %s" % [scene_path, root.get_path_to(door)]

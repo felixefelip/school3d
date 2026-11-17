@@ -94,9 +94,25 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   É uma cidade grande: os prédios têm de 9 a 42 andares (alguns com fachada de vidro), letreiros verticais
   em neon, caixas-d'água, antenas e painéis nos terraços, e cada rua termina num prédio, fechando o mapa.
   Os cruzamentos têm faixas de pedestres nos quatro lados e semáforos. Há carros estacionados, postes,
-  árvores, bancos, lixeiras, hidrantes, caixa de correio e bicicletários. Os estabelecimentos ainda não
-  têm interior. `street.gd` gera a colisão; as rampas invisíveis do meio-fio (para subir e descer da
+  árvores, bancos, lixeiras, hidrantes, caixa de correio e bicicletários. Por enquanto só a Cafe Aroma
+  tem interior (os outros estabelecimentos são só fachada). `street.gd` gera a colisão; as rampas invisíveis do meio-fio (para subir e descer da
   calçada) ficam no nó `CurbRamps`, e paredes invisíveis (`Boundaries`) fecham as pontas das ruas.
+- `scenes/cafe.tscn` + `scripts/cafe.gd`: o interior da Cafe Aroma (entra com **E** pela porta da cafeteria
+  na rua). Balcão de mármore com vitrine de doces, caixa, máquina de espresso, moedor e cardápio de giz;
+  prateleiras com pacotes de café; mesinhas na janela, uma mesa comprida, um cantinho com sofá, poltronas,
+  luminária e estante; luminárias pendentes, quadros, relógio, letreiro "aroma" em neon e porta do banheiro.
+  A sala fica no mesmo lugar do prédio na cidade (`city.tscn`), então pelas vitrines se vê a rua de verdade.
+  As cadeiras livres são sentáveis (**E**), há cinco colegas sentados tomando café, e no balcão
+  (`scripts/cafe_counter.gd`) **E** pede um café, que vai para a barra de itens.
+- Relacionamentos: dois clientes da cafeteria, **Bia** (na mesinha da janela) e **Lucas** (na mesa comprida),
+  têm nome sobre a cabeça e dá para conversar com eles (**E**). Com a roupa toda limpa, eles são simpáticos e a
+  amizade sobe 1 ponto; com qualquer peça suja, eles reclamam e a amizade cai 1 ponto (não fica abaixo de 0).
+  A mesma pessoa só muda os pontos de novo depois de 3 minutos (antes disso só responde). A fala e os
+  pontos aparecem numa caixa acima da barra de itens.
+  - `scripts/relationships.gd`: autoload `Relationships`, com os pontos de cada NPC (continuam ao trocar de cena).
+  - `scripts/npc_student.gd`: com `npc_name` preenchido, o NPC vira relacionável (`friendly_lines` e
+    `rude_lines` são as falas).
+  - `scripts/ui/dialogue_box.gd`: a caixa de diálogo.
 - `scripts/scene_door.gd`: porta que troca de cena (escurece a tela, carrega a outra cena e coloca a
   jogadora no ponto `target_spawn`, um nó em `SpawnPoints`). Liga a porta de entrada do apartamento à rua,
   a porta do saguão de volta ao apartamento, o portão da escola à escola e a saída da escola à rua.

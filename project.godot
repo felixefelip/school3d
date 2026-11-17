@@ -21,6 +21,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 PlayerInventory="*res://scripts/inventory/player_inventory.gd"
+Relationships="*res://scripts/relationships.gd"
 
 [display]
 

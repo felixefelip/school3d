@@ -26,6 +26,7 @@ func _start(scene_path: String) -> CharacterBody3D:
 
 func test_player_starts_on_the_floor(scene_path: String, test_parameters := [
 	["res://scenes/main.tscn"], ["res://scenes/house.tscn"], ["res://scenes/street.tscn"],
+	["res://scenes/cafe.tscn"],
 ]) -> void:
 	var player := await _start(scene_path)
 	assert_bool(player.is_on_floor()).is_true()
@@ -38,6 +39,8 @@ func test_arrives_at_the_spawn_point(scene_path: String, spawn: String, test_par
 	["res://scenes/street.tscn", "FromSchool"],
 	["res://scenes/house.tscn", "FromStreet"],
 	["res://scenes/main.tscn", "FromStreet"],
+	["res://scenes/street.tscn", "FromCafe"],
+	["res://scenes/cafe.tscn", "FromStreet"],
 ]) -> void:
 	SceneDoor._arrival_spawn = spawn
 	var runner := scene_runner(scene_path)
@@ -91,3 +94,48 @@ func test_walks_and_runs_at_the_configured_speeds() -> void:
 	assert_float(run).is_equal_approx(player.speed * player.run_multiplier, 0.01)
 	runner.simulate_key_release(KEY_SHIFT)
 	runner.simulate_key_release(KEY_W)
+
+
+func test_orders_a_coffee_at_the_cafe_counter() -> void:
+	var runner := scene_runner("res://scenes/cafe.tscn")
+	await _physics_frames(10)
+	var counter: Node = runner.scene().get_node("CoffeeCounter")
+	var hotbar: Inventory = PlayerInventory.inventory
+	var before := hotbar.items.duplicate()
+	assert_str(counter.get_prompt()).is_equal("Order a coffee")
+	counter.interact(runner.scene().get_node("Player"))
+	var slot := before.find(null)
+	var cup: Item = hotbar.items[slot]
+	assert_object(cup).is_not_null()
+	assert_str(cup.id).is_equal("coffee")
+	assert_object(cup).is_not_same(counter.item)
+	hotbar.items[slot] = null  # leave the real autoload as it was
+
+
+func test_cafe_has_free_chairs_to_sit_on() -> void:
+	var runner := scene_runner("res://scenes/cafe.tscn")
+	await _physics_frames(10)
+	var seats := runner.scene().get_children().filter(func(n: Node) -> bool: return n.name.begins_with("CafeChair"))
+	assert_int(seats.size()).is_greater(5)
+	for seat: Node in seats:
+		assert_bool(seat.chair.has_meta("occupied")).is_false()
+
+
+func test_bia_and_lucas_can_be_talked_to_in_the_cafe() -> void:
+	var runner := scene_runner("res://scenes/cafe.tscn")
+	await _physics_frames(10)
+	var bia: Node = runner.scene().get_node("Customers/CustomerWindow")
+	var lucas: Node = runner.scene().get_node("Customers/CustomerLongTable")
+	assert_str(bia.get_prompt()).is_equal("Talk to Bia")
+	assert_str(lucas.get_prompt()).is_equal("Talk to Lucas")
+	assert_bool(bia.is_in_group("interactable")).is_true()
+	# The other customers are just background students.
+	assert_bool(runner.scene().get_node("Customers/CustomerLongTable2").is_in_group("interactable")).is_false()
+	var points_before: int = Relationships.get_points("bia")
+	var cooldown_before: float = Relationships.talk_cooldown
+	Relationships.talk_cooldown = 0.0
+	bia.interact(runner.scene().get_node("Player"))
+	var expected := 1 if Relationships.is_outfit_clean() else maxi(points_before - 1, 0) - points_before
+	assert_int(Relationships.get_points("bia") - points_before).is_equal(expected)
+	Relationships.points["bia"] = points_before
+	Relationships.talk_cooldown = cooldown_before
