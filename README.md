@@ -106,3 +106,27 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
     camiseta, calça jeans, moletom, pijama, tênis e boné; com **E** a janela abre e os itens são
     arrastados com o mouse entre ela e a barra.
 - `scripts/free_camera.gd`: câmera livre (não usada na cena atual).
+
+## Testes automatizados
+
+Os testes usam o [GdUnit4](https://github.com/godot-gdunit-labs/gdUnit4) (v6.2.3, em `addons/gdUnit4`) e
+ficam em `tests/`:
+
+- `tests/logic/`: lógica sem cena — inventário (`add`, `move`), inventário da jogadora (uniforme inicial,
+  slot selecionado, roupa suja depois de 3 minutos), itens de `items/` (id, nome e ícone preenchidos, ids
+  únicos) e máquina de lavar.
+- `tests/scenes/`: integridade das cenas — todo `NodePath` dos scripts aponta para um nó que existe, e toda
+  porta que troca de cena leva a uma cena e a um ponto de chegada (`SpawnPoints`) que existem, com uma
+  porta de volta.
+- `tests/gameplay/`: jogabilidade com física — a jogadora começa no chão em cada cena, chega no ponto
+  certo ao passar por cada porta, sobe e desce o meio-fio, não atravessa o muro da escola nem as pontas
+  das ruas, e anda/corre nas velocidades configuradas.
+
+Para rodar tudo sem abrir janela (informe o executável do Godot em `GODOT_BIN`):
+
+```bash
+GODOT_BIN=/caminho/para/godot ./run_tests.sh
+```
+
+O resultado aparece no terminal e em `reports/` (HTML e XML, fora do git). No editor, os testes também
+podem ser rodados pelo painel do GdUnit4 (o plugin já está ativado no projeto).
