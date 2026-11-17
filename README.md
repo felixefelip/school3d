@@ -82,6 +82,8 @@ Projeto Godot 4 com a cena `scenes/main.tscn`, que instancia o modelo da escola
   progresso horizontal aparece sobre ela, a luz acende em vermelho e a jarra enche. Pronto, a luz fica
   verde e **E** de novo pega uma
   xícara de café (`items/food/coffee.tres`) para a barra de itens.
+- Geladeira (`FridgeStorage` na casa, mesmo script do guarda-roupa): com **E** abre com leite, ovos, maçã,
+  banana, laranja, queijo, iogurte e suco de laranja (`items/food/`), que são arrastados para a barra.
   - `scripts/storage.gd`: móvel que guarda itens. Na casa, o guarda-roupa (`WardrobeStorage`) começa com
     camiseta, calça jeans, moletom, pijama, tênis e boné; com **E** a janela abre e os itens são
     arrastados com o mouse entre ela e a barra.

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://assets/icons/food/cheese.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_item")
+id = "cheese"
+display_name = "Cheese"
+icon = ExtResource("2_icon")
+description = "A wedge of yellow cheese."

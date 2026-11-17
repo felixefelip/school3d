@@ -6,22 +6,30 @@
 [ext_resource type="Script" path="res://scripts/washing_machine.gd" id="4_washing_machine"]
 [ext_resource type="Script" path="res://scripts/coffee_maker.gd" id="5_coffee_maker"]
 [ext_resource type="Resource" path="res://items/food/coffee.tres" id="6_coffee"]
-[ext_resource type="Script" path="res://scripts/inventory/item.gd" id="7_item"]
-[ext_resource type="Resource" path="res://items/clothes/t_shirt.tres" id="8_t_shirt"]
-[ext_resource type="Resource" path="res://items/clothes/jeans.tres" id="9_jeans"]
-[ext_resource type="Resource" path="res://items/clothes/hoodie.tres" id="10_hoodie"]
-[ext_resource type="Resource" path="res://items/clothes/pajamas.tres" id="11_pajamas"]
-[ext_resource type="Resource" path="res://items/clothes/sneakers.tres" id="12_sneakers"]
-[ext_resource type="Resource" path="res://items/clothes/cap.tres" id="13_cap"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="14_player"]
-[ext_resource type="PackedScene" path="res://models/props/chair.scn" id="15_chair"]
-[ext_resource type="PackedScene" path="res://models/props/bookshelf.scn" id="16_bookshelf"]
-[ext_resource type="PackedScene" path="res://models/props/poster_1.scn" id="17_poster_1"]
-[ext_resource type="PackedScene" path="res://models/props/poster_2.scn" id="18_poster_2"]
-[ext_resource type="PackedScene" path="res://models/props/potted_plant.scn" id="19_potted_plant"]
-[ext_resource type="PackedScene" path="res://models/props/toilet.scn" id="20_toilet"]
-[ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="21_toilet_paper"]
-[ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="22_steel_trash_can"]
+[ext_resource type="Resource" path="res://items/food/milk.tres" id="7_milk"]
+[ext_resource type="Resource" path="res://items/food/eggs.tres" id="8_eggs"]
+[ext_resource type="Resource" path="res://items/food/apple.tres" id="9_apple"]
+[ext_resource type="Resource" path="res://items/food/banana.tres" id="10_banana"]
+[ext_resource type="Resource" path="res://items/food/orange.tres" id="11_orange"]
+[ext_resource type="Resource" path="res://items/food/cheese.tres" id="12_cheese"]
+[ext_resource type="Resource" path="res://items/food/yogurt.tres" id="13_yogurt"]
+[ext_resource type="Resource" path="res://items/food/orange_juice.tres" id="14_orange_juice"]
+[ext_resource type="Script" path="res://scripts/inventory/item.gd" id="15_item"]
+[ext_resource type="Resource" path="res://items/clothes/t_shirt.tres" id="16_t_shirt"]
+[ext_resource type="Resource" path="res://items/clothes/jeans.tres" id="17_jeans"]
+[ext_resource type="Resource" path="res://items/clothes/hoodie.tres" id="18_hoodie"]
+[ext_resource type="Resource" path="res://items/clothes/pajamas.tres" id="19_pajamas"]
+[ext_resource type="Resource" path="res://items/clothes/sneakers.tres" id="20_sneakers"]
+[ext_resource type="Resource" path="res://items/clothes/cap.tres" id="21_cap"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="22_player"]
+[ext_resource type="PackedScene" path="res://models/props/chair.scn" id="23_chair"]
+[ext_resource type="PackedScene" path="res://models/props/bookshelf.scn" id="24_bookshelf"]
+[ext_resource type="PackedScene" path="res://models/props/poster_1.scn" id="25_poster_1"]
+[ext_resource type="PackedScene" path="res://models/props/poster_2.scn" id="26_poster_2"]
+[ext_resource type="PackedScene" path="res://models/props/potted_plant.scn" id="27_potted_plant"]
+[ext_resource type="PackedScene" path="res://models/props/toilet.scn" id="28_toilet"]
+[ext_resource type="PackedScene" path="res://models/props/toilet_paper.scn" id="29_toilet_paper"]
+[ext_resource type="PackedScene" path="res://models/props/steel_trash_can.scn" id="30_steel_trash_can"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_Wall"]
 albedo_color = Color(0.88, 0.89, 0.92, 1)
@@ -2433,7 +2441,7 @@ mesh = SubResource("Box_41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59, 1, 1.66)
 mesh = SubResource("Box_42")
 
-[node name="Bookshelf" parent="Bedroom/Furniture" instance=ExtResource("16_bookshelf")]
+[node name="Bookshelf" parent="Bedroom/Furniture" instance=ExtResource("24_bookshelf")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.03, 0, 0.25)
 
 [node name="DeskTop" type="MeshInstance3D" parent="Bedroom/Furniture"]
@@ -2464,7 +2472,7 @@ mesh = SubResource("Box_48")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67, 0.66, 0.62)
 mesh = SubResource("Box_49")
 
-[node name="DeskChair" parent="Bedroom/Furniture" instance=ExtResource("15_chair")]
+[node name="DeskChair" parent="Bedroom/Furniture" instance=ExtResource("23_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1.405, 0, 0.25)
 
 [node name="Laptop" type="Node3D" parent="Bedroom/Furniture"]
@@ -2514,13 +2522,13 @@ mesh = SubResource("Box_59")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.005, 0.2)
 mesh = SubResource("Cyl_60")
 
-[node name="Poster1" parent="Bedroom/Furniture" instance=ExtResource("17_poster_1")]
+[node name="Poster1" parent="Bedroom/Furniture" instance=ExtResource("25_poster_1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.6, -2.5)
 
-[node name="Poster2" parent="Bedroom/Furniture" instance=ExtResource("18_poster_2")]
+[node name="Poster2" parent="Bedroom/Furniture" instance=ExtResource("26_poster_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.6, -2.5)
 
-[node name="Plant" parent="Bedroom/Furniture" instance=ExtResource("19_potted_plant")]
+[node name="Plant" parent="Bedroom/Furniture" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0, -2.15)
 
 [node name="AirConditioner" type="MeshInstance3D" parent="Bedroom/Furniture"]
@@ -2740,7 +2748,7 @@ mesh = SubResource("Box_111")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.39, 3.82)
 mesh = SubResource("Box_112")
 
-[node name="ConsolePlant" parent="Hallway" instance=ExtResource("19_potted_plant")]
+[node name="ConsolePlant" parent="Hallway" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45, 0.82, 3.8)
 
 [node name="PictureSeaFrame" type="MeshInstance3D" parent="Hallway"]
@@ -2926,13 +2934,13 @@ mesh = SubResource("Box_150")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215, 1.2, 4.11)
 mesh = SubResource("Box_151")
 
-[node name="Toilet" parent="Bathroom" instance=ExtResource("20_toilet")]
+[node name="Toilet" parent="Bathroom" instance=ExtResource("28_toilet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, 5.3)
 
-[node name="ToiletPaper" parent="Bathroom" instance=ExtResource("21_toilet_paper")]
+[node name="ToiletPaper" parent="Bathroom" instance=ExtResource("29_toilet_paper")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2.2, 0.7, 5.8)
 
-[node name="TrashCan" parent="Bathroom" instance=ExtResource("22_steel_trash_can")]
+[node name="TrashCan" parent="Bathroom" instance=ExtResource("30_steel_trash_can")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5.95)
 
 [node name="SinkPedestal" type="MeshInstance3D" parent="Bathroom"]
@@ -3710,10 +3718,10 @@ mesh = SubResource("Box_332")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85, 0.36, 2.8)
 mesh = SubResource("Box_333")
 
-[node name="DiningChairWest" parent="LivingRoom" instance=ExtResource("15_chair")]
+[node name="DiningChairWest" parent="LivingRoom" instance=ExtResource("23_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -11, 0, 2.5)
 
-[node name="DiningChairEast" parent="LivingRoom" instance=ExtResource("15_chair")]
+[node name="DiningChairEast" parent="LivingRoom" instance=ExtResource("23_chair")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -9.6, 0, 2.5)
 
 [node name="Rug" type="MeshInstance3D" parent="LivingRoom"]
@@ -3796,10 +3804,10 @@ mesh = SubResource("Box_352")
 transform = Transform3D(0.9781, 0.2079, 0, -0.2079, 0.9781, 0, 0, 0, 1, -8.69, 0.7, 4.9)
 mesh = SubResource("Box_353")
 
-[node name="LivingPlant" parent="LivingRoom" instance=ExtResource("19_potted_plant")]
+[node name="LivingPlant" parent="LivingRoom" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.05, 0, 6.75)
 
-[node name="LivingBookshelf" parent="LivingRoom" instance=ExtResource("16_bookshelf")]
+[node name="LivingBookshelf" parent="LivingRoom" instance=ExtResource("24_bookshelf")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -9.5, 0, 6.83)
 
 [node name="PictureMountainsFrame" type="MeshInstance3D" parent="LivingRoom"]
@@ -3891,23 +3899,23 @@ mesh = SubResource("Cyl_370")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.35, 5.6)
 mesh = SubResource("Cyl_371")
 
-[node name="BalconyChairWest" parent="Balcony" instance=ExtResource("15_chair")]
+[node name="BalconyChairWest" parent="Balcony" instance=ExtResource("23_chair")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.2, 0, 5.6)
 
-[node name="BalconyChairEast" parent="Balcony" instance=ExtResource("15_chair")]
+[node name="BalconyChairEast" parent="Balcony" instance=ExtResource("23_chair")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4, 0, 5.6)
 
 [node name="BalconyMug" type="MeshInstance3D" parent="Balcony"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.765, 5.5)
 mesh = SubResource("Cyl_372")
 
-[node name="BalconyPlant1" parent="Balcony" instance=ExtResource("19_potted_plant")]
+[node name="BalconyPlant1" parent="Balcony" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, 6.6)
 
-[node name="BalconyPlant2" parent="Balcony" instance=ExtResource("19_potted_plant")]
+[node name="BalconyPlant2" parent="Balcony" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, 6.6)
 
-[node name="BalconyPlant3" parent="Balcony" instance=ExtResource("19_potted_plant")]
+[node name="BalconyPlant3" parent="Balcony" instance=ExtResource("27_potted_plant")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, 4.5)
 
 [node name="CeilingLight" type="MeshInstance3D" parent="Balcony"]
@@ -4079,7 +4087,7 @@ script = ExtResource("3_storage")
 title = "Wardrobe"
 target_path = NodePath("../Bedroom/Furniture/Wardrobe")
 interaction_offset = Vector3(0.4, -1, 0)
-starting_items = Array[ExtResource("7_item")]([ExtResource("8_t_shirt"), ExtResource("9_jeans"), ExtResource("10_hoodie"), ExtResource("11_pajamas"), ExtResource("12_sneakers"), ExtResource("13_cap")])
+starting_items = Array[ExtResource("15_item")]([ExtResource("16_t_shirt"), ExtResource("17_jeans"), ExtResource("18_hoodie"), ExtResource("19_pajamas"), ExtResource("20_sneakers"), ExtResource("21_cap")])
 
 [node name="WashingMachineStorage" type="Node" parent="."]
 script = ExtResource("4_washing_machine")
@@ -4088,6 +4096,13 @@ target_path = NodePath("../Bathroom/WashingMachine")
 interaction_offset = Vector3(0, -0.4, 0.6)
 slot_count = 4
 action_name = "Wash"
+
+[node name="FridgeStorage" type="Node" parent="."]
+script = ExtResource("3_storage")
+title = "Fridge"
+target_path = NodePath("../Kitchen/Fridge")
+interaction_offset = Vector3(0, -0.9, 0.8)
+starting_items = Array[ExtResource("15_item")]([ExtResource("7_milk"), ExtResource("8_eggs"), ExtResource("9_apple"), ExtResource("10_banana"), ExtResource("11_orange"), ExtResource("12_cheese"), ExtResource("13_yogurt"), ExtResource("14_orange_juice")])
 
 [node name="CoffeeMaker" type="Node" parent="."]
 script = ExtResource("5_coffee_maker")
@@ -4117,5 +4132,5 @@ door_path = NodePath("../../ParentsRoom/ParentsDoor")
 open_angle_degrees = -90
 center_offset = Vector3(-0.45, 1, 0)
 
-[node name="Player" parent="." instance=ExtResource("14_player")]
+[node name="Player" parent="." instance=ExtResource("22_player")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.6, 0.05, 1.5)
